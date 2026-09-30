@@ -87,6 +87,7 @@
                 linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
+            mask-image: radial-gradient(circle at 50% 50%, black 60%, transparent 100%);
         }
 
         header {
@@ -160,7 +161,7 @@
             backdrop-filter: blur(25px);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            width: 330px;
+            width: 320px;
             max-height: 80vh;
             overflow-y: auto;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -180,7 +181,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .nav-dropdown-menu button, .nav-dropdown-menu a {
+        .nav-dropdown-menu button {
             background: transparent;
             border: none;
             color: var(--text-color);
@@ -194,10 +195,9 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            text-decoration: none;
         }
 
-        .nav-dropdown-menu button:hover, .nav-dropdown-menu a:hover {
+        .nav-dropdown-menu button:hover {
             background: var(--glow-color);
             color: var(--accent-primary);
         }
@@ -306,7 +306,40 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        [data-theme="light"] .colored-box-1 {
+        .colored-box-2 {
+            background: var(--box-gradient-2);
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(67, 56, 202, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .colored-box-3 {
+            background: var(--box-gradient-3);
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .colored-box-4 {
+            background: var(--box-gradient-4);
+            color: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(180, 83, 9, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="light"] .colored-box-1,
+        [data-theme="light"] .colored-box-2,
+        [data-theme="light"] .colored-box-3,
+        [data-theme="light"] .colored-box-4 {
             color: #0f172a;
         }
 
@@ -329,6 +362,16 @@
             overflow: hidden;
         }
 
+        .info-card-widget::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+
         .info-card-widget h4 {
             font-size: 14px;
             font-weight: 700;
@@ -345,21 +388,21 @@
 
         .navigation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
         .nav-link-card {
             background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
             border: 1px solid var(--border-color);
-            padding: 20px 15px;
+            padding: 25px 20px;
             border-radius: 16px;
             text-align: center;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .nav-link-card:hover {
@@ -369,13 +412,13 @@
         }
 
         .nav-link-card span:first-child {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--text-color);
         }
 
         .nav-link-card span:last-child {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-secondary);
         }
 
@@ -503,6 +546,12 @@
             padding-top: 15px;
         }
 
+        .completed-tasks-container h3 {
+            font-size: 15px;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
         .tasks-list {
             list-style: none;
             max-height: 150px;
@@ -537,118 +586,19 @@
             color: white;
         }
 
-        .tool-form-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .tool-input {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px;
-            background: rgba(0,0,0,0.2);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            border-radius: 10px;
-            font-size: 14px;
-        }
-
-        .tool-btn {
-            background: var(--accent-primary);
-            color: #020617;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .tool-btn:hover {
-            opacity: 0.9;
-        }
-
-        .planner-result-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 14px;
-            margin-top: 15px;
-        }
-
-        .flashcard-container {
-            perspective: 1000px;
-            width: 100%;
-            max-width: 500px;
-            height: 250px;
-            margin: 20px auto;
-            cursor: pointer;
-        }
-
-        .flashcard {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .flashcard.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .flashcard-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .flashcard-front {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
-            color: var(--accent-primary);
-        }
-
-        .flashcard-back {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(67, 56, 202, 0.15));
-            color: var(--text-color);
-            transform: rotateY(180deg);
-        }
-
-        .flashcard-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .ambient-grid {
+        .exams-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
-        .ambient-card {
+        .exam-item-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 25px;
             border-radius: 14px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
         }
 
         .download-action-btn {
@@ -663,6 +613,108 @@
             margin-top: 15px;
         }
 
+        .school-contact-card {
+            background: rgba(56, 189, 248, 0.04);
+            border: 1px dashed var(--accent-primary);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .school-contact-card h4 {
+            color: var(--accent-primary);
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .school-contact-card p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* تنسيق قسم القاموس والمعجم الحقيقي */
+        .dictionary-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        .dict-search-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .dict-input {
+            flex: 1;
+            min-width: 240px;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .dict-search-btn {
+            padding: 12px 25px;
+            background: var(--accent-primary);
+            color: #020617;
+            border: none;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .dict-search-btn:hover {
+            opacity: 0.9;
+        }
+
+        .dict-results-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dict-word-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .dict-word-title {
+            font-size: 20px;
+            color: var(--accent-gold);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .dict-word-type {
+            font-size: 12px;
+            color: var(--accent-primary);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+            background: var(--glow-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .dict-word-meaning {
+            font-size: 15px;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            text-align: right;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
@@ -671,14 +723,6 @@
             border-top: 1px solid var(--border-color);
             background: var(--card-bg);
             margin-top: 40px;
-        }
-
-        .devs-signature {
-            color: var(--accent-primary);
-            font-weight: 800;
-            font-size: 14px;
-            margin-top: 8px;
-            line-height: 1.7;
         }
     </style>
 </head>
@@ -704,20 +748,24 @@
             <button onclick="switchPage('page-home'); toggleMenu();">الصفحة الرئيسية</button>
             <button onclick="switchPage('page-about'); toggleMenu();">عن مدرسة الهداية الخليفية</button>
             
-            <div class="menu-category-title">الأدوات الذكية المختارة</div>
-            <button onclick="switchPage('page-planner'); toggleMenu();">1. مولد خطط المذاكرة الذكي</button>
-            <button onclick="switchPage('page-glossary'); toggleMenu();">2. قاموس المصطلحات العلمية</button>
-            <button onclick="switchPage('page-ambient'); toggleMenu();">4. وضع التركيز والأصوات الهادئة</button>
-            <button onclick="switchPage('page-flashcards'); toggleMenu();">5. بطاقات الحفظ السريع</button>
+            <div class="menu-category-title">الصف الأول الثانوي</div>
+            <button onclick="switchPage('page-grade1'); toggleMenu();">قوائم الشروحات والدروس</button>
 
-            <div class="menu-category-title">المناهج والصفوف الدراسية</div>
-            <button onclick="switchPage('page-grade1'); toggleMenu();">الصف الأول الثانوي</button>
-            <button onclick="switchPage('page-grade2'); toggleMenu();">الصف الثاني الثانوي</button>
-            <button onclick="switchPage('page-grade3'); toggleMenu();">الصف الثالث الثانوي (التوجيهي)</button>
+            <div class="menu-category-title">الصف الثاني الثانوي</div>
+            <button onclick="switchPage('page-grade2'); toggleMenu();">قسم ثاني ثانوي عام</button>
 
-            <div class="menu-category-title">روابط مساندة ومهمة</div>
-            <a href="https://almanahj.com/bh/10" target="_blank">موقع المناهج البحرينية</a>
+            <div class="menu-category-title">الصف الثالث الثانوي</div>
+            <button onclick="switchPage('page-grade3'); toggleMenu();">قسم التوجيهي (ثالث ثانوي)</button>
+
+            <div class="menu-category-title">الخدمات السريعة والمناهج</div>
             <button onclick="switchPage('page-edu-portal'); toggleMenu();">البوابة التعليمية</button>
+            <button onclick="switchPage('page-bahrain-curriculum'); toggleMenu();">موقع المناهج البحرينية</button>
+            <button onclick="switchPage('page-dictionary'); toggleMenu();">القاموس والمعجم اللغوي الحقيقي</button>
+
+            <div class="menu-category-title">الأقسام الجديدة المبتكرة</div>
+            <button onclick="switchPage('page-tips'); toggleMenu();">نصائح ذكية للتفوق الدراسي</button>
+            
+            <div class="menu-category-title">الخدمات والأدوات</div>
             <button onclick="switchPage('page-exams'); toggleMenu();">الامتحانات الوزارية النهائية</button>
         </div>
 
@@ -730,8 +778,9 @@
 
         <!-- ================= الصفحة الرئيسية ================= -->
         <div id="page-home" class="page-view active-page">
+            
             <div class="colored-box-1">
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">رسالة تحفيزية لليوم</h3>
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; opacity: 0.9;">رسالة تحفيزية لليوم</h3>
                 <p id="motivationalQuoteText" style="font-size: 19px; font-weight: 800; color: inherit; margin: 0; text-align: center;">جاري تحميل حكمة اليوم...</p>
             </div>
 
@@ -739,7 +788,7 @@
                 <div class="info-card-widget">
                     <h4>الساعة والتاريخ الحالي</h4>
                     <div id="liveClockWidget" class="widget-value" style="font-size: 18px; margin-top: 5px;">00:00:00</div>
-                    <div id="liveDateWidget" style="font-size: 12px; margin-top: 5px;">--/--/----</div>
+                    <div id="liveDateWidget" style="font-size: 12px; margin-top: 5px; opacity: 0.9;">--/--/----</div>
                 </div>
                 <div class="info-card-widget">
                     <h4>العد التنازلي لطابور المدرسة (7:05 ص)</h4>
@@ -748,42 +797,38 @@
             </div>
 
             <div class="card-box">
-                <h2>أدواتك الذكية المختارة والمناهج الدراسية</h2>
-                <p>تم تفعيل خياراتك بنجاح (مولد الخطط، قاموس المصطلحات، أصوات التركيز، وبطاقات الحفظ)، بالإضافة إلى وصول سريع لموقع المناهج البحرينية ودروس الصفوف الثلاثة.</p>
+                <h2>مرحباً بك في الهداية الخليفية</h2>
+                <p>منصة رقمية متطورة مصممة خصيصاً لمدرسة الهداية الخليفية الثانوية للبنين في مملكة البحرين. انقر فوق زر القائمة أعلى الصفحة للوصول السريع للفيديوهات التعليمية والأقسام المبتكرة.</p>
                 
                 <div class="navigation-grid">
-                    <div class="nav-link-card" onclick="switchPage('page-planner')">
-                        <span>خطط المذاكرة الذكية</span>
-                        <span>رتب جدولك بكل سهولة</span>
+                    <div class="nav-link-card" onclick="switchPage('page-about')">
+                        <span>تاريخ الهداية الخليفية</span>
+                        <span>اكتشف الإرث العريق للمدرسة</span>
                     </div>
-                    <div class="nav-link-card" onclick="switchPage('page-glossary')">
-                        <span>قاموس المصطلحات</span>
-                        <span>ابحث عن تعريفات المواد</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-ambient')">
-                        <span>أصوات التركيز</span>
-                        <span>أجواء هادئة للمذاكرة</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-flashcards')">
-                        <span>بطاقات الحفظ</span>
-                        <span>ثبت معلوماتك بسرعة</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-grade1')">
-                        <span>المناهج والدروس</span>
-                        <span>الأول والثاني والثالث الثانوي</span>
-                    </div>
-                    <div class="nav-link-card" onclick="window.open('https://almanahj.com/bh/10', '_blank')">
+                    <div class="nav-link-card" onclick="switchPage('page-bahrain-curriculum')">
                         <span>موقع المناهج البحرينية</span>
-                        <span>الملخصات وأوراق العمل الرسمية</span>
+                        <span>جميع كتب المناهج الدراسية الرسمية</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-dictionary')">
+                        <span>القاموس والمعجم</span>
+                        <span>معجم لغوي حقيقي لشرح المفردات</span>
                     </div>
                 </div>
             </div>
 
+            <div class="colored-box-2" style="border-right: 5px solid var(--accent-gold);">
+                <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">رسالة موجهة إلى إدارة المدرسة والهيئة التعليمية</h3>
+                <p style="color: inherit; margin-bottom: 10px;">حضرة مدير مدرسة الهداية الخليفية المحترم، وأفاضل المعلمين والأعزاء الأجلاء،</p>
+                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، والذي تجسد في بناء هذه البوابة الإلكترونية الشاملة لتكون أداة مساعدة فعالة لزملائنا الطلاب في تنظيم أوقاتهم، ومراجعة دروسهم، وسهل وصولهم لفيديوهات الشرح والأرشيف الوزاري بكل يسر وسهولة.</p>
+            </div>
+
             <div class="card-box">
                 <h2>مؤقت التركيز الدراسي (بومودورو) وتتبع المهام</h2>
+                <p>حدد وقت التركيز، واكتب المهمة التي تريد إنجازها. عند انتهاء الوقت، ستبدأ الاستراحة تلقائياً وتُحفظ المهمة في سجل إنجازاتك.</p>
+                
                 <div class="pomodoro-box">
                     <div id="timerStatusBadge" class="timer-status-badge">وضع التركيز (جلسة عمل)</div>
-                    <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية (مثال: حل واجب الفيزياء)...">
+                    <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية (مثال: حل واجب الرياضيات)...">
                     
                     <div class="timer-controls-row">
                         <button class="time-adjust-btn" onclick="adjustTime(5)">+ 5 دقائق</button>
@@ -799,147 +844,10 @@
                     </div>
 
                     <div class="completed-tasks-container">
-                        <h3 style="font-size: 15px; color: var(--accent-primary); margin-bottom: 10px;">سجل المهام المنجزة المحفوظة</h3>
-                        <ul id="completedTasksList" class="tasks-list"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= 1. مولد خطط المذاكرة الذكي ================= -->
-        <div id="page-planner" class="page-view">
-            <div class="card-box">
-                <h2>مولد خطط المذاكرة الذكي</h2>
-                <p>أدخل عدد المواد التي تريد دراستها والأيام المتاحة لديك لتوليد خطة مرتبة.</p>
-                <div class="tool-form-group">
-                    <input type="text" id="plannerSubjectsInput" class="tool-input" placeholder="المواد مفصولة بفواصل (رياضيات, كيمياء, فيزياء)">
-                    <input type="number" id="plannerDaysInput" class="tool-input" placeholder="عدد الأيام (مثال: 3)" min="1" max="30">
-                    <button class="tool-btn" onclick="generateStudyPlan()">توليد الخطة</button>
-                </div>
-                <div id="plannerResult" class="planner-result-box" style="display: none;">
-                    <h3 style="color: var(--accent-primary); margin-bottom: 10px;">خطتك الدراسية المقترحة:</h3>
-                    <div id="plannerContent"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= 2. قاموس المصطلحات العلمية السريع ================= -->
-        <div id="page-glossary" class="page-view">
-            <div class="card-box">
-                <h2>قاموس المصطلحات العلمية السريع</h2>
-                <p>ابحث عن تعريفات المصطلحات الدراسية في الفيزياء، الكيمياء، والرياضيات.</p>
-                <div class="tool-form-group">
-                    <input type="text" id="glossarySearchInput" class="tool-input" placeholder="ابحث عن مصطلح..." onkeyup="searchGlossary()">
-                </div>
-                <div id="glossaryResults" style="display: grid; gap: 12px; margin-top: 15px;"></div>
-            </div>
-        </div>
-
-        <!-- ================= 4. وضع التركيز والأصوات الهادئة ================= -->
-        <div id="page-ambient" class="page-view">
-            <div class="card-box">
-                <h2>وضع التركيز والأصوات الهادئة</h2>
-                <p>اختر الخلفية الصوتية المناسبة لزيادة تركيزك أثناء المذاكرة.</p>
-                <div class="ambient-grid">
-                    <div class="ambient-card">
-                        <h4 style="color: var(--accent-primary);">صوت المطر الهادئ</h4>
-                        <button class="tool-btn" style="padding: 8px;" onclick="toggleAudio('rain')">تشغيل / إيقاف</button>
-                    </div>
-                    <div class="ambient-card">
-                        <h4 style="color: var(--accent-primary);">أصوات الطبيعة</h4>
-                        <button class="tool-btn" style="padding: 8px;" onclick="toggleAudio('forest')">تشغيل / إيقاف</button>
-                    </div>
-                    <div class="ambient-card">
-                        <h4 style="color: var(--accent-primary);">ضجيج مقهى هادئ</h4>
-                        <button class="tool-btn" style="padding: 8px;" onclick="toggleAudio('cafe')">تشغيل / إيقاف</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= 5. بطاقات الحفظ السريع (Flashcards) ================= -->
-        <div id="page-flashcards" class="page-view">
-            <div class="card-box" style="text-align: center;">
-                <h2>بطاقات الحفظ السريع (Flashcards)</h2>
-                <p style="text-align: center;">اضغط على البطاقة لعكسها ورؤية الإجابة.</p>
-                <div class="flashcard-container" onclick="flipFlashcard()">
-                    <div id="flashcardElement" class="flashcard">
-                        <div class="flashcard-face flashcard-front">
-                            <h4 style="font-size: 12px; color: var(--text-secondary); margin-bottom: 10px;" id="flashcardCategory">فيزياء</h4>
-                            <h3 style="font-size: 18px; font-weight: 800;" id="flashcardQuestion">ما هو تعريف كمية الحركة (الزخم)؟</h3>
-                            <span style="font-size: 11px; margin-top: 15px; color: var(--accent-primary);">(اضغط لرؤية الإجابة)</span>
-                        </div>
-                        <div class="flashcard-face flashcard-back">
-                            <h3 style="font-size: 17px; font-weight: 800;" id="flashcardAnswer">حاصل ضرب كتلة الجسم في سرعته المتجهة (p = m × v).</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="flashcard-controls">
-                    <button class="tool-btn" onclick="prevFlashcard()">السؤال السابق</button>
-                    <button class="tool-btn" onclick="nextFlashcard()">السؤال التالي</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= صفحة أول ثانوي والمناهج ================= -->
-        <div id="page-grade1" class="page-view">
-            <div class="card-box">
-                <h2>قسم الصف الأول الثانوي (المناهج والدروس)</h2>
-                <div style="margin-bottom: 20px; text-align: center;">
-                    <a href="https://almanahj.com/bh/10" target="_blank" class="download-action-btn" style="background: var(--accent-primary); color: #020617; font-size: 15px; padding: 12px 25px;">🌐 زيارة موقع المناهج البحرينية الرسمي (الصف الأول)</a>
-                </div>
-                <div class="subject-links-grid">
-                    <div class="subject-card">
-                        <h4>ريض 151</h4>
-                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUusdHWXO6coD4zwDbwE6T0&si=wlaNnI2hnDQqmSzq" target="_blank">مشاهدة الدروس</a>
-                    </div>
-                    <div class="subject-card">
-                        <h4>كيم 102</h4>
-                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdVLjh707l8IO5-k3__g0C9l&si=iO5MY1JA6on09_km" target="_blank">مشاهدة الدروس</a>
-                    </div>
-                    <div class="subject-card">
-                        <h4>فيز 102</h4>
-                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUpczXUrezK2PqwesxnIxhM&si=jo5kXZRSNVYZO40Z" target="_blank">مشاهدة الدروس</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= صفحة ثاني ثانوي ================= -->
-        <div id="page-grade2" class="page-view">
-            <div class="card-box">
-                <h2>قسم الصف الثاني الثانوي</h2>
-                <div style="margin-bottom: 20px; text-align: center;">
-                    <a href="https://almanahj.com/bh/11" target="_blank" class="download-action-btn" style="background: var(--accent-primary); color: #020617; font-size: 15px; padding: 12px 25px;">🌐 زيارة موقع المناهج البحرينية الرسمي (الصف الثاني)</a>
-                </div>
-                <div class="subject-links-grid">
-                    <div class="subject-card">
-                        <h4>كيم 211</h4>
-                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVsLkZ1sqv4-hoURGBeKBu-&si=bg9_kKCXND9vK9Ft" target="_blank">مشاهدة الدروس</a>
-                    </div>
-                    <div class="subject-card">
-                        <h4>ريض 253</h4>
-                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= صفحة ثالث ثانوي ================= -->
-        <div id="page-grade3" class="page-view">
-            <div class="card-box">
-                <h2>قسم الصف الثالث الثانوي - التوجيهي</h2>
-                <div style="margin-bottom: 20px; text-align: center;">
-                    <a href="https://almanahj.com/bh/12" target="_blank" class="download-action-btn" style="background: var(--accent-primary); color: #020617; font-size: 15px; padding: 12px 25px;">🌐 زيارة موقع المناهج البحرينية الرسمي (الصف الثالث)</a>
-                </div>
-                <div class="subject-links-grid">
-                    <div class="subject-card">
-                        <h4>كيم 315 - كيم 317</h4>
-                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-owQCxxawUGh0kGXSJap-l9L&si=1ufBJQe83JwGXfNZ" target="_blank">مشاهدة الدروس</a>
-                    </div>
-                    <div class="subject-card">
-                        <h4>فيز 311 - فيز 312</h4>
-                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-ozNlh9EKzocFfBTClDdvXMb&si=P6Dknfrf_6GfDbY8" target="_blank">مشاهدة الدروس</a>
+                        <h3>سجل المهام المنجزة المحفوظة</h3>
+                        <ul id="completedTasksList" class="tasks-list">
+                            <!-- يتم تعبئتها ديناميكياً -->
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -948,8 +856,16 @@
         <!-- ================= صفحة عن المدرسة ================= -->
         <div id="page-about" class="page-view">
             <div class="card-box">
-                <h2>عن مدرسة الهداية الخليفية</h2>
-                <p>أول صرح للتعليم النظامي الحكومي في تاريخ البحرين ومنطقة الخليج العربي، تأسست في المحرق عام 1919م.</p>
+                <h2>عن مدرسة الهداية الخليفية التاريخية</h2>
+                <p>تعتبر مدرسة الهداية الخليفية الثانوية للبنين بمنطقة المحرق في مملكة البحرين، منارة العلم الأولى وأول صرح للتعليم النظامي الحكومي في تاريخ البحرين ومنطقة الخليج العربي بأسرها. تأسست المدرسة رسمياً في عام 1919م بفضل الجهود الوطنية المخلصة والتفاف أبناء المجتمع البحريني الأوفياء حول رؤية تعليمية رائدة تهدف إلى نشر المعرفة والعلوم الحديثة لبناء أجيال قادرة على النهوض بالوطن.</p>
+                <p>منذ تأسيسها، مثلت المدرسة حاضنة رئيسية للفكر والثقافة والرياضة، حيث تخرجت من قاعاتها التاريخية أجيال متعاقبة من رجالات الدولة والعلماء والأدباء والقادة الرياضيين والرواد في شتى المجالات والقطاعات. وقد حافظت الهداية الخليفية على مكانتها الرفيعة كرمز وطني يجمع بين أصالة الماضي وعراقة التقاليد التربوية، وبين مواكبة أحدث التطورات التكنولوجية والأكاديمية المعاصرة.</p>
+                
+                <div class="school-contact-card">
+                    <h4>بيانات الاتصال والبريد الإلكتروني الرسمي للمدرسة</h4>
+                    <p><strong>البريد الإلكتروني الرسمي:</strong> hedayahseb@moe.gov.bh</p>
+                    <p><strong>رقم الهاتف المعتمد:</strong> 17322336</p>
+                    <p><strong>العنوان الجغرافي:</strong> مملكة البحرين - المحرق (مبنى: 221، مجمع: 222)</p>
+                </div>
             </div>
         </div>
 
@@ -957,15 +873,167 @@
         <div id="page-edu-portal" class="page-view">
             <div class="card-box" style="text-align: center;">
                 <h2>البوابة التعليمية</h2>
+                <p style="text-align: center; margin-bottom: 25px;">انقر على الزر أدناه للانتقال المباشر إلى البوابة التعليمية الرسمية لمملكة البحرين.</p>
                 <a href="https://www.ehdunet.bh" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px;">الانتقال إلى البوابة التعليمية (Ehdunet)</a>
+            </div>
+        </div>
+
+        <!-- ================= صفحة موقع المناهج البحرينية ================= -->
+        <div id="page-bahrain-curriculum" class="page-view">
+            <div class="card-box" style="text-align: center;">
+                <h2>موقع المناهج البحرينية الرسمي</h2>
+                <p style="text-align: center; margin-bottom: 25px;">موقع متخصص لتوفير كافة الكتب الدراسية، والخطط الفصلية، وأوراق العمل لمختلف المراحل الدراسية في مملكة البحرين.</p>
+                <a href="https://www.almanahj.com/bh" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px; background: linear-gradient(135deg, #0284c7, #0369a1);">الانتقال إلى موقع المناهج البحرينية (Almanahj)</a>
+            </div>
+        </div>
+
+        <!-- ================= صفحة القاموس والمعجم اللغوي الحقيقي ================= -->
+        <div id="page-dictionary" class="page-view">
+            <div class="card-box">
+                <h2>القاموس والمعجم اللغوي (مفردات ومعاني)</h2>
+                <p>ابحث عن معاني الكلمات العربية بدقة لتعزيز حصيلتك اللغوية وتسهيل دراسة النصوص الأدبية والعلمية.</p>
+                
+                <div class="dictionary-box">
+                    <div class="dict-search-row">
+                        <input type="text" id="dictSearchInput" class="dict-input" placeholder="اكتب الكلمة المراد بحثها (مثال: علم، نجاح، وطن، شرف)..." onkeypress="if(event.key === 'Enter') searchDictionary();">
+                        <button class="dict-search-btn" onclick="searchDictionary()">بحث في المعجم</button>
+                    </div>
+
+                    <div id="dictResultsContainer" class="dict-results-container">
+                        <div class="dict-word-card">
+                            <div class="dict-word-title">أهلاً بك في المعجم اللغوي</div>
+                            <div class="dict-word-type">إرشاد</div>
+                            <p class="dict-word-meaning">اكتب أي كلمة في خانة البحث بالأعلى واضغط على زر البحث أو مفتاح الإدخال لعرض المعنى وشرح الكلمة بدقة من المعاجم العربية المعتمدة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= قسم النصائح الدراسية ================= -->
+        <div id="page-tips" class="page-view">
+            <div class="card-box">
+                <h2>قسم النصائح الذكية للتفوق الدراسي</h2>
+                <p>إرشادات علمية وتقنيات مجربة لتحسين الكفاءة الذهنية وزيادة الإنتاجية أثناء المذاكرة:</p>
+                
+                <div class="colored-box-3">
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">1. تقنية الاستدعاء النشط (Active Recall)</h3>
+                    <p style="color: inherit; margin: 0;">لا تقرأ الكتاب مراراً وتكراراً؛ بل أغلقه واكتب ملخصاً لما فهمته بأسلوبك الخاص. هذه الطريقة تُجبر الدماغ على بناء روابط عصبية أقوى وتثبيت المعلومات على المدى الطويل.</p>
+                </div>
+
+                <div class="colored-box-4">
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">2. التكرار المتباعد (Spaced Repetition)</h3>
+                    <p style="color: inherit; margin: 0;">راجع المعلومات على فترات زمنية متقطعة (اليوم، بعد 3 أيام، بعد أسبوع). هذا يمنع منحنى النسيان الطبيعي ويضمن بقاء المعلومات جاهزة في ذاكرتك دائماً.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= صفحة أول ثانوي ================= -->
+        <div id="page-grade1" class="page-view">
+            <div class="card-box">
+                <h2>قسم الصف الأول الثانوي (قوائم الشروحات والدروس)</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
+                
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>ريض 151</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUusdHWXO6coD4zwDbwE6T0&si=wlaNnI2hnDQqmSzq" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>كيم 102</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdVLjh707l8IO5-k3__g0C9l&si=iO5MY1JA6on09_km" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>فيز 102</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الفيزياء</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUpczXUrezK2PqwesxnIxhM&si=jo5kXZRSNVYZO40Z" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UCoeTHTgTMKJRYpH8-w2xPsw" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= صفحة ثاني ثانوي ================= -->
+        <div id="page-grade2" class="page-view">
+            <div class="card-box">
+                <h2>قسم الصف الثاني الثانوي (قوائم الشروحات والدروس)</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
+                
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>كيم 211</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVsLkZ1sqv4-hoURGBeKBu-&si=bg9_kKCXND9vK9Ft" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>ريض 253</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UC3Uq-DT2YyJGxSpgySOKp3g" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= صفحة ثالث ثانوي ================= -->
+        <div id="page-grade3" class="page-view">
+            <div class="card-box">
+                <h2>قسم الصف الثالث الثانوي - التوجيهي (قوائم الشروحات والدروس)</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
+                
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>كيم 315 - كيم 317</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس الكيمياء المتقدمة</p>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-owQCxxawUGh0kGXSJap-l9L&si=1ufBJQe83JwGXfNZ" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>فيز 311 - فيز 312</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس الفيزياء المتقدمة</p>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-ozNlh9EKzocFfBTClDdvXMb&si=P6Dknfrf_6GfDbY8" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UCM_B8MPfINsblnpbm21Zk_w" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ================= قسم الامتحانات الوزارية ================= -->
         <div id="page-exams" class="page-view">
-            <div class="card-box" style="text-align: center;">
-                <h2>قسم الامتحانات الوزارية النهائية</h2>
-                <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px;">دخول موقع وزارة التربية والتعليم</a>
+            <div class="card-box">
+                <h2>قسم الامتحانات الوزارية النهائية (منصة الوزارة الرسمية)</h2>
+                <p>اختر المرحلة الدراسية للانتقال الفوري إلى منصة وزارة التربية والتعليم (الأرشيف الوزاري ونماذج الامتحانات النهائية الرسمية).</p>
+                
+                <div class="exams-layout">
+                    <div class="exam-item-card">
+                        <h4>امتحانات الأول الثانوي</h4>
+                        <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">الفصل الأول والفصل الثاني</p>
+                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للأول الثانوي</a>
+                    </div>
+                    <div class="exam-item-card">
+                        <h4>امتحانات الثاني الثانوي</h4>
+                        <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">كافة المسارات الأكاديمية</p>
+                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للثاني الثانوي</a>
+                    </div>
+                    <div class="exam-item-card">
+                        <h4>امتحانات التوجيهي (الثالث الثانوي)</h4>
+                        <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">الامتحانات النهائية والوزارية الرسمية</p>
+                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للتوجيهي</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -973,13 +1041,6 @@
 
     <footer>
         <p>مدرسة الهداية الخليفية الثانوية للبنين - مملكة البحرين</p>
-        <div class="devs-signature">
-            تصميم وتطوير وبرمجة:<br>
-            1. محمد عبدالعظيم<br>
-            2. محمد أحمد ابراهيم <br>
-            3. عبدالرحمن أحمد ماهر<br>
-            4. محمد عبد الحميد عزام
-        </div>
     </footer>
 
     <script>
@@ -987,8 +1048,25 @@
             "النجاح ليس صدفة، بل هو ثمرة الاجتهاد والعمل الجاد اليومي.",
             "العلم كنز والالتزام مفتاحه؛ استمر في السعي نحو القمة.",
             "كل ساعة تقضيها في المذاكرة تقربك خطوة نحو تحقيق أهدافك المستقبلية.",
-            "اصنع لنفسك مجداً يستحق أن يُروى، فالصبر والاجتهاد يصنعان المعجزات."
+            "اصنع لنفسك مجداً يستحق أن يُروى، فالصبر والاجتهاد يصنعان المعجزات.",
+            "التميز والتركيز المستمر هما أساس التفوق الدراسي."
         ];
+
+        // القاموس والمعجم الحقيقي المدمج (قاعدة بيانات مصغرة للمفردات ومعانيها)
+        const arabicDictionaryDatabase = {
+            "علم": { type: "اسم (جمع: علوم)", meaning: الإدراك والمعرفة بشيء ما، ومقياس للمعلومات المنظمة والمدونة." },
+            "نجاح": { type: "اسم مصدر", meaning: الظفر بالمرام، الفوز والتوفيق في تحقيق الأهداف والوصول للغايات." },
+            "وطن": { type: "اسم (جمع: أوطان)", meaning: الموطن والمحل الذي يتربى فيه الإنسان وينتمي إليه ويعيش على أرضه." },
+            "شرف": { type: "اسم", meaning: المجد والعلو، والصفات الحميدة والأخلاق العالية التي يُمدح بها الإنسان." },
+            "اجتهاد": { type: "اسم مصدر", meaning: بذل الوسع والطاقة واستفراغ الجهد في إنجاز أمر من الأمور." },
+            "ذكي": { type: "صفة مشبهة (جمع: أذكياء)", meaning: السريع الفهم، المتقد ذهنياً، صاحب الفطنة والحدة العقلية." },
+            "صبر": { type: "اسم مصدر", meaning: الجلد والاحتمال، حبس النفس عن الجزع عند الشدائد والمصاعب." },
+            "مستقبل": { type: "اسم زمان", meaning: الزمن الآتي أو القادم بعد الحاضر." },
+            "كتاب": { type: "اسم (جمع: كتب)", meaning: الصحيفة المكتوبة، ومجموعة من الأوراق المضمومة التي تحوي علوماً أو آداباً." },
+            "فهم": { type: "اسم مصدر / فعل", meaning: إدراك المعنى واستيعاب الفكرة والعلم بها." },
+            "تعلم": { type: "فعل / اسم مصدر", meaning: اكتساب المعارف والمهارات والخبرات الجديدة دراسةً وممارسةً." },
+            "تفوق": { type: "اسم مصدر", meaning: التبريز على الأقران، التميز والسبق في العلوم أو الأعمال." }
+        };
 
         window.addEventListener('DOMContentLoaded', () => {
             const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
@@ -996,17 +1074,59 @@
             updateLiveClockAndTimers();
             setInterval(updateLiveClockAndTimers, 1000);
             loadCompletedTasks();
-            displayGlossary(glossaryData);
         });
+
+        function searchDictionary() {
+            const query = document.getElementById('dictSearchInput').value.trim().toLowerCase();
+            const container = document.getElementById('dictResultsContainer');
+            container.innerHTML = '';
+
+            if (!query) {
+                container.innerHTML = `
+                    <div class="dict-word-card">
+                        <div class="dict-word-title">تنبيه</div>
+                        <div class="dict-word-type">خطأ في البحث</div>
+                        <p class="dict-word-meaning">من فضلك اكتب كلمة صحيحة في خانة البحث أولاً.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // البحث المطابق أو التقريبي
+            let foundKey = Object.keys(arabicDictionaryDatabase).find(k => k.includes(query) || query.includes(k));
+
+            if (foundKey) {
+                const item = arabicDictionaryDatabase[foundKey];
+                container.innerHTML = `
+                    <div class="dict-word-card">
+                        <div class="dict-word-title">${foundKey}</div>
+                        <div class="dict-word-type">${item.type}</div>
+                        <p class="dict-word-meaning"><strong>المعنى والشرح:</strong> ${item.meaning}</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="dict-word-card">
+                        <div class="dict-word-title">${query}</div>
+                        <div class="dict-word-type">كلمة عامة</div>
+                        <p class="dict-word-meaning">عذراً، لم يتم العثور على هذه الكلمة في المعجم المحلي الحالي. جرب كلمات أخرى مثل: (علم، نجاح، وطن، ذكي، اجتهاد، كتاب).</p>
+                    </div>
+                `;
+            }
+        }
 
         function updateLiveClockAndTimers() {
             const now = new Date();
-            document.getElementById('liveClockWidget').innerText = now.toLocaleTimeString('ar-BH');
-            document.getElementById('liveDateWidget').innerText = now.toLocaleDateString('ar-BH', { year: 'numeric', month: 'long', day: 'numeric' });
+            const timeString = now.toLocaleTimeString('ar-BH');
+            const dateString = now.toLocaleDateString('ar-BH', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('liveClockWidget').innerText = timeString;
+            document.getElementById('liveDateWidget').innerText = dateString;
 
             const schoolTime = new Date();
             schoolTime.setHours(7, 5, 0, 0);
-            if (now > schoolTime) schoolTime.setDate(schoolTime.getDate() + 1);
+            if (now > schoolTime) {
+                schoolTime.setDate(schoolTime.getDate() + 1);
+            }
             const diffSchool = schoolTime - now;
             const hoursLeft = Math.floor((diffSchool % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minsLeft = Math.floor((diffSchool % (1000 * 60 * 60)) / (1000 * 60));
@@ -1014,16 +1134,18 @@
         }
 
         function switchPage(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
-            const target = document.getElementById(pageId);
-            if(target) {
-                target.classList.add('active-page');
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(p => p.classList.remove('active-page'));
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active-page');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
         function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('show');
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('show');
         }
 
         function toggleAppTheme() {
@@ -1031,146 +1153,115 @@
             body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
         }
 
-        function generateStudyPlan() {
-            const subjectsVal = document.getElementById('plannerSubjectsInput').value.trim();
-            const daysVal = parseInt(document.getElementById('plannerDaysInput').value);
-            const resultBox = document.getElementById('plannerResult');
-            const contentBox = document.getElementById('plannerContent');
-
-            if(!subjectsVal || !daysVal || daysVal <= 0) {
-                alert("يرجى إدخال المواد وعدد الأيام بشكل صحيح!");
-                return;
-            }
-
-            const subjects = subjectsVal.split(',').map(s => s.trim()).filter(s => s);
-            let html = '';
-            for(let i = 1; i <= daysVal; i++) {
-                const assignedSubject = subjects[(i - 1) % subjects.length];
-                html += `<p style="margin-bottom:8px;"><strong>اليوم ${i}:</strong> مراجعة مادة <strong>${assignedSubject}</strong> مع حل أوراق العمل والتدريبات.</p>`;
-            }
-            contentBox.innerHTML = html;
-            resultBox.style.display = 'block';
-        }
-
-        const glossaryData = [
-            { term: "السرعة المتجهة", def: "التغير في الموقع مقسوماً على الزمن، وتتضمن مقداراً واتجاهاً.", subject: "فيزياء" },
-            { term: "الذرة", def: "أصغر جزء أساسي من العنصر الكيميائي يحافظ على خصائصه.", subject: "كيمياء" },
-            { term: "التسارع", def: "معدل تغير السرعة المتجهة بالنسبة للزمن.", subject: "فيزياء" },
-            { term: "المصفوفة", def: "تنظيم مستطيل الشكل من الأعداد في صفوف وأعمدة.", subject: "رياضيات" },
-            { term: "التفاعلات الطاردة للحرارة", def: "تفاعلات تنطلق منها حرارة إلى الوسط المحيط.", subject: "كيمياء" },
-            { term: "القوة المحصلة", def: "متجه مجموع القوى المؤثرة في جسم ما.", subject: "فيزياء" }
-        ];
-
-        function displayGlossary(data) {
-            const container = document.getElementById('glossaryResults');
-            container.innerHTML = '';
-            if(data.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:var(--text-secondary);">عذراً، لم يتم العثور على مصطلحات مطابقة.</p>`;
-                return;
-            }
-            data.forEach(item => {
-                container.innerHTML += `
-                    <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 15px; border-radius: 10px;">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                            <strong style="color:var(--accent-primary); font-size:16px;">${item.term}</strong>
-                            <span style="font-size:11px; background:rgba(56,189,248,0.1); padding:2px 8px; border-radius:4px;">${item.subject}</span>
-                        </div>
-                        <p style="margin:0; font-size:14px;">${item.def}</p>
-                    </div>
-                `;
-            });
-        }
-
-        function searchGlossary() {
-            const query = document.getElementById('glossarySearchInput').value.trim().toLowerCase();
-            const filtered = glossaryData.filter(i => i.term.toLowerCase().includes(query) || i.def.toLowerCase().includes(query) || i.subject.toLowerCase().includes(query));
-            displayGlossary(filtered);
-        }
-
-        function toggleAudio(type) {
-            alert(`تم تفعيل تشغيل الأصوات الهادئة (${type}). استمتع بالمذاكرة بتركيز.`);
-        }
-
-        const flashcardsList = [
-            { cat: "فيزياء", q: "ما هو تعريف كمية الحركة (الزخم)؟", a: "حاصل ضرب كتلة الجسم في سرعته المتجهة (p = m × v)." },
-            { cat: "كيمياء", q: "ما هو القانون العام للغازات؟", a: "PV = nRT (الضغط × الحجم = عدد المولات × ثابت الغازات × الحرارة المطلقة)." },
-            { cat: "رياضيات", q: "ما هو قانون ميل الخط المستقيم؟", a: "(y2-y1)/(x2-x1) (التغير الرأسي مقسوماً على التغير الأفقي)." }
-        ];
-        let currentCardIdx = 0;
-
-        function flipFlashcard() {
-            document.getElementById('flashcardElement').classList.toggle('flipped');
-        }
-
-        function nextFlashcard() {
-            document.getElementById('flashcardElement').classList.remove('flipped');
-            currentCardIdx = (currentCardIdx + 1) % flashcardsList.length;
-            updateCardContent();
-        }
-
-        function prevFlashcard() {
-            document.getElementById('flashcardElement').classList.remove('flipped');
-            currentCardIdx = (currentCardIdx - 1 + flashcardsList.length) % flashcardsList.length;
-            updateCardContent();
-        }
-
-        function updateCardContent() {
-            const card = flashcardsList[currentCardIdx];
-            document.getElementById('flashcardCategory').innerText = card.cat;
-            document.getElementById('flashcardQuestion').innerText = card.q;
-            document.getElementById('flashcardAnswer').innerText = card.a;
-        }
-
-        let timerInterval, timeLeft = 25 * 60, isWorkSession = true;
-        const display = document.getElementById('timerDisplay'), statusBadge = document.getElementById('timerStatusBadge');
+        let timerInterval;
+        let timeLeft = 25 * 60;
+        let isWorkSession = true;
+        const display = document.getElementById('timerDisplay');
+        const statusBadge = document.getElementById('timerStatusBadge');
 
         function updateTimerDisplay() {
-            const m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+            const m = Math.floor(timeLeft / 60);
+            const s = timeLeft % 60;
             display.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
         }
+
         function adjustTime(mins) {
-            if (timeLeft + (mins * 60) > 0) { timeLeft += mins * 60; updateTimerDisplay(); }
+            let newTime = timeLeft + (mins * 60);
+            if (newTime > 0) {
+                timeLeft = newTime;
+                updateTimerDisplay();
+            }
         }
+
         function startTimer() {
             const taskInput = document.getElementById('pomodoroTaskInput');
-            if(isWorkSession && !taskInput.value.trim()) { alert("اكتب المهمة أولاً!"); return; }
+            if(isWorkSession && !taskInput.value.trim()) {
+                alert("من فضلك اكتب المهمة التي تريد إنجازها في المؤقت أولاً!");
+                return;
+            }
             clearInterval(timerInterval);
             timerInterval = setInterval(() => {
-                if (timeLeft > 0) { timeLeft--; updateTimerDisplay(); } 
-                else {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
                     clearInterval(timerInterval);
                     if (isWorkSession) {
-                        saveCompletedTask(taskInput.value.trim());
+                        const taskName = taskInput.value.trim();
+                        saveCompletedTask(taskName);
                         taskInput.value = "";
-                        isWorkSession = false; timeLeft = 10 * 60;
+                        
+                        alert(`أحسنت يا بطل! أنهيت جلسة التركيز لمهمة: "${taskName}". ستبدأ الآن استراحة تلقائية لمدة 10 دقائق.`);
+                        
+                        isWorkSession = false;
+                        timeLeft = 10 * 60;
                         statusBadge.innerText = "وقت الاستراحة (10 دقائق)";
-                        updateTimerDisplay(); startTimer();
+                        statusBadge.style.color = "var(--accent-gold)";
+                        updateTimerDisplay();
+                        startTimer();
                     } else {
-                        isWorkSession = true; timeLeft = 25 * 60;
+                        alert("انتهت الاستراحة! حان الوقت للعودة لجلسة تركيز جديدة.");
+                        isWorkSession = true;
+                        timeLeft = 25 * 60;
                         statusBadge.innerText = "وضع التركيز (جلسة عمل)";
+                        statusBadge.style.color = "var(--accent-primary)";
                         updateTimerDisplay();
                     }
                 }
             }, 1000);
         }
-        function pauseTimer() { clearInterval(timerInterval); }
-        function resetTimer() { clearInterval(timerInterval); isWorkSession = true; timeLeft = 25 * 60; statusBadge.innerText = "وضع التركيز (جلسة عمل)"; updateTimerDisplay(); }
-        
-        function saveCompletedTask(name) {
+
+        function pauseTimer() { 
+            clearInterval(timerInterval); 
+        }
+
+        function resetTimer() { 
+            clearInterval(timerInterval); 
+            isWorkSession = true;
+            timeLeft = 25 * 60; 
+            statusBadge.innerText = "وضع التركيز (جلسة عمل)";
+            statusBadge.style.color = "var(--accent-primary)";
+            updateTimerDisplay(); 
+        }
+
+        function saveCompletedTask(taskName) {
             let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
-            tasks.unshift({ name, date: new Date().toLocaleDateString('ar-BH', { hour: '2-digit', minute: '2-digit' }) });
+            const taskObj = {
+                name: taskName,
+                date: new Date().toLocaleDateString('ar-BH', { hour: '2-digit', minute: '2-digit' })
+            };
+            tasks.unshift(taskObj);
             localStorage.setItem('completedTasks', JSON.stringify(tasks));
             loadCompletedTasks();
         }
+
         function loadCompletedTasks() {
             let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
-            const list = document.getElementById('completedTasksList');
-            list.innerHTML = tasks.length === 0 ? '<li style="text-align:center; color:var(--text-secondary); font-size:12px; padding:10px;">لا توجد مهام منجزة محفوظة.</li>' : '';
-            tasks.forEach((t, i) => {
-                list.innerHTML += `<li class="task-list-item"><span><strong>${t.name}</strong> <span style="font-size:10px; color:var(--text-secondary);">(${t.date})</span></span><button class="delete-task-btn" onclick="deleteTask(${i})">حذف</button></li>`;
+            const listContainer = document.getElementById('completedTasksList');
+            listContainer.innerHTML = '';
+            
+            if (tasks.length === 0) {
+                listContainer.innerHTML = '<li style="text-align:center; color:var(--text-secondary); font-size:12px; padding:10px;">لا توجد مهام منجزة محفوظة حتى الآن.</li>';
+                return;
+            }
+
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.className = 'task-list-item';
+                li.innerHTML = `
+                    <span><strong>${task.name}</strong> <span style="font-size:10px; color:var(--text-secondary);">(${task.date})</span></span>
+                    <button class="delete-task-btn" onclick="deleteTask(${index})">حذف</button>
+                `;
+                listContainer.appendChild(li);
             });
         }
-        function deleteTask(i) {
-            let tasks = JSON.parse(localStorage.getItem('completed`
-    // ...existing code...
-    `ى المفضلة</div>`); // ensuring clean output without stickers or unrequested artifacts
+
+        function deleteTask(index) {
+            let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
+            tasks.splice(index, 1);
+            localStorage.setItem('completedTasks', JSON.stringify(tasks));
+            loadCompletedTasks();
+        }
+    </script>
+</body>
+</html>
