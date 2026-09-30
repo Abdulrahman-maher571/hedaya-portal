@@ -854,15 +854,15 @@
             </div>
         </div>
 
-        <!-- ================= صندوق الاقتراحات والآراء ================= -->
+        <!-- ================= صندوق الاقتراحات والآراء (بدون إجبار على إدخال إيميل) ================= -->
         <div id="page-feedback" class="page-view">
             <div class="card-box">
                 <h2>صندوق الاقتراحات والآراء لتطوير المنصة</h2>
                 <p>رأيك يهمنا جداً! هل لديك فكرة جديدة، مادة تود إضافتها، أو ملاحظة لتحسين أداء هذا الموقع؟ اكتبها لنا وسنأخذها بعين الاعتبار لتطوير المنصة وجعلها أفضل دائماً لخدمة زملائك الطلاب.</p>
                 
                 <form action="https://formspree.io/f/mjykzjby" method="POST" class="feedback-form">
-                    <input type="email" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني (اختياري)...">
-                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required></textarea>
+                    <input type="text" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني أو اسمك (اختياري)...[span_1](start_span)"[span_1](end_span)>
+                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required[span_2](start_span)[span_2](end_span)></textarea>
                     <button type="submit" class="download-action-btn" style="cursor: pointer; border: none;">إرسال الاقتراح</button>
                 </form>
             </div>
@@ -1086,7 +1086,7 @@
                         startTimer();
                     } else {
                         alert("انتهت الاستراحة! حان الوقت للعودة لجلسة تركيز جديدة.");
-                        isWorkSession = true;
+                        isWorkSession, isWorkSession = true, true;
                         timeLeft = 25 * 60;
                         statusBadge.innerText = "وضع التركيز (جلسة عمل)";
                         statusBadge.style.color = "var(--accent-primary)";
