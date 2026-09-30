@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>البوابة المركزية المتقدمة - مدرسة الهداية الخليفية الثانوية للبنين</title>
+    <title>الهداية الخليفية - مدرسة الهداية الخليفية الثانوية للبنين</title>
     <style>
         :root {
             --card-bg: rgba(15, 23, 42, 0.92);
@@ -424,7 +424,7 @@
 
         .subject-links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
@@ -432,17 +432,18 @@
         .subject-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
-            padding: 18px;
+            padding: 20px;
             border-radius: 14px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             text-align: center;
         }
 
         .subject-card h4 {
-            font-size: 16px;
+            font-size: 17px;
             color: var(--accent-primary);
+            font-weight: 800;
         }
 
         .subject-card a {
@@ -450,9 +451,9 @@
             background: rgba(56, 189, 248, 0.1);
             color: var(--text-color);
             text-decoration: none;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
             font-weight: 700;
             border: 1px solid var(--border-color);
         }
@@ -483,6 +484,13 @@
             text-align: center;
         }
 
+        .timer-status-badge {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
         .timer-display {
             font-size: 42px;
             font-weight: 800;
@@ -491,10 +499,13 @@
             font-family: monospace;
         }
 
-        .timer-btns {
+        .timer-controls-row {
             display: flex;
             gap: 10px;
             justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
 
         .timer-btn {
@@ -510,6 +521,69 @@
         .timer-btn:hover {
             background: var(--accent-primary);
             color: #020617;
+        }
+
+        .time-adjust-btn {
+            padding: 6px 12px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .time-adjust-btn:hover {
+            background: var(--accent-primary);
+            color: #020617;
+        }
+
+        .completed-tasks-container {
+            margin-top: 20px;
+            text-align: right;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .completed-tasks-container h3 {
+            font-size: 15px;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .tasks-list {
+            list-style: none;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .task-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            font-size: 13px;
+            border: 1px solid var(--border-color);
+        }
+
+        .delete-task-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: none;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .delete-task-btn:hover {
+            background: #ef4444;
+            color: white;
         }
 
         .exams-layout {
@@ -594,7 +668,7 @@
             </button>
             <div class="logo-title">
                 <h1>مدرسة الهداية الخليفية</h1>
-                <span>البوابة المركزية الذكية</span>
+                <span>الهداية الخليفية</span>
             </div>
         </div>
 
@@ -603,15 +677,16 @@
             <button onclick="switchPage('page-about'); toggleMenu();">عن مدرسة الهداية الخليفية</button>
             
             <div class="menu-category-title">الصف الأول الثانوي</div>
-            <button onclick="switchPage('page-grade1'); toggleMenu();">قسم أول ثانوي عام</button>
-            <button onclick="switchPage('page-grade1'); toggleMenu();">شروحات الرياضيات </button>
-            <button onclick="switchPage('page-grade1'); toggleMenu();">فيزياء وكيمياء أول ثانوي</button>
+            <button onclick="switchPage('page-grade1'); toggleMenu();">قوائم الشروحات والدروس</button>
 
             <div class="menu-category-title">الصف الثاني الثانوي</div>
             <button onclick="switchPage('page-grade2'); toggleMenu();">قسم ثاني ثانوي عام</button>
 
             <div class="menu-category-title">الصف الثالث الثانوي</div>
             <button onclick="switchPage('page-grade3'); toggleMenu();">قسم التوجيهي (ثالث ثانوي)</button>
+
+            <div class="menu-category-title">الخدمات السريعة</div>
+            <button onclick="switchPage('page-edu-portal'); toggleMenu();">البوابة التعليمية</button>
 
             <div class="menu-category-title">الأقسام الجديدة المبتكرة</div>
             <button onclick="switchPage('page-tips'); toggleMenu();">نصائح ذكية للتفوق الدراسي</button>
@@ -648,7 +723,7 @@
             </div>
 
             <div class="card-box">
-                <h2>مرحباً بك في البوابة الأكاديمية الرسمية</h2>
+                <h2>مرحباً بك في الهداية الخليفية</h2>
                 <p>منصة رقمية متطورة مصممة خصيصاً لمدرسة الهداية الخليفية الثانوية للبنين في مملكة البحرين. انقر فوق زر القائمة أعلى الصفحة للوصول السريع للفيديوهات التعليمية والأقسام المبتكرة.</p>
                 
                 <div class="navigation-grid">
@@ -656,9 +731,9 @@
                         <span>تاريخ الهداية الخليفية</span>
                         <span>اكتشف الإرث العريق للمدرسة</span>
                     </div>
-                    <div class="nav-link-card" onclick="switchPage('page-tips')">
-                        <span>نصائح التفوق الذكي</span>
-                        <span>إرشادات دراسية لتحقيق أعلى الدرجات</span>
+                    <div class="nav-link-card" onclick="switchPage('page-edu-portal')">
+                        <span>البوابة التعليمية</span>
+                        <span>الرابط الرسمي للبوابة التعليمية لمملكة البحرين</span>
                     </div>
                     <div class="nav-link-card" onclick="switchPage('page-exams')">
                         <span>الامتحانات الوزارية</span>
@@ -675,14 +750,30 @@
 
             <div class="card-box">
                 <h2>مؤقت التركيز الدراسي (بومودورو) وتتبع المهام</h2>
-                <p>اكتب المهمة أو الدرس الذي تريد إنجازه، وابدأ جلسة تركيز عميق لمدة 25 دقيقة.</p>
+                <p>حدد وقت التركيز، واكتب المهمة التي تريد إنجازها. عند انتهاء الوقت، ستبدأ الاستراحة تلقائياً وتُحفظ المهمة في سجل إنجازاتك.</p>
+                
                 <div class="pomodoro-box">
+                    <div id="timerStatusBadge" class="timer-status-badge">وضع التركيز (جلسة عمل)</div>
                     <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية (مثال: حل واجب الرياضيات)...">
+                    
+                    <div class="timer-controls-row">
+                        <button class="time-adjust-btn" onclick="adjustTime(5)">+ 5 دقائق</button>
+                        <button class="time-adjust-btn" onclick="adjustTime(-5)">- 5 دقائق</button>
+                    </div>
+
                     <div id="timerDisplay" class="timer-display">25:00</div>
-                    <div class="timer-btns">
-                        <button class="timer-btn" onclick="startTimer()">بدء التركيز</button>
+                    
+                    <div class="timer-controls-row">
+                        <button class="timer-btn" onclick="startTimer()">بدء الوقت</button>
                         <button class="timer-btn" onclick="pauseTimer()">إيقاف مؤقت</button>
                         <button class="timer-btn" onclick="resetTimer()">إعادة ضبط</button>
+                    </div>
+
+                    <div class="completed-tasks-container">
+                        <h3>سجل المهام المنجزة المحفوظة</h3>
+                        <ul id="completedTasksList" class="tasks-list">
+                            <!-- يتم تعبئتها ديناميكياً -->
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -701,6 +792,15 @@
                     <p><strong>رقم الهاتف المعتمد:</strong> 17322336</p>
                     <p><strong>العنوان الجغرافي:</strong> مملكة البحرين - المحرق (مبنى: 221، مجمع: 222)</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- ================= صفحة البوابة التعليمية الجديدة ================= -->
+        <div id="page-edu-portal" class="page-view">
+            <div class="card-box" style="text-align: center;">
+                <h2>البوابة التعليمية</h2>
+                <p style="text-align: center; margin-bottom: 25px;">انقر على الزر أدناه للانتقال المباشر إلى البوابة التعليمية الرسمية لمملكة البحرين.</p>
+                <a href="https://www.ehdunet.bh" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px;">الانتقال إلى البوابة التعليمية (Ehdunet)</a>
             </div>
         </div>
 
@@ -725,33 +825,29 @@
         <!-- ================= صفحة أول ثانوي ================= -->
         <div id="page-grade1" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الأول الثانوي (فيديوهات الشرح والمقررات)</h2>
-                <p>روابط مباشرة لفيديوهات شرح المناهج على اليوتيوب لمساعدة الطلاب في الاستيعاب البصري والذهني، مع روابط منصة وزارة التربية والتعليم.</p>
+                <h2>قسم الصف الأول الثانوي (قوائم الشروحات والدروس)</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
                 
                 <div class="subject-links-grid">
                     <div class="subject-card">
-                        <h4>الرياضيات (ريض 151)</h4>
-                        <p style="font-size:12px;">شرح الدوال والمجموعات</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                        <h4>ريض 151</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUusdHWXO6coD4zwDbwE6T0&si=wlaNnI2hnDQqmSzq" target="_blank">مشاهدة الدروس</a>
                     </div>
                     <div class="subject-card">
-                        <h4>الفيزياء (فيز 101)</h4>
-                        <p style="font-size:12px;">علم القياس والحركة</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                        <h4>كيم 102</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdVLjh707l8IO5-k3__g0C9l&si=iO5MY1JA6on09_km" target="_blank">مشاهدة الدروس</a>
                     </div>
                     <div class="subject-card">
-                        <h4>الكيمياء (كيم 101)</h4>
-                        <p style="font-size:12px;">المادة والتفاعلات</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                        <h4>فيز 102</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الفيزياء</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUpczXUrezK2PqwesxnIxhM&si=jo5kXZRSNVYZO40Z" target="_blank">مشاهدة الدروس</a>
                     </div>
-                    <div class="subject-card">
-                        <h4>اللغة العربية (عرب 101)</h4>
-                        <p style="font-size:12px;">النحو والنصوص الأدبية</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UCoeTHTgTMKJRYpH8-w2xPsw" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
                     </div>
                 </div>
             </div>
@@ -760,27 +856,24 @@
         <!-- ================= صفحة ثاني ثانوي ================= -->
         <div id="page-grade2" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الثاني الثانوي (فيديوهات الشرح والمقررات)</h2>
-                <p>مقررات العلوم المتقدمة، المتجهات، والفيزياء التخصصية مع روابط فيديوهات الشرح وبوابات الوزارة.</p>
+                <h2>قسم الصف الثاني الثانوي (قوائم الشروحات والدروس)</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
                 
                 <div class="subject-links-grid">
                     <div class="subject-card">
-                        <h4>الرياضيات المتقدمة</h4>
-                        <p style="font-size:12px;">المتجهات والمتسلسلات</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                        <h4>كيم 211</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVsLkZ1sqv4-hoURGBeKBu-&si=bg9_kKCXND9vK9Ft" target="_blank">مشاهدة الدروس</a>
                     </div>
                     <div class="subject-card">
-                        <h4>الفيزياء التخصصية</h4>
-                        <p style="font-size:12px;">حفظ الطاقة والزخم</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                        <h4>ريض 253</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
                     </div>
-                    <div class="subject-card">
-                        <h4>الكيمياء المتقدمة</h4>
-                        <p style="font-size:12px;">الحسابات الكيميائية</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UC3Uq-DT2YyJGxSpgySOKp3g" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
                     </div>
                 </div>
             </div>
@@ -789,27 +882,24 @@
         <!-- ================= صفحة ثالث ثانوي ================= -->
         <div id="page-grade3" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الثالث الثانوي - التوجيهي (فيديوهات الشرح والمقررات)</h2>
-                <p>مرحلة الحسم: تفاضل وتكامل، فيزياء نووية، ومقررات تخصصية مرتبطة بفيديوهات الشرح ومنصة وزارة التربية والتعليم.</p>
+                <h2>قسم الصف الثالث الثانوي - التوجيهي (قوائم الشروحات والدروس)</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
                 
                 <div class="subject-links-grid">
                     <div class="subject-card">
-                        <h4>التفاضل والتكامل</h4>
-                        <p style="font-size:12px;">النهايات وتطبيقات الاشتقاق</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                        <h4>كيم 315 - كيم 317</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس الكيمياء المتقدمة</p>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-owQCxxawUGh0kGXSJap-l9L&si=1ufBJQe83JwGXfNZ" target="_blank">مشاهدة الدروس</a>
                     </div>
                     <div class="subject-card">
-                        <h4>الفيزياء النووية والحديثة</h4>
-                        <p style="font-size:12px;">الكم وميكانيكا التذبذب</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                        <h4>فيز 311 - فيز 312</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس الفيزياء المتقدمة</p>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-ozNlh9EKzocFfBTClDdvXMb&si=P6Dknfrf_6GfDbY8" target="_blank">مشاهدة الدروس</a>
                     </div>
-                    <div class="subject-card">
-                        <h4>الكيمياء العضوية</h4>
-                        <p style="font-size:12px;">التفاعلات والمركبات الهيدروكربونية</p>
-                        <a href="https://www.youtube.com/@moeBahrain" target="_blank">فيديوهات شرح يوتيوب</a>
-                        <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة الرسمية</a>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UCM_B8MPfINsblnpbm21Zk_w" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
                     </div>
                 </div>
             </div>
@@ -849,7 +939,7 @@
             تصميم وتطوير وبرمجة:<br>
             1. محمد عبدالعظيم<br>
             2. محمد أحمد ابراهيم <br>
-            3.  عبدالرحمن أحمد ماهر<br>
+            3. عبدالرحمن أحمد ماهر<br>
             4. محمد عبد الحميد عزام
         </div>
     </footer>
@@ -868,6 +958,7 @@
             document.getElementById('motivationalQuoteText').innerText = motivationalQuotes[randomIndex];
             updateLiveClockAndTimers();
             setInterval(updateLiveClockAndTimers, 1000);
+            loadCompletedTasks();
         });
 
         function updateLiveClockAndTimers() {
@@ -910,7 +1001,9 @@
 
         let timerInterval;
         let timeLeft = 25 * 60;
+        let isWorkSession = true;
         const display = document.getElementById('timerDisplay');
+        const statusBadge = document.getElementById('timerStatusBadge');
 
         function updateTimerDisplay() {
             const m = Math.floor(timeLeft / 60);
@@ -918,10 +1011,18 @@
             display.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
         }
 
+        function adjustTime(mins) {
+            let newTime = timeLeft + (mins * 60);
+            if (newTime > 0) {
+                timeLeft = newTime;
+                updateTimerDisplay();
+            }
+        }
+
         function startTimer() {
-            const taskName = document.getElementById('pomodoroTaskInput').value;
-            if(!taskName.trim()) {
-                alert("من فضلك اكتب اسم المهمة أو الدرس الذي تريد إنجازه في المؤقت أولاً!");
+            const taskInput = document.getElementById('pomodoroTaskInput');
+            if(isWorkSession && !taskInput.value.trim()) {
+                alert("من فضلك اكتب المهمة التي تريد إنجازها في المؤقت أولاً!");
                 return;
             }
             clearInterval(timerInterval);
@@ -931,13 +1032,82 @@
                     updateTimerDisplay();
                 } else {
                     clearInterval(timerInterval);
-                    alert(`أحسنت يا بطل! أنهيت جلسة التركيز الخاصة بمهمة: "${taskName}". خذ راحة لمدة 5 دقائق.`);
+                    if (isWorkSession) {
+                        const taskName = taskInput.value.trim();
+                        saveCompletedTask(taskName);
+                        taskInput.value = "";
+                        
+                        alert(`أحسنت يا بطل! أنهيت جلسة التركيز لمهمة: "${taskName}". ستبدأ الآن استراحة تلقائية لمدة 10 دقائق.`);
+                        
+                        isWorkSession = false;
+                        timeLeft = 10 * 60;
+                        statusBadge.innerText = "وقت الاستراحة (10 دقائق)";
+                        statusBadge.style.color = "var(--accent-gold)";
+                        updateTimerDisplay();
+                        startTimer();
+                    } else {
+                        alert("انتهت الاستراحة! حان الوقت للعودة لجلسة تركيز جديدة.");
+                        isWorkSession = true;
+                        timeLeft = 25 * 60;
+                        statusBadge.innerText = "وضع التركيز (جلسة عمل)";
+                        statusBadge.style.color = "var(--accent-primary)";
+                        updateTimerDisplay();
+                    }
                 }
             }, 1000);
         }
 
-        function pauseTimer() { clearInterval(timerInterval); }
-        function resetTimer() { clearInterval(timerInterval); timeLeft = 25 * 60; updateTimerDisplay(); }
+        function pauseTimer() { 
+            clearInterval(timerInterval); 
+        }
+
+        function resetTimer() { 
+            clearInterval(timerInterval); 
+            isWorkSession = true;
+            timeLeft = 25 * 60; 
+            statusBadge.innerText = "وضع التركيز (جلسة عمل)";
+            statusBadge.style.color = "var(--accent-primary)";
+            updateTimerDisplay(); 
+        }
+
+        function saveCompletedTask(taskName) {
+            let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
+            const taskObj = {
+                name: taskName,
+                date: new Date().toLocaleDateString('ar-BH', { hour: '2-digit', minute: '2-digit' })
+            };
+            tasks.unshift(taskObj);
+            localStorage.setItem('completedTasks', JSON.stringify(tasks));
+            loadCompletedTasks();
+        }
+
+        function loadCompletedTasks() {
+            let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
+            const listContainer = document.getElementById('completedTasksList');
+            listContainer.innerHTML = '';
+            
+            if (tasks.length === 0) {
+                listContainer.innerHTML = '<li style="text-align:center; color:var(--text-secondary); font-size:12px; padding:10px;">لا توجد مهام منجزة محفوظة حتى الآن.</li>';
+                return;
+            }
+
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.className = 'task-list-item';
+                li.innerHTML = `
+                    <span><strong>${task.name}</strong> <span style="font-size:10px; color:var(--text-secondary);">(${task.date})</span></span>
+                    <button class="delete-task-btn" onclick="deleteTask(${index})">حذف</button>
+                `;
+                listContainer.appendChild(li);
+            });
+        }
+
+        function deleteTask(index) {
+            let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
+            tasks.splice(index, 1);
+            localStorage.setItem('completedTasks', JSON.stringify(tasks));
+            loadCompletedTasks();
+        }
     </script>
 </body>
 </html>
