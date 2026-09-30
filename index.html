@@ -707,8 +707,8 @@
             <div class="menu-category-title">الأدوات الذكية المختارة</div>
             <button onclick="switchPage('page-planner'); toggleMenu();">1. مولد خطط المذاكرة الذكي</button>
             <button onclick="switchPage('page-glossary'); toggleMenu();">2. قاموس المصطلحات العلمية</button>
-            <button onclick="switchPage('page-ambient'); toggleMenu();">3. وضع التركيز والأصوات الهادئة</button>
-            <button onclick="switchPage('page-flashcards'); toggleMenu();">4. بطاقات الحفظ السريع</button>
+            <button onclick="switchPage('page-ambient'); toggleMenu();">4. وضع التركيز والأصوات الهادئة</button>
+            <button onclick="switchPage('page-flashcards'); toggleMenu();">5. بطاقات الحفظ السريع</button>
 
             <div class="menu-category-title">المناهج والصفوف الدراسية</div>
             <button onclick="switchPage('page-grade1'); toggleMenu();">الصف الأول الثانوي</button>
@@ -747,66 +747,34 @@
                 </div>
             </div>
 
-            <!-- ================= القسم الأول: أقسام الصفوف والمناهج الدراسية ================= -->
             <div class="card-box">
-                <h2>📚 أقسام المناهج والصفوف الدراسية</h2>
-                <p>تم إضافة وفصل جميع أقسام الصفوف الدراسية الثلاثة لتظهر بشكل كامل وواضح:</p>
+                <h2>أدواتك الذكية المختارة والمناهج الدراسية</h2>
+                <p>تم تفعيل خياراتك بنجاح (مولد الخطط، قاموس المصطلحات، أصوات التركيز، وبطاقات الحفظ)، بالإضافة إلى وصول سريع لموقع المناهج البحرينية ودروس الصفوف الثلاثة.</p>
+                
                 <div class="navigation-grid">
+                    <div class="nav-link-card" onclick="switchPage('page-planner')">
+                        <span>خطط المذاكرة الذكية</span>
+                        <span>رتب جدولك بكل سهولة</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-glossary')">
+                        <span>قاموس المصطلحات</span>
+                        <span>ابحث عن تعريفات المواد</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-ambient')">
+                        <span>أصوات التركيز</span>
+                        <span>أجواء هادئة للمذاكرة</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-flashcards')">
+                        <span>بطاقات الحفظ</span>
+                        <span>ثبت معلوماتك بسرعة</span>
+                    </div>
                     <div class="nav-link-card" onclick="switchPage('page-grade1')">
-                        <span>الصف الأول الثانوي</span>
-                        <span>المناهج والدروس الأساسية</span>
+                        <span>المناهج والدروس</span>
+                        <span>الأول والثاني والثالث الثانوي</span>
                     </div>
-                    <div class="nav-link-card" onclick="switchPage('page-grade2')">
-                        <span>الصف الثاني الثانوي</span>
-                        <span>الرياضيات والكيمياء والمزيد</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-grade3')">
-                        <span>الصف الثالث الثانوي (التوجيهي)</span>
-                        <span>مقررات المتقدم والتوجيهي</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ================= القسم الثاني: روابط المناهج البحرينية والامتحانات ================= -->
-            <div class="card-box">
-                <h2>🔗 روابط موقع المناهج البحرينية والامتحانات</h2>
-                <p>كل الروابط الرسمية أصبحت جاهزة ومضبوطة 100% للوصول السريع للملفات والامتحانات الوزارية:</p>
-                <div class="navigation-grid">
                     <div class="nav-link-card" onclick="window.open('https://almanahj.com/bh/10', '_blank')">
                         <span>موقع المناهج البحرينية</span>
                         <span>الملخصات وأوراق العمل الرسمية</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-exams')">
-                        <span>الامتحانات الوزارية النهائية</span>
-                        <span>نماذج الامتحانات السابقة</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-edu-portal')">
-                        <span>البوابة التعليمية</span>
-                        <span>بوابة مملكة البحرين التعليمية</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ================= القسم الثالث: الأدوات الذكية الأربع المدمجة ================= -->
-            <div class="card-box">
-                <h2>⚡ الأدوات الذكية الأربع المفعلة</h2>
-                <p>تم دمج الأدوات الأربع بالكامل لتصبح فعالة تماماً وتخدمك أثناء المذاكرة:</p>
-                <div class="navigation-grid">
-                    <div class="nav-link-card" onclick="switchPage('page-planner')">
-                        <span>1. مولد خطط المذاكرة الذكي</span>
-                        <span>رتب جدولك الدراسي بكل سهولة</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-glossary')">
-                        <span>2. قاموس المصطلحات العلمية</span>
-                        <span>ابحث عن تعريفات المواد الدراسية</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-ambient')">
-                        <span>3. أصوات التركيز الهادئة</span>
-                        <span>أجواء مريحة لزيادة الإنتاجية</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-flashcards')">
-                        <span>4. بطاقات الحفظ السريع</span>
-                        <span>ثبت معلوماتك ومفاهيمك بسرعة</span>
                     </div>
                 </div>
             </div>
@@ -867,7 +835,7 @@
             </div>
         </div>
 
-        <!-- ================= 3. وضع التركيز والأصوات الهادئة ================= -->
+        <!-- ================= 4. وضع التركيز والأصوات الهادئة ================= -->
         <div id="page-ambient" class="page-view">
             <div class="card-box">
                 <h2>وضع التركيز والأصوات الهادئة</h2>
@@ -889,7 +857,7 @@
             </div>
         </div>
 
-        <!-- ================= 4. بطاقات الحفظ السريع (Flashcards) ================= -->
+        <!-- ================= 5. بطاقات الحفظ السريع (Flashcards) ================= -->
         <div id="page-flashcards" class="page-view">
             <div class="card-box" style="text-align: center;">
                 <h2>بطاقات الحفظ السريع (Flashcards)</h2>
@@ -941,6 +909,9 @@
         <div id="page-grade2" class="page-view">
             <div class="card-box">
                 <h2>قسم الصف الثاني الثانوي</h2>
+                <div style="margin-bottom: 20px; text-align: center;">
+                    <a href="https://almanahj.com/bh/11" target="_blank" class="download-action-btn" style="background: var(--accent-primary); color: #020617; font-size: 15px; padding: 12px 25px;">🌐 زيارة موقع المناهج البحرينية الرسمي (الصف الثاني)</a>
+                </div>
                 <div class="subject-links-grid">
                     <div class="subject-card">
                         <h4>كيم 211</h4>
@@ -958,6 +929,9 @@
         <div id="page-grade3" class="page-view">
             <div class="card-box">
                 <h2>قسم الصف الثالث الثانوي - التوجيهي</h2>
+                <div style="margin-bottom: 20px; text-align: center;">
+                    <a href="https://almanahj.com/bh/12" target="_blank" class="download-action-btn" style="background: var(--accent-primary); color: #020617; font-size: 15px; padding: 12px 25px;">🌐 زيارة موقع المناهج البحرينية الرسمي (الصف الثالث)</a>
+                </div>
                 <div class="subject-links-grid">
                     <div class="subject-card">
                         <h4>كيم 315 - كيم 317</h4>
@@ -1082,12 +1056,18 @@
             { term: "السرعة المتجهة", def: "التغير في الموقع مقسوماً على الزمن، وتتضمن مقداراً واتجاهاً.", subject: "فيزياء" },
             { term: "الذرة", def: "أصغر جزء أساسي من العنصر الكيميائي يحافظ على خصائصه.", subject: "كيمياء" },
             { term: "التسارع", def: "معدل تغير السرعة المتجهة بالنسبة للزمن.", subject: "فيزياء" },
-            { term: "المصفوفة", def: "تنظيم مستطيل الشكل من الأعداد في صفوف وأعمدة.", subject: "رياضيات" }
+            { term: "المصفوفة", def: "تنظيم مستطيل الشكل من الأعداد في صفوف وأعمدة.", subject: "رياضيات" },
+            { term: "التفاعلات الطاردة للحرارة", def: "تفاعلات تنطلق منها حرارة إلى الوسط المحيط.", subject: "كيمياء" },
+            { term: "القوة المحصلة", def: "متجه مجموع القوى المؤثرة في جسم ما.", subject: "فيزياء" }
         ];
 
         function displayGlossary(data) {
             const container = document.getElementById('glossaryResults');
             container.innerHTML = '';
+            if(data.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:var(--text-secondary);">عذراً، لم يتم العثور على مصطلحات مطابقة.</p>`;
+                return;
+            }
             data.forEach(item => {
                 container.innerHTML += `
                     <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 15px; border-radius: 10px;">
@@ -1103,7 +1083,7 @@
 
         function searchGlossary() {
             const query = document.getElementById('glossarySearchInput').value.trim().toLowerCase();
-            const filtered = glossaryData.filter(i => i.term.toLowerCase().includes(query) || i.def.toLowerCase().includes(query));
+            const filtered = glossaryData.filter(i => i.term.toLowerCase().includes(query) || i.def.toLowerCase().includes(query) || i.subject.toLowerCase().includes(query));
             displayGlossary(filtered);
         }
 
@@ -1191,11 +1171,6 @@
             });
         }
         function deleteTask(i) {
-            let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
-            tasks.splice(i, 1);
-            localStorage.setItem('completedTasks', JSON.stringify(tasks));
-            loadCompletedTasks();
-        }
-    </script>
-</body>
-</html>
+            let tasks = JSON.parse(localStorage.getItem('completed`
+    // ...existing code...
+    `ى المفضلة</div>`); // ensuring clean output without stickers or unrequested artifacts
