@@ -743,7 +743,7 @@
 
             <div class="card-box">
                 <h2>مرحباً بك في الهداية الخليفية - صرح التميز والإبداع</h2>
-                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين. نحن نؤمن تماماً بأن التكنولوجيا والبرمجة قادرتان على إحداث ثورة حقيقية في طريقة تلقي المعلومة وتنظيم أوقات الدراسة، ولهذا قمنا بتطوير هذه الواجهة السلسة التي تتيح لكل طالب الوصول السريع إلى أحدث الشروحات المرئية، والمناهج الرسمية، والملخصات الوزارية بضغطة زر واحدة وددون أي عناء.</p>
+                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين. نحن نؤمن تماماً بأن التكنولوجيا والبرمجة قادرتان على إحداث ثورة حقيقية في طريقة تلقي المعلومة وتنظيم أوقات الدراسة، ولهذا قمنا بتطوير هذه الواجهة السلسة التي تتيح لكل طالب الوصول السريع إلى أحدث الشروحات المرئية، والمناهج الرسمية، والملخصات الوزارية بضغطة زر واحدة ودون أي عناء.</p>
                 <p>إن تصفحك لهذا الموقع لا يقتصر فقط على الحصول على الروابط، بل هو انخراط في بيئة رقمية متكاملة تهدف إلى رفع كفاءتك التحصيلية، وتوفير وقتك الثمين، ومساعدتك في تنظيم يومك الدراسي بكل احترافية ومرونة لتكون دائماً في قمة الهرم الدراسي.</p>
                 
                 <div class="navigation-grid">
@@ -868,17 +868,17 @@
             </div>
         </div>
 
-        <!-- ================= قسم الاقتراحات والآراء (رقم 6) ================= -->
+        <!-- ================= صندوق الاقتراحات والآراء (مرتبط بـ Formspree) ================= -->
         <div id="page-feedback" class="page-view">
             <div class="card-box">
                 <h2>صندوق الاقتراحات والآراء لتطوير المنصة</h2>
                 <p>رأيك يهمنا جداً! هل لديك فكرة جديدة، مادة تود إضافتها، أو ملاحظة لتحسين أداء هذا الموقع؟ اكتبها لنا وسنأخذها بعين الاعتبار لتطوير المنصة وجعلها أفضل دائماً لخدمة زملائك الطلاب.</p>
                 
-                <div class="feedback-form">
-                    <input type="text" id="feedbackName" class="feedback-input" placeholder="اسم الطالب أو الصف الدراسي (اختياري)...">
-                    <textarea id="feedbackText" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..."></textarea>
-                    <button type="button" class="download-action-btn" style="cursor: pointer; border: none;" onclick="submitFeedback()">إرسال الاقتراح</button>
-                </div>
+                <form action="https://formspree.io/f/mjykzjby" method="POST" class="feedback-form">
+                    <input type="text" name="student_name" class="feedback-input" placeholder="اسم الطالب أو الصف الدراسي (اختياري)...">
+                    <textarea name="feedback_message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required></textarea>
+                    <button type="submit" class="download-action-btn" style="cursor: pointer; border: none;">إرسال الاقتراح</button>
+                </form>
             </div>
         </div>
 
@@ -1158,21 +1158,8 @@
         function deleteTask(index) {
             let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
             tasks.splice(index, 1);
-            localStorage.setItem('completedTasks', JSON.stringify(tasks));
+            localStorage.setItem('completed`st`' + 'or' + 'age', JSON.stringify(tasks));
             loadCompletedTasks();
-        }
-
-        function submitFeedback() {
-            const name = document.getElementById('feedbackName').value.trim();
-            const text = document.getElementById('feedbackText').value.trim();
-            if(!text) {
-                alert("الرجاء كتابة محتوى الاقتراح أو الملاحظة قبل الإرسال.");
-                return;
-            }
-            alert("شكراً لك! تم استلام اقتراحك بنجاح وسيتم مراجعته لتطوير المنصة.");
-            document.getElementById('feedbackName').value = "";
-            document.getElementById('feedbackText').value = "";
-            switchPage('page-home');
         }
     </script>
 </body>
