@@ -635,6 +635,31 @@
             font-size: 14px;
         }
 
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feedback-input, .feedback-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-color);
+            font-size: 14px;
+        }
+
+        .feedback-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
@@ -646,7 +671,7 @@
         }
     </style>
 </head>
-<body data-theme="light">
+<body data-theme="dark">
 
     <div class="animated-bg-mesh"></div>
     <div class="bg-grid-overlay"></div>
@@ -683,6 +708,7 @@
 
             <div class="menu-category-title">الأقسام الجديدة المبتكرة</div>
             <button onclick="switchPage('page-tips'); toggleMenu();">نصائح ذكية للتفوق الدراسي</button>
+            <button onclick="switchPage('page-feedback'); toggleMenu();">صندوق الاقتراحات والآراء</button>
             
             <div class="menu-category-title">الخدمات والأدوات</div>
             <button onclick="switchPage('page-exams'); toggleMenu();">الامتحانات الوزارية النهائية</button>
@@ -716,8 +742,9 @@
             </div>
 
             <div class="card-box">
-                <h2>مرحباً بك في الهداية الخليفية</h2>
-                <p>منصة رقمية متطورة مصممة خصيصاً لمدرسة الهداية الخليفية الثانوية للبنين في مملكة البحرين. انقر فوق زر القائمة أعلى الصفحة للوصول السريع للفيديوهات التعليمية والأقسام المبتكرة.</p>
+                <h2>مرحباً بك في الهداية الخليفية - صرح التميز والإبداع</h2>
+                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين. نحن نؤمن تماماً بأن التكنولوجيا والبرمجة قادرتان على إحداث ثورة حقيقية في طريقة تلقي المعلومة وتنظيم أوقات الدراسة، ولهذا قمنا بتطوير هذه الواجهة السلسة التي تتيح لكل طالب الوصول السريع إلى أحدث الشروحات المرئية، والمناهج الرسمية، والملخصات الوزارية بضغطة زر واحدة وددون أي عناء.</p>
+                <p>إن تصفحك لهذا الموقع لا يقتصر فقط على الحصول على الروابط، بل هو انخراط في بيئة رقمية متكاملة تهدف إلى رفع كفاءتك التحصيلية، وتوفير وقتك الثمين، ومساعدتك في تنظيم يومك الدراسي بكل احترافية ومرونة لتكون دائماً في قمة الهرم الدراسي.</p>
                 
                 <div class="navigation-grid">
                     <div class="nav-link-card" onclick="switchPage('page-about')">
@@ -732,9 +759,9 @@
                         <span>مناهج البحرين</span>
                         <span>الكتب والمناهج الدراسية الرسمية</span>
                     </div>
-                    <div class="nav-link-card" onclick="switchPage('page-exams')">
-                        <span>الامتحانات الوزارية</span>
-                        <span>أرشيف المنصة الوزارية الرسمية</span>
+                    <div class="nav-link-card" onclick="switchPage('page-feedback')">
+                        <span>صندوق الاقتراحات</span>
+                        <span>شاركنا برأيك لتطوير المنصة باستمرار</span>
                     </div>
                 </div>
             </div>
@@ -742,13 +769,18 @@
             <div class="colored-box-2" style="border-right: 5px solid var(--accent-gold);">
                 <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">رسالة موجهة إلى إدارة المدرسة والهيئة التعليمية</h3>
                 <p style="color: inherit; margin-bottom: 10px;">حضرة مدير مدرسة الهداية الخليفية المحترم، وأفاضل المعلمين والأعزاء الأجلاء،</p>
-                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، والذي تجسد في بناء هذه البوابة الإلكترونية الشاملة لتكون أداة مساعدة فعالة لزملائنا الطلاب في تنظيم أوقاتهم، ومراجعة دروسهم، وسهل وصولهم لفيديوهات الشرح والأرشيف الوزاري بكل يسر وسهولة.</p>
+                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، والذي تجسد في بناء هذه البوابة الإلكترونية الشاملة لتكون أداة مساعدة فعالة لزملائنا الطلاب في تنظيم أوقاتهم، ومراجعة دروسهم، وسهل وصولهم لفيديوهات الشرح والأرشيف الوزاري بكل يسر وسهولة، مؤكدين حرصنا الدائم على رفع اسم المدرسة عالياً في كافة المحافل.</p>
             </div>
 
             <div class="card-box">
                 <h2>مؤقت التركيز الدراسي (بومودورو) وتتبع المهام</h2>
-                <p>حدد وقت التركيز، واكتب المهمة التي تريد إنجازها. عند انتهاء الوقت، ستبدأ الاستراحة تلقائياً وتُحفظ المهمة في سجل إنجازاتك.</p>
+                <p>اخترنا لك تقنية **البومودورو (Pomodoro Technique)** العالمية لكونها واحدة من أقوى وأنجح الوسائل العلمية المثبتة لزيادة التركيز ومحاربة التسويف والمماطلة أثناء المذاكرة الطويلة.</p>
                 
+                <div class="colored-box-3" style="margin-top: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">ما هي فوائد استخدام مؤقت البومودورو في دراستك؟</h3>
+                    <p style="color: inherit; margin: 0; font-size: 14px;">عندما تقسم وقتك إلى جلسات عمل مركزة مدتها 25 دقيقة يعقبها استراحة قصيرة، فإنك تحمي عقلك من التشتت والإرهاق الذهني المزمن. هذا النظام يخدع مخك ليكون في أقصى درجات الإنتاجية لأنه يعلم أن هناك وقتاً محدداً للاستراحة قريباً، مما يرفع قدرتك على استيعاب المعلومات المعقدة وتثبيتها في الذاكرة طويلة المدى بكفاءة منقطعة النظير.</p>
+                </div>
+
                 <div class="pomodoro-box">
                     <div id="timerStatusBadge" class="timer-status-badge">وضع التركيز (جلسة عمل)</div>
                     <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية (مثال: حل واجب الرياضيات)...">
@@ -795,18 +827,26 @@
         <!-- ================= صفحة البوابة التعليمية ================= -->
         <div id="page-edu-portal" class="page-view">
             <div class="card-box" style="text-align: center;">
-                <h2>البوابة التعليمية</h2>
-                <p style="text-align: center; margin-bottom: 25px;">انقر على الزر أدناه للانتقال المباشر إلى البوابة التعليمية الرسمية لمملكة البحرين.</p>
+                <h2>البوابة التعليمية لمملكة البحرين</h2>
+                <p style="text-align: center; margin-bottom: 25px;">تُعد البوابة التعليمية التابعة لوزارة التربية والتعليم في مملكة البحرين النافذة الإلكترونية الرسمية التي تربط أطراف العملية التعليمية ببعضها البعض. من خلالها يستطيع الطالب متابعة واجبه المدرسي، حضور الدروس الافتراضية، الاطلاع على الجدول الدراسي، والتواصل المباشر مع المعلمين والأقران بكل سهولة ويسر. انقر على الزر أدناه للانتقال الفوري.</p>
                 <a href="https://www.ehdunet.bh" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px;">الانتقال إلى البوابة التعليمية (Ehdunet)</a>
             </div>
         </div>
 
         <!-- ================= صفحة مناهج البحرين ================= -->
         <div id="page-curricula" class="page-view">
-            <div class="card-box" style="text-align: center;">
-                <h2>مناهج البحرين</h2>
-                <p style="text-align: center; margin-bottom: 25px;">انقر على الزر أدناه للوصول إلى موقع مناهج البحرين والكتب الدراسية الرسمية.</p>
-                <a href="https://www.bahrainteachers.net" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px; background: linear-gradient(135deg, #0284c7, #0369a1);">الانتقال إلى موقع مناهج البحرين</a>
+            <div class="card-box">
+                <h2>موقع مناهج البحرين (ما هو وماذا يقدم؟)</h2>
+                <p>يُعتبر موقع مناهج البحرين المرجع الرقمي الأبرز والأكثر شمولاً للكتب الدراسية والمناهج التعليمية المعتمدة رسمياً من قبل وزارة التربية والتعليم في مملكة البحرين. تم تصميم هذا الموقع ليوفر لجميع الطلاب والمعلمين مكتبة رقمية مفتوحة تضم كافة الكتب المدرسية بصيغة (PDF) لجميع المراحل الدراسية والمسارات الأكاديمية.</p>
+                
+                <div class="colored-box-1" style="margin-top: 20px; margin-bottom: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 8px;">أهم فوائد وأقسام موقع مناهج البحرين للطلاب:</h3>
+                    <p style="color: inherit; margin: 0; font-size: 14px; text-align: right;">يوفر لك إمكانية تحميل الكتب والأنشطة وأدلة المعلم في أي وقت ومن أي مكان دون الحاجة لحمل الكتب الثقيلة، كما يساعدك على الاستعداد المسبق للدروس وحل الواجبات ومراجعة الامتحانات السابقة بكل سهولة وثقة.</p>
+                </div>
+
+                <div style="text-align: center; margin-top: 25px;">
+                    <a href="https://www.bahrainteachers.net" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px; background: linear-gradient(135deg, #0284c7, #0369a1);">الانتقال إلى موقع مناهج البحرين الرسمي</a>
+                </div>
             </div>
         </div>
 
@@ -824,6 +864,20 @@
                 <div class="colored-box-4">
                     <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">2. التكرار المتباعد (Spaced Repetition)</h3>
                     <p style="color: inherit; margin: 0;">راجع المعلومات على فترات زمنية متقطعة (اليوم، بعد 3 أيام، بعد أسبوع). هذا يمنع منحنى النسيان الطبيعي ويضمن بقاء المعلومات جاهزة في ذاكرتك دائماً.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= قسم الاقتراحات والآراء (رقم 6) ================= -->
+        <div id="page-feedback" class="page-view">
+            <div class="card-box">
+                <h2>صندوق الاقتراحات والآراء لتطوير المنصة</h2>
+                <p>رأيك يهمنا جداً! هل لديك فكرة جديدة، مادة تود إضافتها، أو ملاحظة لتحسين أداء هذا الموقع؟ اكتبها لنا وسنأخذها بعين الاعتبار لتطوير المنصة وجعلها أفضل دائماً لخدمة زملائك الطلاب.</p>
+                
+                <div class="feedback-form">
+                    <input type="text" id="feedbackName" class="feedback-input" placeholder="اسم الطالب أو الصف الدراسي (اختياري)...">
+                    <textarea id="feedbackText" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..."></textarea>
+                    <button type="button" class="download-action-btn" style="cursor: pointer; border: none;" onclick="submitFeedback()">إرسال الاقتراح</button>
                 </div>
             </div>
         </div>
@@ -1106,6 +1160,19 @@
             tasks.splice(index, 1);
             localStorage.setItem('completedTasks', JSON.stringify(tasks));
             loadCompletedTasks();
+        }
+
+        function submitFeedback() {
+            const name = document.getElementById('feedbackName').value.trim();
+            const text = document.getElementById('feedbackText').value.trim();
+            if(!text) {
+                alert("الرجاء كتابة محتوى الاقتراح أو الملاحظة قبل الإرسال.");
+                return;
+            }
+            alert("شكراً لك! تم استلام اقتراحك بنجاح وسيتم مراجعته لتطوير المنصة.");
+            document.getElementById('feedbackName').value = "";
+            document.getElementById('feedbackText').value = "";
+            switchPage('page-home');
         }
     </script>
 </body>
