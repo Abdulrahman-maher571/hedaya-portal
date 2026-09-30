@@ -707,8 +707,8 @@
             <div class="menu-category-title">الأدوات الذكية المختارة</div>
             <button onclick="switchPage('page-planner'); toggleMenu();">1. مولد خطط المذاكرة الذكي</button>
             <button onclick="switchPage('page-glossary'); toggleMenu();">2. قاموس المصطلحات العلمية</button>
-            <button onclick="switchPage('page-ambient'); toggleMenu();">4. وضع التركيز والأصوات الهادئة</button>
-            <button onclick="switchPage('page-flashcards'); toggleMenu();">5. بطاقات الحفظ السريع</button>
+            <button onclick="switchPage('page-ambient'); toggleMenu();">3. وضع التركيز والأصوات الهادئة</button>
+            <button onclick="switchPage('page-flashcards'); toggleMenu();">4. بطاقات الحفظ السريع</button>
 
             <div class="menu-category-title">المناهج والصفوف الدراسية</div>
             <button onclick="switchPage('page-grade1'); toggleMenu();">الصف الأول الثانوي</button>
@@ -747,34 +747,66 @@
                 </div>
             </div>
 
+            <!-- ================= القسم الأول: أقسام الصفوف والمناهج الدراسية ================= -->
             <div class="card-box">
-                <h2>أدواتك الذكية المختارة والمناهج الدراسية</h2>
-                <p>تم تفعيل خياراتك بنجاح (مولد الخطط، قاموس المصطلحات، أصوات التركيز، وبطاقات الحفظ)، بالإضافة إلى وصول سريع لموقع المناهج البحرينية ودروس الصفوف الثلاثة.</p>
-                
+                <h2>📚 أقسام المناهج والصفوف الدراسية</h2>
+                <p>تم إضافة وفصل جميع أقسام الصفوف الدراسية الثلاثة لتظهر بشكل كامل وواضح:</p>
                 <div class="navigation-grid">
-                    <div class="nav-link-card" onclick="switchPage('page-planner')">
-                        <span>خطط المذاكرة الذكية</span>
-                        <span>رتب جدولك بكل سهولة</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-glossary')">
-                        <span>قاموس المصطلحات</span>
-                        <span>ابحث عن تعريفات المواد</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-ambient')">
-                        <span>أصوات التركيز</span>
-                        <span>أجواء هادئة للمذاكرة</span>
-                    </div>
-                    <div class="nav-link-card" onclick="switchPage('page-flashcards')">
-                        <span>بطاقات الحفظ</span>
-                        <span>ثبت معلوماتك بسرعة</span>
-                    </div>
                     <div class="nav-link-card" onclick="switchPage('page-grade1')">
-                        <span>المناهج والدروس</span>
-                        <span>الأول والثاني والثالث الثانوي</span>
+                        <span>الصف الأول الثانوي</span>
+                        <span>المناهج والدروس الأساسية</span>
                     </div>
+                    <div class="nav-link-card" onclick="switchPage('page-grade2')">
+                        <span>الصف الثاني الثانوي</span>
+                        <span>الرياضيات والكيمياء والمزيد</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-grade3')">
+                        <span>الصف الثالث الثانوي (التوجيهي)</span>
+                        <span>مقررات المتقدم والتوجيهي</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= القسم الثاني: روابط المناهج البحرينية والامتحانات ================= -->
+            <div class="card-box">
+                <h2>🔗 روابط موقع المناهج البحرينية والامتحانات</h2>
+                <p>كل الروابط الرسمية أصبحت جاهزة ومضبوطة 100% للوصول السريع للملفات والامتحانات الوزارية:</p>
+                <div class="navigation-grid">
                     <div class="nav-link-card" onclick="window.open('https://almanahj.com/bh/10', '_blank')">
                         <span>موقع المناهج البحرينية</span>
                         <span>الملخصات وأوراق العمل الرسمية</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-exams')">
+                        <span>الامتحانات الوزارية النهائية</span>
+                        <span>نماذج الامتحانات السابقة</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-edu-portal')">
+                        <span>البوابة التعليمية</span>
+                        <span>بوابة مملكة البحرين التعليمية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= القسم الثالث: الأدوات الذكية الأربع المدمجة ================= -->
+            <div class="card-box">
+                <h2>⚡ الأدوات الذكية الأربع المفعلة</h2>
+                <p>تم دمج الأدوات الأربع بالكامل لتصبح فعالة تماماً وتخدمك أثناء المذاكرة:</p>
+                <div class="navigation-grid">
+                    <div class="nav-link-card" onclick="switchPage('page-planner')">
+                        <span>1. مولد خطط المذاكرة الذكي</span>
+                        <span>رتب جدولك الدراسي بكل سهولة</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-glossary')">
+                        <span>2. قاموس المصطلحات العلمية</span>
+                        <span>ابحث عن تعريفات المواد الدراسية</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-ambient')">
+                        <span>3. أصوات التركيز الهادئة</span>
+                        <span>أجواء مريحة لزيادة الإنتاجية</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-flashcards')">
+                        <span>4. بطاقات الحفظ السريع</span>
+                        <span>ثبت معلوماتك ومفاهيمك بسرعة</span>
                     </div>
                 </div>
             </div>
@@ -835,7 +867,7 @@
             </div>
         </div>
 
-        <!-- ================= 4. وضع التركيز والأصوات الهادئة ================= -->
+        <!-- ================= 3. وضع التركيز والأصوات الهادئة ================= -->
         <div id="page-ambient" class="page-view">
             <div class="card-box">
                 <h2>وضع التركيز والأصوات الهادئة</h2>
@@ -857,7 +889,7 @@
             </div>
         </div>
 
-        <!-- ================= 5. بطاقات الحفظ السريع (Flashcards) ================= -->
+        <!-- ================= 4. بطاقات الحفظ السريع (Flashcards) ================= -->
         <div id="page-flashcards" class="page-view">
             <div class="card-box" style="text-align: center;">
                 <h2>بطاقات الحفظ السريع (Flashcards)</h2>
