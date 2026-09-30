@@ -635,85 +635,6 @@
             font-size: 14px;
         }
 
-        .dictionary-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 16px;
-            margin-top: 20px;
-        }
-
-        .dict-search-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .dict-input {
-            flex: 1;
-            min-width: 240px;
-            padding: 12px 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            border-radius: 8px;
-            font-size: 15px;
-        }
-
-        .dict-search-btn {
-            padding: 12px 25px;
-            background: var(--accent-primary);
-            color: #020617;
-            border: none;
-            border-radius: 8px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .dict-search-btn:hover {
-            opacity: 0.9;
-        }
-
-        .dict-results-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .dict-word-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 12px;
-        }
-
-        .dict-word-title {
-            font-size: 20px;
-            color: var(--accent-gold);
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-
-        .dict-word-type {
-            font-size: 12px;
-            color: var(--accent-primary);
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: inline-block;
-            background: var(--glow-color);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .dict-word-meaning {
-            font-size: 15px;
-            color: var(--text-color);
-            line-height: 1.8;
-            margin: 0;
-            text-align: right;
-        }
-
         footer {
             text-align: center;
             padding: 30px;
@@ -725,7 +646,7 @@
         }
     </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 
     <div class="animated-bg-mesh"></div>
     <div class="bg-grid-overlay"></div>
@@ -756,10 +677,9 @@
             <div class="menu-category-title">الصف الثالث الثانوي</div>
             <button onclick="switchPage('page-grade3'); toggleMenu();">قسم التوجيهي (ثالث ثانوي)</button>
 
-            <div class="menu-category-title">الخدمات السريعة والمناهج</div>
+            <div class="menu-category-title">الخدمات السريعة</div>
             <button onclick="switchPage('page-edu-portal'); toggleMenu();">البوابة التعليمية</button>
-            <button onclick="switchPage('page-bahrain-curriculum'); toggleMenu();">موقع المناهج البحرينية</button>
-            <button onclick="switchPage('page-dictionary'); toggleMenu();">القاموس والمعجم اللغوي الحقيقي</button>
+            <button onclick="switchPage('page-curricula'); toggleMenu();">مناهج البحرين</button>
 
             <div class="menu-category-title">الأقسام الجديدة المبتكرة</div>
             <button onclick="switchPage('page-tips'); toggleMenu();">نصائح ذكية للتفوق الدراسي</button>
@@ -804,13 +724,17 @@
                         <span>تاريخ الهداية الخليفية</span>
                         <span>اكتشف الإرث العريق للمدرسة</span>
                     </div>
-                    <div class="nav-link-card" onclick="switchPage('page-bahrain-curriculum')">
-                        <span>موقع المناهج البحرينية</span>
-                        <span>جميع كتب المناهج الدراسية الرسمية</span>
+                    <div class="nav-link-card" onclick="switchPage('page-edu-portal')">
+                        <span>البوابة التعليمية</span>
+                        <span>الرابط الرسمي للبوابة التعليمية لمملكة البحرين</span>
                     </div>
-                    <div class="nav-link-card" onclick="switchPage('page-dictionary')">
-                        <span>القاموس والمعجم</span>
-                        <span>معجم لغوي حقيقي لشرح المفردات</span>
+                    <div class="nav-link-card" onclick="switchPage('page-curricula')">
+                        <span>مناهج البحرين</span>
+                        <span>الكتب والمناهج الدراسية الرسمية</span>
+                    </div>
+                    <div class="nav-link-card" onclick="switchPage('page-exams')">
+                        <span>الامتحانات الوزارية</span>
+                        <span>أرشيف المنصة الوزارية الرسمية</span>
                     </div>
                 </div>
             </div>
@@ -877,35 +801,12 @@
             </div>
         </div>
 
-        <!-- ================= صفحة موقع المناهج البحرينية ================= -->
-        <div id="page-bahrain-curriculum" class="page-view">
+        <!-- ================= صفحة مناهج البحرين ================= -->
+        <div id="page-curricula" class="page-view">
             <div class="card-box" style="text-align: center;">
-                <h2>موقع المناهج البحرينية الرسمي</h2>
-                <p style="text-align: center; margin-bottom: 25px;">موقع متخصص لتوفير كافة الكتب الدراسية، والخطط الفصلية، وأوراق العمل لمختلف المراحل الدراسية في مملكة البحرين.</p>
-                <a href="https://www.almanahj.com/bh" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px; background: linear-gradient(135deg, #0284c7, #0369a1);">الانتقال إلى موقع المناهج البحرينية (Almanahj)</a>
-            </div>
-        </div>
-
-        <!-- ================= صفحة القاموس والمعجم اللغوي الحقيقي ================= -->
-        <div id="page-dictionary" class="page-view">
-            <div class="card-box">
-                <h2>القاموس والمعجم اللغوي الحقيقي (شامل ومعتمد)</h2>
-                <p>ابحث عن معاني الكلمات العربية وأصولها ومشتقاتها بدقة لتعزيز حصيلتك اللغوية وتسهيل دراسة النصوص والأبحاث.</p>
-                
-                <div class="dictionary-box">
-                    <div class="dict-search-row">
-                        <input type="text" id="dictSearchInput" class="dict-input" placeholder="اكتب الكلمة المراد بحثها (مثال: علم، نجاح، وطن، شرف، كتاب، فهم)..." onkeypress="if(event.key === 'Enter') searchDictionary();">
-                        <button class="dict-search-btn" onclick="searchDictionary()">بحث في المعجم</button>
-                    </div>
-
-                    <div id="dictResultsContainer" class="dict-results-container">
-                        <div class="dict-word-card">
-                            <div class="dict-word-title">مرحباً بك في المعجم الشامل</div>
-                            <div class="dict-word-type">إرشاد لغوي</div>
-                            <p class="dict-word-meaning">اكتب أي كلمة عربية في خانة البحث أعلاه واضغط على زر البحث لعرض دلالاتها المعجمية، وشرحها المفصل المستمد من أمهات المعاجم العربية.</p>
-                        </div>
-                    </div>
-                </div>
+                <h2>مناهج البحرين</h2>
+                <p style="text-align: center; margin-bottom: 25px;">انقر على الزر أدناه للوصول إلى موقع مناهج البحرين والكتب الدراسية الرسمية.</p>
+                <a href="https://www.bahrainteachers.net" target="_blank" class="download-action-btn" style="font-size: 16px; padding: 15px 30px; background: linear-gradient(135deg, #0284c7, #0369a1);">الانتقال إلى موقع مناهج البحرين</a>
             </div>
         </div>
 
@@ -1051,24 +952,6 @@
             "التميز والتركيز المستمر هما أساس التفوق الدراسي."
         ];
 
-        // القاموس والمعجم اللغوي الحقيقي الشامل المدمج
-        const arabicDictionaryDatabase = {
-            "علم": { type: "اسم (جمع: علوم)", meaning: "الإدراك والمعرفة بشيء ما، ومقياس للمعلومات المنظمة والمدونة القائمة على البرهان." },
-            "نجاح": { type: "اسم مصدر", meaning: "الظفر بالمرام، الفوز والتوفيق في تحقيق الأهداف والوصول للغايات المرجوة." },
-            "وطن": { type: "اسم (جمع: أوطان)", meaning: "الموطن والمحل الذي يتربى فيه الإنسان وينتمي إليه ويعيش على أرضه ويدافع عنه." },
-            "شرف": { type: "اسم", meaning: "المجد والعلو، والصفات الحميدة والأخلاق العالية التي يُمدح بها الإنسان ويفتخر بها." },
-            "اجتهاد": { type: "اسم مصدر", meaning: "بذل الوسع والطاقة واستفراغ الجهد في إنجاز أمر من الأمور وتحقيق الغاية." },
-            "ذكي": { type: "صفة مشبهة (جمع: أذكياء)", meaning: "السريع الفهم، المتقد ذهنياً، صاحب الفطنة والحدة العقلية والقدرة العالية على الاستيعاب." },
-            "صبر": { type: "اسم مصدر", meaning: "الجلَد والاحتمال، حبس النفس عن الجزع عند الشدائد والمصاعب والمثابرة في العمل." },
-            "مستقبل": { type: "اسم زمان", meaning: "الزمن الآتي أو القادم بعد الحاضر، وما يترقبه الإنسان من أحوال وأيام قادمة." },
-            "كتاب": { type: "اسم (جمع: كتب)", meaning: "الصحيفة المكتوبة، ومجموعة من الأوراق المضمومة التي تحوي علوماً أو آداباً أو معارف." },
-            "فهم": { type: "اسم مصدر / فعل", meaning: "إدراك المعنى واستيعاب الفكرة والعلم بمراميها وأبعادها." },
-            "تعلم": { type: "فعل / اسم مصدر", meaning: "اكتساب المعارف والمهارات والخبرات الجديدة دراسةً وممارسةً وتدريباً." },
-            "تفوق": { type: "اسم مصدر", meaning: "التبَرّز على الأقران، التميز والسبق في العلوم أو الأعمال وتحقيق مراكز متقدمة." },
-            "مدرسة": { type: "اسم مكان (جمع: مدارس)", meaning: "مؤسسة تعليمية لتلقي العلوم والمعارف وتربية الأجيال وتشكيل وعيهم." },
-            "طالب": { type: "اسم فاعل (جمع: طلاب / طلبة)", meaning: "الدارس الباحث عن العلم والمعرفة والراغب في التحصيل الأكاديمي." }
-        };
-
         window.addEventListener('DOMContentLoaded', () => {
             const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
             document.getElementById('motivationalQuoteText').innerText = motivationalQuotes[randomIndex];
@@ -1076,44 +959,6 @@
             setInterval(updateLiveClockAndTimers, 1000);
             loadCompletedTasks();
         });
-
-        function searchDictionary() {
-            const query = document.getElementById('dictSearchInput').value.trim().toLowerCase();
-            const container = document.getElementById('dictResultsContainer');
-            container.innerHTML = '';
-
-            if (!query) {
-                container.innerHTML = `
-                    <div class="dict-word-card">
-                        <div class="dict-word-title">تنبيه لغوي</div>
-                        <div class="dict-word-type">حقل فارغ</div>
-                        <p class="dict-word-meaning">من فضلك اكتب كلمة صحيحة في خانة البحث أعلاه أولاً.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            let foundKey = Object.keys(arabicDictionaryDatabase).find(k => k === query || k.includes(query) || query.includes(k));
-
-            if (foundKey) {
-                const item = arabicDictionaryDatabase[foundKey];
-                container.innerHTML = `
-                    <div class="dict-word-card">
-                        <div class="dict-word-title">${foundKey}</div>
-                        <div class="dict-word-type">${item.type}</div>
-                        <p class="dict-word-meaning"><strong>المعنى اللغوي:</strong> ${item.meaning}</p>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div class="dict-word-card">
-                        <div class="dict-word-title">${query}</div>
-                        <div class="dict-word-type">بحث معجمي</div>
-                        <p class="dict-word-meaning">عذراً، الكلمة المدخلة غير متوفرة في الفهرس الحالي. يمكنك تجربة كلمات مثل: (علم، نجاح، وطن، شرف، اجتهاد، ذكي، مدرسة، كتاب).</p>
-                    </div>
-                `;
-            }
-        }
 
         function updateLiveClockAndTimers() {
             const now = new Date();
