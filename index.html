@@ -511,7 +511,7 @@
             margin-bottom: 10px;
         }
 
-        /* كرت الإعلان العصري مع دعم الصور والملفات */
+        /* تصميم كرت الإعلان العصري مع عرض الصور والملفات بدقة */
         .modern-notice-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-color);
@@ -535,11 +535,12 @@
             font-size: 14px;
             margin-bottom: 12px;
             line-height: 1.8;
+            white-space: pre-wrap;
         }
 
         .notice-image-preview {
             max-width: 100%;
-            max-height: 250px;
+            max-height: 300px;
             border-radius: 10px;
             margin-top: 10px;
             margin-bottom: 12px;
@@ -551,7 +552,7 @@
             display: inline-block;
             background: rgba(56, 189, 248, 0.15);
             color: var(--accent-primary);
-            padding: 8px 14px;
+            padding: 10px 16px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
@@ -928,7 +929,7 @@
         <div id="page-all-school-notices" class="page-view">
             <div class="card-box">
                 <h2>تنبيهات وإشعارات المدرسة العامة</h2>
-                <p>تابع أحدث التنبيهات والإعلانات العامة المحدثة تلقائياً:</p>
+                <p>تابع أحدث التنبيهات والإعلانات العامة:</p>
                 <div id="notices-general" class="notices-container">
                     <div class="modern-notice-card"><h4>جاري التحميل...</h4></div>
                 </div>
@@ -946,7 +947,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات ثاني ثانوي (مع الفلترة والمسارات) ================= -->
+        <!-- ================= صفحة تنبيهات ثاني ثانوي (المسارات) ================= -->
         <div id="page-grade2-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات وتنبيهات الصف الثاني الثانوي</h2>
@@ -1197,10 +1198,10 @@
             updateLiveClockAndTimers();
             setInterval(updateLiveClockAndTimers, 1000);
             loadCompletedTasks();
-            loadAllGoogleSheetNotices(); // جلب وفلترة الإعلانات بالكامل
+            loadAllGoogleSheetNotices(); // جلب وفلترة البيانات بالترتيب الصحيح للأعمدة
         });
 
-        // دالة سحب وجلب البيانات من جوجل شيت وتوزيعها على الأقسام والمسارات مع دعم الصور والملفات
+        // دالة سحب وجلب البيانات بناءً على ترتيب الأعمدة الصحيح في الجدول
         async function loadAllGoogleSheetNotices() {
             const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE2qzXeDuqDymSe0_VQFALNRGMx-zMfJ5pYR51KYML5LeV0eIvsSkZWSfhWynAqAR_cPmtE4p8Gejv/pub?gid=355268307&single=true&output=csv";
             
@@ -1209,7 +1210,6 @@
                 const data = await response.text();
                 const rows = data.split('\n').map(row => row.split(','));
                 
-                // تعريف الحاويات لكل الأقسام
                 const containers = {
                     'general': document.getElementById('notices-general'),
                     'g1': document.getElementById('notices-grade1'),
@@ -1223,36 +1223,45 @@
                     'g3-literary': document.getElementById('notices-g3-literary')
                 };
 
-                // تفريغ الحاويات مبدئياً
                 for (let key in containers) {
                     if (containers[key]) containers[key].innerHTML = '';
                 }
 
                 if (rows.length <= 1) return;
 
-                // تخطي صف العنوان البدء من i = 1
+                // الترتيب الصحيح للأعمدة حسب جوجل شيت:
+                // cols[0] = الوقت (الطابع الزمني)
+                // cols[1] = التاريخ
+                // cols[2] = ارفع ملف أو صورة
+                // cols[3] = نص الإعلان أو التنبيه
+                // cols[4] = القسم / التخصص
                 for (let i = 1; i < rows.length; i++) {
                     const cols = rows[i];
                     if (cols.length >= 4) {
                         const timeVal = cols[0] ? cols[0].replace(/"/g, '').trim() : '';
                         const dateVal = cols[1] ? cols[1].replace(/"/g, '').trim() : '';
-                        // أعمدة إضافية حسب نموذجك (الصورة/الملف مفترض في الأعمدة التالية أو النص)
                         const fileCol = cols[2] ? cols[2].replace(/"/g, '').trim() : '';
                         const textVal = cols[3] ? cols[3].replace(/"/g, '').trim() : '';
                         const targetSection = cols[4] ? cols[4].replace(/"/g, '').trim() : 'تنبيهات المدرسة عامة';
-                        const teacherVal = cols[5] ? cols[5].replace(/"/g, '').trim() : 'الإدارة المدرسية';
 
-                        // تجهيز محتوى الصورة أو الملف لو وجد رابط
+                        // معالجة رابط الصورة أو الملف المرفوع من جوجل درايف
                         let mediaHtml = '';
                         if (fileCol && (fileCol.startsWith('http://') || fileCol.startsWith('https://'))) {
-                            if (fileCol.match(/\.(jpeg|jpg|gif|png)$/i) || fileCol.includes('drive.google.com') && fileCol.includes('uc?export=view')) {
-                                mediaHtml = `<img src="${fileCol}" class="notice-image-preview" alt="مرفق الإعلان">`;
+                            // لو رابط صورة يتم عرضه كصورة، لو ملف يتم عرضه كزر تحميل
+                            if (fileCol.match(/\.(jpeg|jpg|gif|png)$/i) || fileCol.includes('drive.google.com')) {
+                                // تحويل رابط جوجل درايف للعرض المباشر لو أمكن
+                                let imgLink = fileCol;
+                                if (fileCol.includes('id=')) {
+                                    const fileId = fileCol.split('id=')[1].split('&')[0];
+                                    imgLink = `https://lh3.googleusercontent.com/d/${fileId}`;
+                                }
+                                mediaHtml = `<a href="${fileCol}" target="_blank"><img src="${imgLink}" class="notice-image-preview" alt="صورة المرفق"></a>`;
                             } else {
-                                mediaHtml = `<a href="${fileCol}" target="_blank" class="notice-file-link">📥 تحميل المرفق أو المستند</a>`;
+                                mediaHtml = `<a href="${fileCol}" target="_blank" class="notice-file-link">📥 تحميل الملف المرفق</a>`;
                             }
                         }
 
-                        // إنشاء كرت الإعلان
+                        // إنشاء كرت الإعلان العصري
                         const card = document.createElement('div');
                         card.className = 'modern-notice-card';
                         card.innerHTML = `
@@ -1260,12 +1269,12 @@
                             <p>${textVal}</p>
                             ${mediaHtml}
                             <div class="notice-meta">
-                                <span>المسؤول: ${teacherVal}</span>
+                                <span>القسم: ${targetSection}</span>
                                 <span>${dateVal} - ${timeVal}</span>
                             </div>
                         `;
 
-                        // فلترة وتوجيه الإعلان حسب القسم المختار في نموذج الإرسال
+                        // فلترة وتوجيه الإعلان حسب القسم المختار تماماً
                         let assignedKey = 'general';
                         if (targetSection.includes('أول ثانوي')) assignedKey = 'g1';
                         else if (targetSection.includes('ثاني ثانوي')) {
@@ -1289,7 +1298,6 @@
                     }
                 }
 
-                // رسالة لو القسم فارغ
                 for (let key in containers) {
                     if (containers[key] && containers[key].children.length === 0) {
                         containers[key].innerHTML = '<div class="modern-notice-card"><p>لا توجد تنبيهات جديدة في هذا القسم حتى الآن.</p></div>';
