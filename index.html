@@ -463,6 +463,63 @@
             color: #020617;
         }
 
+        .track-tabs-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .track-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .track-tab-btn.active-track, .track-tab-btn:hover {
+            background: var(--accent-primary);
+            color: #020617;
+            border-color: var(--accent-primary);
+        }
+
+        .track-content-panel {
+            display: none;
+        }
+
+        .track-content-panel.active-track-panel {
+            display: block;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .announcements-box {
+            background: rgba(56, 189, 248, 0.03);
+            border: 1px dashed var(--accent-primary);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .announcements-box h3 {
+            font-size: 16px;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .announcement-item {
+            background: rgba(255, 255, 255, 0.04);
+            border-right: 4px solid var(--accent-primary);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
         .pomodoro-box {
             text-align: center;
             background: rgba(255, 255, 255, 0.02);
@@ -693,14 +750,20 @@
             <button onclick="switchPage('page-home'); toggleMenu();">الصفحة الرئيسية</button>
             <button onclick="switchPage('page-about'); toggleMenu();">عن مدرسة الهداية الخليفية</button>
             
+            <div class="menu-category-title">تنبيهات وإشعارات المدرسة</div>
+            <button onclick="switchPage('page-all-school-notices'); toggleMenu();">تنبيهات المدرسة عامة</button>
+
             <div class="menu-category-title">الصف الأول الثانوي</div>
+            <button onclick="switchPage('page-grade1-notices'); toggleMenu();">إشعارات وتنبيهات الأول الثانوي</button>
             <button onclick="switchPage('page-grade1'); toggleMenu();">قوائم الشروحات والدروس</button>
 
             <div class="menu-category-title">الصف الثاني الثانوي</div>
-            <button onclick="switchPage('page-grade2'); toggleMenu();">قسم ثاني ثانوي عام</button>
+            <button onclick="switchPage('page-grade2-notices'); toggleMenu();">إشعارات وتنبيهات الثاني الثانوي</button>
+            <button onclick="switchPage('page-grade2'); toggleMenu();">قوائم الشروحات والدروس</button>
 
             <div class="menu-category-title">الصف الثالث الثانوي</div>
-            <button onclick="switchPage('page-grade3'); toggleMenu();">قسم التوجيهي (ثالث ثانوي)</button>
+            <button onclick="switchPage('page-grade3-notices'); toggleMenu();">إشعارات وتنبيهات الثالث الثانوي (التوجيهي)</button>
+            <button onclick="switchPage('page-grade3'); toggleMenu();">قوائم الشروحات والدروس</button>
 
             <div class="menu-category-title">الخدمات السريعة</div>
             <button onclick="switchPage('page-curricula'); toggleMenu();">مناهج البحرين</button>
@@ -803,6 +866,115 @@
             </div>
         </div>
 
+        <!-- ================= صفحة تنبيهات المدرسة العامة ================= -->
+        <div id="page-all-school-notices" class="page-view">
+            <div class="card-box">
+                <h2>تنبيهات وإشعارات المدرسة العامة</h2>
+                <p>هذه الخانة مخصصة لكافة الإعلانات والتنبيهات العامة التي تخص جميع طلاب المدرسة.</p>
+                <div class="announcements-box">
+                    <h3>لوحة الإعلانات العامة للمدرسة</h3>
+                    <div class="announcement-item">تم إطلاق المنصة الرقمية الرسمية لمدرسة الهداية الخليفية بنجاح.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= صفحة تنبيهات أول ثانوي ================= -->
+        <div id="page-grade1-notices" class="page-view">
+            <div class="card-box">
+                <h2>إشعارات وتنبيهات الصف الأول الثانوي</h2>
+                <div class="announcements-box">
+                    <h3>لوحة إعلانات أول ثانوي</h3>
+                    <div class="announcement-item">تنبيهات وإشعارات طلاب الصف الأول الثانوي العامة.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= صفحة تنبيهات ثاني ثانوي (مع التخصصات والأدبي) ================= -->
+        <div id="page-grade2-notices" class="page-view">
+            <div class="card-box">
+                <h2>إشعارات وتنبيهات الصف الثاني الثانوي</h2>
+                <p>اختر التخصص لعرض التنبيهات والرسائل الخاصة بمسارك الدراسي:</p>
+                
+                <div class="track-tabs-row" style="margin-bottom: 20px;">
+                    <button class="track-tab-btn active-track" onclick="switchTrack('g2', 'commercial')">تجاري</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g2', 'physMath')">فيز ريض</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g2', 'chemBio')">كيم حيا</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g2', 'literary')">أدبي</button>
+                </div>
+
+                <div id="g2-commercial" class="track-content-panel active-track-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثاني ثانوي - مسار تجاري</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات المسار التجاري للصف الثاني الثانوي.</div>
+                    </div>
+                </div>
+
+                <div id="g2-physMath" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثاني ثانوي - مسار فيز ريض</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات مسار فيز ريض للصف الثاني الثانوي.</div>
+                    </div>
+                </div>
+
+                <div id="g2-chemBio" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثاني ثانوي - مسار كيم حيا</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات مسار كيم حيا للصف الثاني الثانوي.</div>
+                    </div>
+                </div>
+
+                <div id="g2-literary" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثاني ثانوي - مسار أدبي</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات المسار الأدبي للصف الثاني الثانوي.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= صفحة تنبيهات ثالث ثانوي (مع التخصصات والأدبي) ================= -->
+        <div id="page-grade3-notices" class="page-view">
+            <div class="card-box">
+                <h2>إشعارات وتنبيهات الصف الثالث الثانوي (التوجيهي)</h2>
+                <p>اختر التخصص لعرض التنبيهات والرسائل الخاصة بمرحلة التوجيهي:</p>
+                
+                <div class="track-tabs-row" style="margin-bottom: 20px;">
+                    <button class="track-tab-btn active-track" onclick="switchTrack('g3', 'commercial')">تجاري</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g3', 'physMath')">فيز ريض</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g3', 'chemBio')">كيم حيا</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g3', 'literary')">أدبي</button>
+                </div>
+
+                <div id="g3-commercial" class="track-content-panel active-track-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثالث ثانوي - مسار تجاري</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات التوجيهي للمسار التجاري.</div>
+                    </div>
+                </div>
+
+                <div id="g3-physMath" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثالث ثانوي - مسار فيز ريض</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات التوجيهي لمسار فيز ريض.</div>
+                    </div>
+                </div>
+
+                <div id="g3-chemBio" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثالث ثانوي - مسار كيم حيا</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات التوجيهي لمسار كيم حيا.</div>
+                    </div>
+                </div>
+
+                <div id="g3-literary" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>تنبيهات ثالث ثانوي - مسار أدبي</h3>
+                        <div class="announcement-item">إشعارات وتنبيهات التوجيهي للمسار الأدبي.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- ================= صفحة عن المدرسة ================= -->
         <div id="page-about" class="page-view">
             <div class="card-box">
@@ -819,7 +991,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة مناهج البحرين (المحدثة بالرابط المطلوب) ================= -->
+        <!-- ================= صفحة مناهج البحرين ================= -->
         <div id="page-curricula" class="page-view">
             <div class="card-box">
                 <h2>مناهج البحرين والكتب الدراسية</h2>
@@ -854,15 +1026,15 @@
             </div>
         </div>
 
-        <!-- ================= صندوق الاقتراحات والآراء (بدون إجبار على إدخال إيميل) ================= -->
+        <!-- ================= صندوق الاقتراحات والآراء ================= -->
         <div id="page-feedback" class="page-view">
             <div class="card-box">
                 <h2>صندوق الاقتراحات والآراء لتطوير المنصة</h2>
                 <p>رأيك يهمنا جداً! هل لديك فكرة جديدة، مادة تود إضافتها، أو ملاحظة لتحسين أداء هذا الموقع؟ اكتبها لنا وسنأخذها بعين الاعتبار لتطوير المنصة وجعلها أفضل دائماً لخدمة زملائك الطلاب.</p>
                 
                 <form action="https://formspree.io/f/mjykzjby" method="POST" class="feedback-form">
-                    <input type="text" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني أو اسمك (اختياري)...[span_1](start_span)"[span_1](end_span)>
-                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required[span_2](start_span)[span_2](end_span)></textarea>
+                    <input type="text" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني أو اسمك (اختياري)...">
+                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required></textarea>
                     <button type="submit" class="download-action-btn" style="cursor: pointer; border: none;">إرسال الاقتراح</button>
                 </form>
             </div>
@@ -1028,6 +1200,15 @@
             }
         }
 
+        function switchTrack(gradePrefix, trackName) {
+            const parentGrade = gradePrefix === 'g2' ? document.getElementById('page-grade2-notices') : document.getElementById('page-grade3-notices');
+            parentGrade.querySelectorAll('.track-tab-btn').forEach(btn => btn.classList.remove('active-track'));
+            parentGrade.querySelectorAll('.track-content-panel').forEach(panel => panel.classList.remove('active-track-panel'));
+
+            event.currentTarget.classList.add('active-track');
+            document.getElementById(`${gradePrefix}-${trackName}`).classList.add('active-track-panel');
+        }
+
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             menu.classList.toggle('show');
@@ -1086,7 +1267,7 @@
                         startTimer();
                     } else {
                         alert("انتهت الاستراحة! حان الوقت للعودة لجلسة تركيز جديدة.");
-                        isWorkSession, isWorkSession = true, true;
+                        isWorkSession = true;
                         timeLeft = 25 * 60;
                         statusBadge.innerText = "وضع التركيز (جلسة عمل)";
                         statusBadge.style.color = "var(--accent-primary)";
