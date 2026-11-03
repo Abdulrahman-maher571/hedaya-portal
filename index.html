@@ -148,7 +148,7 @@
             backdrop-filter: blur(25px);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            width: 310px;
+            width: 320px;
             max-height: 85vh;
             overflow-y: auto;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -352,6 +352,47 @@
             font-size: 14px;
         }
 
+        .subject-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .subject-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .subject-card h4 {
+            font-size: 17px;
+            color: var(--accent-primary);
+            font-weight: 800;
+        }
+
+        .subject-card a {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+        }
+
+        .subject-card a:hover {
+            background: var(--accent-primary);
+            color: #020617;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
@@ -381,17 +422,22 @@
             </div>
         </div>
 
-        <!-- القائمة المنسدلة بالترتيب الجديد والمطلوب -->
+        <!-- القائمة المنسدلة منفصلة تماماً وخانات التنبيهات مستقلة عن الفيديوهات -->
         <div id="navMenu" class="nav-dropdown-menu">
             <button onclick="switchPage('page-home'); toggleMenu();">الصفحة الرئيسية</button>
             
-            <div class="menu-category-title">الخدمات العامة</div>
-            <button onclick="switchPage('page-all-school'); toggleMenu();">تنبيهات المدرسة عامة</button>
+            <div class="menu-category-title">التنبيهات والإعلانات العامة</div>
+            <button onclick="switchPage('page-all-school-notices'); toggleMenu();">تنبيهات وإشعارات المدرسة العامة</button>
 
-            <div class="menu-category-title">أقسام المراحل الدراسية والتنبيهات</div>
-            <button onclick="switchPage('page-grade1'); toggleMenu();">الصف الأول الثانوي (التنبيهات)</button>
-            <button onclick="switchPage('page-grade2'); toggleMenu();">الصف الثاني الثانوي (التنبيهات)</button>
-            <button onclick="switchPage('page-grade3'); toggleMenu();">الصف الثالث الثانوي (التنبيهات)</button>
+            <div class="menu-category-title">التنبيهات الخاصة بالمراحل الدراسية</div>
+            <button onclick="switchPage('page-grade1-notices'); toggleMenu();">إشعارات وتنبيهات أول ثانوي</button>
+            <button onclick="switchPage('page-grade2-notices'); toggleMenu();">إشعارات وتنبيهات ثاني ثانوي</button>
+            <button onclick="switchPage('page-grade3-notices'); toggleMenu();">إشعارات وتنبيهات ثالث ثانوي</button>
+
+            <div class="menu-category-title">قوائم الشروحات والفيديوهات الأصلية</div>
+            <button onclick="switchPage('page-grade1-videos'); toggleMenu();">شروحات وفيديوهات أول ثانوي</button>
+            <button onclick="switchPage('page-grade2-videos'); toggleMenu();">شروحات وفيديوهات ثاني ثانوي</button>
+            <button onclick="switchPage('page-grade3-videos'); toggleMenu();">شروحات وفيديوهات ثالث ثانوي</button>
 
             <div class="menu-category-title">خدمات إضافية</div>
             <button onclick="switchPage('page-curricula'); toggleMenu();">مناهج البحرين</button>
@@ -415,37 +461,37 @@
             </div>
             <div class="card-box">
                 <h2>مرحباً بك في الهداية الخليفية</h2>
-                <p>تم تحديث المنصة لتشمل أقسام التنبيهات المخصصة لكل صف وتخصص دراسي بدقة.</p>
+                <p>تم فصل أقسام التنبيهات والإشعارات عن قوائم الفيديوهات والشروحات بشكل كامل ونظيف لضمان عدم حدوث أي تداخل.</p>
             </div>
         </div>
 
-        <!-- 1. تنبيهات المدرسة عامة -->
-        <div id="page-all-school" class="page-view">
+        <!-- 1. إشعارات وتنبيهات المدرسة العامة -->
+        <div id="page-all-school-notices" class="page-view">
             <div class="card-box">
-                <h2>تنبيهات المدرسة عامة (لكل الطلاب)</h2>
+                <h2>تنبيهات وإشعارات المدرسة العامة</h2>
                 <div class="announcements-box">
-                    <h3>لوحة الإعلانات العامة للمدرسة</h3>
-                    <div class="announcement-item">أهلاً بكم في المنصة الرسمية لمدرسة الهداية الخليفية. تابعوا التنبيهات العامة هنا.</div>
+                    <h3>لوحة إعلانات المدرسة</h3>
+                    <div class="announcement-item">أهلاً بك في قسم الإعلانات والتنبيهات العامة لكافة طلاب المدرسة.</div>
                 </div>
             </div>
         </div>
 
-        <!-- 2. الصف الأول الثانوي (التنبيهات) -->
-        <div id="page-grade1" class="page-view">
+        <!-- 2. إشعارات وتنبيهات أول ثانوي -->
+        <div id="page-grade1-notices" class="page-view">
             <div class="card-box">
-                <h2>الصف الأول الثانوي - التنبيهات والإشعارات</h2>
+                <h2>إشعارات وتنبيهات الصف الأول الثانوي</h2>
                 <div class="announcements-box">
-                    <h3>تنبيهات الأول الثانوي الحصرية</h3>
-                    <div class="announcement-item">تم تحديث مستجدات وجداول الحصص الخاصة بالصف الأول الثانوي.</div>
+                    <h3>تنبيهات أول ثانوي</h3>
+                    <div class="announcement-item">هنا تظهر كافة التنبيهات والرسائل الخاصة بطلاب الصف الأول الثانوي فقط.</div>
                 </div>
             </div>
         </div>
 
-        <!-- 3. الصف الثاني الثانوي (التنبيهات مع اختيار التخصص) -->
-        <div id="page-grade2" class="page-view">
+        <!-- 3. إشعارات وتنبيهات ثاني ثانوي (مع اختيار التخصص منفصل عن الفيديوهات) -->
+        <div id="page-grade2-notices" class="page-view">
             <div class="card-box">
-                <h2>الصف الثاني الثانوي - التنبيهات والإشعارات</h2>
-                <p>اختر التخصص للانتقال المباشر للدردشة والتنبيهات الخاصة بمسارك:</p>
+                <h2>إشعارات وتنبيهات الصف الثاني الثانوي</h2>
+                <p>اختر التخصص لعرض التنبيهات الخاصة بمسارك الدراسي فقط:</p>
                 
                 <div class="track-tabs-row">
                     <button class="track-tab-btn active-track" onclick="switchTrack('g2', 'commercial')">تجاري</button>
@@ -455,32 +501,32 @@
 
                 <div id="g2-commercial" class="track-content-panel active-track-panel">
                     <div class="announcements-box">
-                        <h3>دردشة وتنبيهات ثاني ثانوي - مسار تجاري</h3>
-                        <div class="announcement-item">مرحباً بك في قسم مسار التجاري (ثاني ثانوي). التنبيهات هنا خاصة بكم.</div>
+                        <h3>تنبيهات مسار تجاري (ثاني ثانوي)</h3>
+                        <div class="announcement-item">تنبيهات وإعلانات مسار التجاري للصف الثاني الثانوي.</div>
                     </div>
                 </div>
 
                 <div id="g2-physMath" class="track-content-panel">
                     <div class="announcements-box">
-                        <h3>دردشة وتنبيهات ثاني ثانوي - مسار فيز ريض</h3>
-                        <div class="announcement-item">مرحباً بك في قسم مسار فيز ريض (ثاني ثانوي). التنبيهات هنا خاصة بكم.</div>
+                        <h3>تنبيهات مسار فيز ريض (ثاني ثانوي)</h3>
+                        <div class="announcement-item">تنبيهات وإعلانات مسار فيز ريض للصف الثاني الثانوي.</div>
                     </div>
                 </div>
 
                 <div id="g2-chemBio" class="track-content-panel">
                     <div class="announcements-box">
-                        <h3>دردشة وتنبيهات ثاني ثانوي - مسار كيم حيا</h3>
-                        <div class="announcement-item">مرحباً بك في قسم مسار كيم حيا (ثاني ثانوي). التنبيهات هنا خاصة بكم.</div>
+                        <h3>تنبيهات مسار كيم حيا (ثاني ثانوي)</h3>
+                        <div class="announcement-item">تنبيهات وإعلانات مسار كيم حيا للصف الثاني الثانوي.</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 4. الصف الثالث الثانوي (التنبيهات المستقلة تماماً) -->
-        <div id="page-grade3" class="page-view">
+        <!-- 4. إشعارات وتنبيهات ثالث ثانوي (التوجيهي المستقل) -->
+        <div id="page-grade3-notices" class="page-view">
             <div class="card-box">
-                <h2>الصف الثالث الثانوي (التوجيهي) - التنبيهات والإشعارات</h2>
-                <p>اختر التخصص للانتقال المباشر للدردشة والتنبيهات الخاصة بمرحلة التوجيهي:</p>
+                <h2>إشعارات وتنبيهات الصف الثالث الثانوي (التوجيهي)</h2>
+                <p>اختر التخصص لعرض التنبيهات الخاصة بمرحلة التوجيهي:</p>
                 
                 <div class="track-tabs-row">
                     <button class="track-tab-btn active-track" onclick="switchTrack('g3', 'commercial')">تجاري</button>
@@ -490,22 +536,77 @@
 
                 <div id="g3-commercial" class="track-content-panel active-track-panel">
                     <div class="announcements-box">
-                        <h3>دردشة وتنبيهات ثالث ثانوي - مسار تجاري</h3>
-                        <div class="announcement-item">قسم التوجيهي المستقل - مسار التجاري. لا يوجد أي تداخل مع الصف الثاني.</div>
+                        <h3>تنبيهات مسار تجاري (ثالث ثانوي)</h3>
+                        <div class="announcement-item">تنبيهات وإعلانات مسار التجاري للتوجيهي المستقل تماماً.</div>
                     </div>
                 </div>
 
                 <div id="g3-physMath" class="track-content-panel">
                     <div class="announcements-box">
-                        <h3>دردشة وتنبيهات ثالث ثانوي - مسار فيز ريض</h3>
-                        <div class="announcement-item">قسم التوجيهي المستقل - مسار فيز ريض. لا يوجد أي تداخل مع الصف الثاني.</div>
+                        <h3>تنبيهات مسار فيز ريض (ثالث ثانوي)</h3>
+                        <div class="announcement-item">تنبيهات وإعلانات مسار فيز ريض للتوجيهي المستقل تماماً.</div>
                     </div>
                 </div>
 
                 <div id="g3-chemBio" class="track-content-panel">
                     <div class="announcements-box">
-                        <h3>دردشة وتنبيهات ثالث ثانوي - مسار كيم حيا</h3>
-                        <div class="announcement-item">قسم التوجيهي المستقل - مسار كيم حيا. لا يوجد أي تداخل مع الصف الثاني.</div>
+                        <h3>تنبيهات مسار كيم حيا (ثالث ثانوي)</h3>
+                        <div class="announcement-item">تنبيهات وإعلانات مسار كيم حيا للتوجيهي المستقل تماماً.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. شروحات وفيديوهات أول ثانوي (الخنة الأصلية الخاصة بالفيديوهات منفصلة) -->
+        <div id="page-grade1-videos" class="page-view">
+            <div class="card-box">
+                <h2>شروحات وفيديوهات الصف الأول الثانوي</h2>
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>ريض 151</h4>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUusdHWXO6coD4zwDbwE6T0&si=wlaNnI2hnDQqmSzq" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>كيم 102</h4>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdVLjh707l8IO5-k3__g0C9l&si=iO5MY1JA6on09_km" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>فيز 102</h4>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUpczXUrezK2PqwesxnIxhM&si=jo5kXZRSNVYZO40Z" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. شروحات وفيديوهات ثاني ثانوي (الخانة الأصلية الخاصة بالفيديوهات) -->
+        <div id="page-grade2-videos" class="page-view">
+            <div class="card-box">
+                <h2>شروحات وفيديوهات الصف الثاني الثانوي</h2>
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>كيم 211</h4>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVsLkZ1sqv4-hoURGBeKBu-&si=bg9_kKCXND9vK9Ft" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>ريض 253</h4>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. شروحات وفيديوهات ثالث ثانوي (الخانة الأصلية الخاصة بالفيديوهات) -->
+        <div id="page-grade3-videos" class="page-view">
+            <div class="card-box">
+                <h2>شروحات وفيديوهات الصف الثالث الثانوي (التوجيهي)</h2>
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>كيم 315 - كيم 317</h4>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-owQCxxawUGh0kGXSJap-l9L&si=1ufBJQe83JwGXfNZ" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>فيز 311 - فيز 312</h4>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-ozNlh9EKzocFfBTClDdvXMb&si=P6Dknfrf_6GfDbY8" target="_blank">مشاهدة الدروس</a>
                     </div>
                 </div>
             </div>
@@ -573,7 +674,7 @@
         }
 
         function switchTrack(gradePrefix, trackName) {
-            const parentGrade = gradePrefix === 'g2' ? document.getElementById('page-grade2') : document.getElementById('page-grade3');
+            const parentGrade = gradePrefix === 'g2' ? document.getElementById('page-grade2-notices') : document.getElementById('page-grade3-notices');
             parentGrade.querySelectorAll('.track-tab-btn').forEach(btn => btn.classList.remove('active-track'));
             parentGrade.querySelectorAll('.track-content-panel').forEach(panel => panel.classList.remove('active-track-panel'));
 
