@@ -463,6 +463,63 @@
             color: #020617;
         }
 
+        .track-tabs-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .track-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .track-tab-btn.active-track, .track-tab-btn:hover {
+            background: var(--accent-primary);
+            color: #020617;
+            border-color: var(--accent-primary);
+        }
+
+        .track-content-panel {
+            display: none;
+        }
+
+        .track-content-panel.active-track-panel {
+            display: block;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .announcements-box {
+            background: rgba(56, 189, 248, 0.03);
+            border: 1px dashed var(--accent-primary);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .announcements-box h3 {
+            font-size: 16px;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .announcement-item {
+            background: rgba(255, 255, 255, 0.04);
+            border-right: 4px solid var(--accent-primary);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
         .pomodoro-box {
             text-align: center;
             background: rgba(255, 255, 255, 0.02);
@@ -689,7 +746,6 @@
             </div>
         </div>
 
-        <!-- القائمة المنسدلة (الثلاث خطوط) بالتعديلات المطلوبة والخانات الجديدة بدون المساس بالفيديوهات -->
         <div id="navMenu" class="nav-dropdown-menu">
             <button onclick="switchPage('page-home'); toggleMenu();">الصفحة الرئيسية</button>
             <button onclick="switchPage('page-about'); toggleMenu();">عن مدرسة الهداية الخليفية</button>
@@ -709,10 +765,14 @@
             <button onclick="switchPage('page-grade3-notices'); toggleMenu();">إشعارات وتنبيهات الثالث الثانوي (التوجيهي)</button>
             <button onclick="switchPage('page-grade3'); toggleMenu();">قوائم الشروحات والدروس</button>
 
-            <div class="menu-category-title">الخدمات السريعة والأدوات</div>
+            <div class="menu-category-title">الخدمات السريعة</div>
             <button onclick="switchPage('page-curricula'); toggleMenu();">مناهج البحرين</button>
+
+            <div class="menu-category-title">الأقسام الجديدة المبتكرة</div>
             <button onclick="switchPage('page-tips'); toggleMenu();">نصائح ذكية للتفوق الدراسي</button>
             <button onclick="switchPage('page-feedback'); toggleMenu();">صندوق الاقتراحات والآراء</button>
+            
+            <div class="menu-category-title">الخدمات والأدوات</div>
             <button onclick="switchPage('page-exams'); toggleMenu();">الامتحانات الوزارية النهائية</button>
         </div>
 
@@ -745,7 +805,8 @@
 
             <div class="card-box">
                 <h2>مرحباً بك في الهداية الخليفية - صرح التميز والإبداع</h2>
-                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين.</p>
+                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين. نحن نؤمن تماماً بأن التكنولوجيا والبرمجة قادرتان على إحداث ثورة حقيقية في طريقة تلقي المعلومة وتنظيم أوقات الدراسة، ولهذا قمنا بتطوير هذه الواجهة السلسة التي تتيح لكل طالب الوصول السريع إلى أحدث الشروحات المرئية، والملخصات الوزارية بضغطة زر واحدة ودون أي عناء.</p>
+                <p>إن تصفحك لهذا الموقع لا يقتصر فقط على الحصول على الروابط، بل هو انخراط في بيئة رقمية متكاملة تهدف إلى رفع كفاءتك التحصيلية، وتوفير وقتك الثمين، ومساعدتك في تنظيم يومك الدراسي بكل احترافية ومرونة لتكون دائماً في قمة الهرم الدراسي.</p>
                 
                 <div class="navigation-grid">
                     <div class="nav-link-card" onclick="switchPage('page-about')">
@@ -765,14 +826,22 @@
 
             <div class="colored-box-2" style="border-right: 5px solid var(--accent-gold);">
                 <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">رسالة موجهة إلى إدارة المدرسة والهيئة التعليمية</h3>
-                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، لتكون هذه البوابة الإلكترونية أداة مساعدة فعالة لزملائنا الطلاب.</p>
+                <p style="color: inherit; margin-bottom: 10px;">حضرة مدير مدرسة الهداية الخليفية المحترم، وأفاضل المعلمين والأعزاء الأجلاء،</p>
+                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، والذي تجسد في بناء هذه البوابة الإلكترونية الشاملة لتكون أداة مساعدة فعالة لزملائنا الطلاب في تنظيم أوقاتهم، ومراجعة دروسهم، وسهل وصولهم لفيديوهات الشرح والأرشيف الوزاري بكل يسر وسهولة، مؤكدين حرصنا الدائم على رفع اسم المدرسة عالياً في كافة المحافل.</p>
             </div>
 
             <div class="card-box">
                 <h2>مؤقت التركيز الدراسي (بومودورو) وتتبع المهام</h2>
+                <p>اخترنا لك تقنية **البومودورو (Pomodoro Technique)** العالمية لكونها واحدة من أقوى وأنجح الوسائل العلمية المثبتة لزيادة التركيز ومحاربة التسويف والمماطلة أثناء المذاكرة الطويلة.</p>
+                
+                <div class="colored-box-3" style="margin-top: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">ما هي فوائد استخدام مؤقت البومودورو في دراستك؟</h3>
+                    <p style="color: inherit; margin: 0; font-size: 14px;">عندما تقسم وقتك إلى جلسات عمل مركزة مدتها 25 دقيقة يعقبها استراحة قصيرة، فإنك تحمي عقلك من التشتت والإرهاق الذهني المزمن. هذا النظام يخدع مخك ليكون في أقصى درجات الإنتاجية لأنه يعلم أن هناك وقتاً محدداً للاستراحة قريباً، مما يرفع قدرتك على استيعاب المعلومات المعقدة وتثبيتها في الذاكرة طويلة المدى بكفاءة منقطعة النظير.</p>
+                </div>
+
                 <div class="pomodoro-box">
                     <div id="timerStatusBadge" class="timer-status-badge">وضع التركيز (جلسة عمل)</div>
-                    <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية...">
+                    <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية (مثال: حل واجب الرياضيات)...">
                     
                     <div class="timer-controls-row">
                         <button class="time-adjust-btn" onclick="adjustTime(5)">+ 5 دقائق</button>
@@ -789,25 +858,27 @@
 
                     <div class="completed-tasks-container">
                         <h3>سجل المهام المنجزة المحفوظة</h3>
-                        <ul id="completedTasksList" class="tasks-list"></ul>
+                        <ul id="completedTasksList" class="tasks-list">
+                            <!-- يتم تعبئتها ديناميكياً -->
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات المدرسة العامة (الجديدة) ================= -->
+        <!-- ================= صفحة تنبيهات المدرسة العامة ================= -->
         <div id="page-all-school-notices" class="page-view">
             <div class="card-box">
                 <h2>تنبيهات وإشعارات المدرسة العامة</h2>
                 <p>هذه الخانة مخصصة لكافة الإعلانات والتنبيهات العامة التي تخص جميع طلاب المدرسة.</p>
                 <div class="announcements-box">
-                    <h3>لوحة الإعلانات العامة</h3>
+                    <h3>لوحة الإعلانات العامة للمدرسة</h3>
                     <div class="announcement-item">تم إطلاق المنصة الرقمية الرسمية لمدرسة الهداية الخليفية بنجاح.</div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات أول ثانوي (الجديدة) ================= -->
+        <!-- ================= صفحة تنبيهات أول ثانوي ================= -->
         <div id="page-grade1-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات وتنبيهات الصف الأول الثانوي</h2>
@@ -818,11 +889,11 @@
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات ثاني ثانوي (مع مسار الأدبي والفيز ريض والكيم حيا والتجاري) ================= -->
+        <!-- ================= صفحة تنبيهات ثاني ثانوي (مع التخصصات والأدبي) ================= -->
         <div id="page-grade2-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات وتنبيهات الصف الثاني الثانوي</h2>
-                <p>اختر التخصص لعرض التنبيهات والرسائل الخاصة بمسارك:</p>
+                <p>اختر التخصص لعرض التنبيهات والرسائل الخاصة بمسارك الدراسي:</p>
                 
                 <div class="track-tabs-row" style="margin-bottom: 20px;">
                     <button class="track-tab-btn active-track" onclick="switchTrack('g2', 'commercial')">تجاري</button>
@@ -861,7 +932,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات ثالث ثانوي (مع مسار الأدبي والفيز ريض والكيم حيا والتجاري) ================= -->
+        <!-- ================= صفحة تنبيهات ثالث ثانوي (مع التخصصات والأدبي) ================= -->
         <div id="page-grade3-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات وتنبيهات الصف الثالث الثانوي (التوجيهي)</h2>
@@ -908,11 +979,14 @@
         <div id="page-about" class="page-view">
             <div class="card-box">
                 <h2>عن مدرسة الهداية الخليفية التاريخية</h2>
-                <p>تعتبر مدرسة الهداية الخليفية الثانوية للبنين بمنطقة المحرق في مملكة البحرين، منارة العلم الأولى وأول صرح للتعليم النظامي الحكومي في تاريخ البحرين ومنطقة الخليج العربي بأسرها. تأسست رسمياً في عام 1919م.</p>
+                <p>تعتبر مدرسة الهداية الخليفية الثانوية للبنين بمنطقة المحرق في مملكة البحرين، منارة العلم الأولى وأول صرح للتعليم النظامي الحكومي في تاريخ البحرين ومنطقة الخليج العربي بأسرها. تأسست المدرسة رسمياً في عام 1919م بفضل الجهود الوطنية المخلصة والتفاف أبناء المجتمع البحريني الأوفياء حول رؤية تعليمية رائدة تهدف إلى نشر المعرفة والعلوم الحديثة لبناء أجيال قادرة على النهوض بالوطن.</p>
+                <p>منذ تأسيسها، مثلت المدرسة حاضنة رئيسية للفكر والثقافة والرياضة، حيث تخرجت من قاعاتها التاريخية أجيال متعاقبة من رجالات الدولة والعلماء والأدباء والقادة الرياضيين والرواد في شتى المجالات والقطاعات. وقد حافظت الهداية الخليفية على مكانتها الرفيعة كرمز وطني يجمع بين أصالة الماضي وعراقة التقاليد التربوية، وبين مواكبة أحدث التطورات التكنولوجية والأكاديمية المعاصرة.</p>
+                
                 <div class="school-contact-card">
                     <h4>بيانات الاتصال والبريد الإلكتروني الرسمي للمدرسة</h4>
                     <p><strong>البريد الإلكتروني الرسمي:</strong> hedayahseb@moe.gov.bh</p>
                     <p><strong>رقم الهاتف المعتمد:</strong> 17322336</p>
+                    <p><strong>العنوان الجغرافي:</strong> مملكة البحرين - المحرق (مبنى: 221، مجمع: 222)</p>
                 </div>
             </div>
         </div>
@@ -922,6 +996,12 @@
             <div class="card-box">
                 <h2>مناهج البحرين والكتب الدراسية</h2>
                 <p>يُعتبر موقع المناهج البحرينية المرجع الشامل والأبرز للحصول على الكتب المدرسية، أوراق العمل، والملخصات لجميع المراحل الدراسية في مملكة البحرين.</p>
+                
+                <div class="colored-box-1" style="margin-top: 20px; margin-bottom: 20px;">
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 8px;">الوصول المباشر للملفات والكتب:</h3>
+                    <p style="color: inherit; margin: 0; font-size: 14px; text-align: right;">اضغط على الزر أدناه للانتقال الفوري إلى موقع المناهج البحرينية وتحميل كافة المواد الدراسية بكل سهولة.</p>
+                </div>
+
                 <div style="text-align: center; margin-top: 20px;">
                     <a href="https://almanahj.com/bh/#google_vignette" target="_blank" class="download-action-btn" style="padding: 12px 24px; font-size: 15px;">الانتقال إلى موقع المناهج البحرينية</a>
                 </div>
@@ -932,9 +1012,16 @@
         <div id="page-tips" class="page-view">
             <div class="card-box">
                 <h2>قسم النصائح الذكية للتفوق الدراسي</h2>
+                <p>إرشادات علمية وتقنيات مجربة لتحسين الكفاءة الذهنية وزيادة الإنتاجية أثناء المذاكرة:</p>
+                
                 <div class="colored-box-3">
                     <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">1. تقنية الاستدعاء النشط (Active Recall)</h3>
-                    <p style="color: inherit; margin: 0;">لا تقرأ الكتاب مراراً وتكراراً؛ بل أغلقه واكتب ملخصاً لما فهمته بأسلوبك الخاص.</p>
+                    <p style="color: inherit; margin: 0;">لا تقرأ الكتاب مراراً وتكراراً؛ بل أغلقه واكتب ملخصاً لما فهمته بأسلوبك الخاص. هذه الطريقة تُجبر الدماغ على بناء روابط عصبية أقوى وتثبيت المعلومات على المدى الطويل.</p>
+                </div>
+
+                <div class="colored-box-4">
+                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">2. التكرار المتباعد (Spaced Repetition)</h3>
+                    <p style="color: inherit; margin: 0;">راجع المعلومات على فترات زمنية متقطعة (اليوم، بعد 3 أيام، بعد أسبوع). هذا يمنع منحنى النسيان الطبيعي ويضمن بقاء المعلومات جاهزة في ذاكرتك دائماً.</p>
                 </div>
             </div>
         </div>
@@ -943,6 +1030,8 @@
         <div id="page-feedback" class="page-view">
             <div class="card-box">
                 <h2>صندوق الاقتراحات والآراء لتطوير المنصة</h2>
+                <p>رأيك يهمنا جداً! هل لديك فكرة جديدة، مادة تود إضافتها، أو ملاحظة لتحسين أداء هذا الموقع؟ اكتبها لنا وسنأخذها بعين الاعتبار لتطوير المنصة وجعلها أفضل دائماً لخدمة زملائك الطلاب.</p>
+                
                 <form action="https://formspree.io/f/mjykzjby" method="POST" class="feedback-form">
                     <input type="text" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني أو اسمك (اختياري)...">
                     <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required></textarea>
@@ -951,7 +1040,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة أول ثانوي (الفيديوهات الأصلية كما هي) ================= -->
+        <!-- ================= صفحة أول ثانوي ================= -->
         <div id="page-grade1" class="page-view">
             <div class="card-box">
                 <h2>قسم الصف الأول الثانوي (قوائم الشروحات والدروس)</h2>
@@ -982,7 +1071,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة ثاني ثانوي (الفيديوهات الأصلية كما هي) ================= -->
+        <!-- ================= صفحة ثاني ثانوي ================= -->
         <div id="page-grade2" class="page-view">
             <div class="card-box">
                 <h2>قسم الصف الثاني الثانوي (قوائم الشروحات والدروس)</h2>
@@ -1008,7 +1097,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة ثالث ثانوي (الفيديوهات الأصلية كما هي) ================= -->
+        <!-- ================= صفحة ثالث ثانوي ================= -->
         <div id="page-grade3" class="page-view">
             <div class="card-box">
                 <h2>قسم الصف الثالث الثانوي - التوجيهي (قوائم الشروحات والدروس)</h2>
@@ -1034,7 +1123,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة الامتحانات الوزارية ================= -->
+        <!-- ================= قسم الامتحانات الوزارية ================= -->
         <div id="page-exams" class="page-view">
             <div class="card-box">
                 <h2>قسم الامتحانات الوزارية النهائية (منصة الوزارة الرسمية)</h2>
