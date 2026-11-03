@@ -153,6 +153,7 @@
             font-weight: 600;
         }
 
+        /* قائمة الثلاث خطوط المحدثة بكل الخانات المطلوبة */
         .nav-dropdown-menu {
             position: absolute;
             top: 75px;
@@ -162,7 +163,7 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             width: 320px;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             display: none;
@@ -326,20 +327,9 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .colored-box-4 {
-            background: var(--box-gradient-4);
-            color: #ffffff;
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(180, 83, 9, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
         [data-theme="light"] .colored-box-1,
         [data-theme="light"] .colored-box-2,
-        [data-theme="light"] .colored-box-3,
-        [data-theme="light"] .colored-box-4 {
+        [data-theme="light"] .colored-box-3 {
             color: #0f172a;
         }
 
@@ -463,7 +453,7 @@
             color: #020617;
         }
 
-        /* تنسيق أزرار اختيار المسارات والتبويبات الفرعية */
+        /* تنسيق أزرار التخصصات داخل الصفحات */
         .track-tabs-row {
             display: flex;
             gap: 10px;
@@ -498,7 +488,6 @@
             animation: fadeIn 0.3s ease forwards;
         }
 
-        /* لوحة التنبيهات الديناميكية */
         .announcements-box {
             background: rgba(56, 189, 248, 0.03);
             border: 1px dashed var(--accent-primary);
@@ -748,28 +737,25 @@
             </div>
         </div>
 
+        <!-- القائمة المنسدلة للثلاث خطوط (محدثة بالكامل حسب طلبك) -->
         <div id="navMenu" class="nav-dropdown-menu">
             <button onclick="switchPage('page-home'); toggleMenu();">الصفحة الرئيسية</button>
             <button onclick="switchPage('page-all-school'); toggleMenu();">📢 إشعارات وتنبيهات المدرسة العامة</button>
             <button onclick="switchPage('page-about'); toggleMenu();">عن مدرسة الهداية الخليفية</button>
             
             <div class="menu-category-title">الصف الأول الثانوي</div>
-            <button onclick="switchPage('page-grade1'); toggleMenu();">قوائم الشروحات والدروس</button>
+            <button onclick="switchPage('page-grade1'); toggleMenu();">إشعارات وتنبيهات أول ثانوي</button>
 
             <div class="menu-category-title">الصف الثاني الثانوي</div>
-            <button onclick="switchPage('page-grade2'); toggleMenu();">قسم ثاني ثانوي (اختر تخصصك)</button>
+            <button onclick="switchPage('page-grade2'); toggleMenu();">إشعارات وتنبيهات ثاني ثانوي (اختر التخصص)</button>
 
             <div class="menu-category-title">الصف الثالث الثانوي</div>
-            <button onclick="switchPage('page-grade3'); toggleMenu();">قسم التوجيهي (اختر تخصصك)</button>
+            <button onclick="switchPage('page-grade3'); toggleMenu();">إشعارات وتنبيهات ثالث ثانوي (اختر التخصص)</button>
 
             <div class="menu-category-title">الخدمات السريعة</div>
             <button onclick="switchPage('page-curricula'); toggleMenu();">مناهج البحرين</button>
-
-            <div class="menu-category-title">الأقسام الجديدة المبتكرة</div>
             <button onclick="switchPage('page-tips'); toggleMenu();">نصائح ذكية للتفوق الدراسي</button>
             <button onclick="switchPage('page-feedback'); toggleMenu();">صندوق الاقتراحات والآراء</button>
-            
-            <div class="menu-category-title">الخدمات والأدوات</div>
             <button onclick="switchPage('page-exams'); toggleMenu();">الامتحانات الوزارية النهائية</button>
         </div>
 
@@ -782,7 +768,6 @@
 
         <!-- ================= الصفحة الرئيسية ================= -->
         <div id="page-home" class="page-view active-page">
-            
             <div class="colored-box-1">
                 <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; opacity: 0.9;">رسالة تحفيزية لليوم</h3>
                 <p id="motivationalQuoteText" style="font-size: 19px; font-weight: 800; color: inherit; margin: 0; text-align: center;">جاري تحميل حكمة اليوم...</p>
@@ -802,8 +787,7 @@
 
             <div class="card-box">
                 <h2>مرحباً بك في الهداية الخليفية - صرح التميز والإبداع</h2>
-                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين. نحن نؤمن تماماً بأن التكنولوجيا والبرمجة قادرتان على إحداث ثورة حقيقية في طريقة تلقي المعلومة وتنظيم أوقات الدراسة.</p>
-                
+                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين.</p>
                 <div class="navigation-grid">
                     <div class="nav-link-card" onclick="switchPage('page-all-school')">
                         <span>إشعارات المدرسة العامة</span>
@@ -820,30 +804,21 @@
                 </div>
             </div>
 
-            <div class="colored-box-2" style="border-right: 5px solid var(--accent-gold);">
-                <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">رسالة موجهة إلى إدارة المدرسة والهيئة التعليمية</h3>
-                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، لتكون هذه البوابة الإلكترونية أداة مساعدة فعالة لزملائنا الطلاب في تنظيم أوقاتهم، ومراجعة دروسهم، وتسهيل وصولهم لفيديوهات الشرح بكل يسر وسهولة.</p>
-            </div>
-
             <div class="card-box">
                 <h2>مؤقت التركيز الدراسي (بومودورو) وتتبع المهام</h2>
                 <div class="pomodoro-box">
                     <div id="timerStatusBadge" class="timer-status-badge">وضع التركيز (جلسة عمل)</div>
-                    <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية (مثال: حل واجب الرياضيات)...">
-                    
+                    <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية...">
                     <div class="timer-controls-row">
                         <button class="time-adjust-btn" onclick="adjustTime(5)">+ 5 دقائق</button>
                         <button class="time-adjust-btn" onclick="adjustTime(-5)">- 5 دقائق</button>
                     </div>
-
                     <div id="timerDisplay" class="timer-display">25:00</div>
-                    
                     <div class="timer-controls-row">
                         <button class="timer-btn" onclick="startTimer()">بدء الوقت</button>
                         <button class="timer-btn" onclick="pauseTimer()">إيقاف مؤقت</button>
                         <button class="timer-btn" onclick="resetTimer()">إعادة ضبط</button>
                     </div>
-
                     <div class="completed-tasks-container">
                         <h3>سجل المهام المنجزة المحفوظة</h3>
                         <ul id="completedTasksList" class="tasks-list"></ul>
@@ -852,15 +827,14 @@
             </div>
         </div>
 
-        <!-- ================= قسم إشعارات المدرسة العامة لجميع الطلاب ================= -->
+        <!-- ================= إشعارات المدرسة العامة ================= -->
         <div id="page-all-school" class="page-view">
             <div class="card-box">
                 <h2>📢 إشعارات وتنبيهات لجميع طلاب المدرسة</h2>
-                <p>هذه الخانة مخصصة لكافة الإعلانات والتنبيهات العامة التي تخص جميع طلاب مدرسة الهداية الخليفية.</p>
                 <div class="announcements-box">
                     <h3>لوحة الإعلانات العامة</h3>
                     <div id="generalAnnouncementsList">
-                        <div class="announcement-item">📌 تم إطلاق المنصة الرقمية الرسمية لمدرسة الهداية الخليفية بنجاح! تابعوا الأقسام للحصول على الشروحات.</div>
+                        <div class="announcement-item">📌 تم إطلاق المنصة الرقمية الرسمية لمدرسة الهداية الخليفية بنجاح!</div>
                     </div>
                 </div>
             </div>
@@ -870,60 +844,51 @@
         <div id="page-about" class="page-view">
             <div class="card-box">
                 <h2>عن مدرسة الهداية الخليفية التاريخية</h2>
-                <p>تعتبر مدرسة الهداية الخليفية الثانوية للبنين بمنطقة المحرق في مملكة البحرين، منارة العلم الأولى وأول صرح للتعليم النظامي الحكومي في تاريخ البحرين ومنطقة الخليج العربي بأسرها. تأسست رسمياً في عام 1919م.</p>
-                <div class="school-contact-card">
-                    <h4>بيانات الاتصال والبريد الإلكتروني الرسمي للمدرسة</h4>
-                    <p><strong>البريد الإلكتروني الرسمي:</strong> hedayahseb@moe.gov.bh</p>
-                    <p><strong>رقم الهاتف المعتمد:</strong> 17322336</p>
-                </div>
+                <p>تعتبر مدرسة الهداية الخليفية الثانوية للبنين بمنطقة المحرق أول صرح للتعليم النظامي في البحرين والخليج (تأسست 1919م).</p>
             </div>
         </div>
 
-        <!-- ================= صفحة مناهج البحرين ================= -->
+        <!-- ================= مناهج البحرين ================= -->
         <div id="page-curricula" class="page-view">
             <div class="card-box">
                 <h2>مناهج البحرين والكتب الدراسية</h2>
-                <p>يُعتبر موقع المناهج البحرينية المرجع الشامل والأبرز للحصول على الكتب المدرسية، أوراق العمل، والملخصات.</p>
                 <div style="text-align: center; margin-top: 20px;">
-                    <a href="https://almanahj.com/bh/#google_vignette" target="_blank" class="download-action-btn" style="padding: 12px 24px; font-size: 15px;">الانتقال إلى موقع المناهج البحرينية</a>
+                    <a href="https://almanahj.com/bh/#google_vignette" target="_blank" class="download-action-btn">الانتقال إلى موقع المناهج البحرينية</a>
                 </div>
             </div>
         </div>
 
-        <!-- ================= قسم النصائح الدراسية ================= -->
+        <!-- ================= نصائح ذكية ================= -->
         <div id="page-tips" class="page-view">
             <div class="card-box">
                 <h2>قسم النصائح الذكية للتفوق الدراسي</h2>
                 <div class="colored-box-3">
-                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">1. تقنية الاستدعاء النشط (Active Recall)</h3>
-                    <p style="color: inherit; margin: 0;">لا تقرأ الكتاب مراراً وتكراراً؛ بل أغلقه واكتب ملخصاً لما فهمته بأسلوبك الخاص.</p>
+                    <h3>تقنية الاستدعاء النشط</h3>
+                    <p style="color: inherit; margin: 0;">أغلق الكتاب واكتب ملخصاً لما فهمته بأسلوبك.</p>
                 </div>
             </div>
         </div>
 
-        <!-- ================= صندوق الاقتراحات والآراء ================= -->
+        <!-- ================= صندوق الاقتراحات ================= -->
         <div id="page-feedback" class="page-view">
             <div class="card-box">
                 <h2>صندوق الاقتراحات والآراء لتطوير المنصة</h2>
                 <form action="https://formspree.io/f/mjykzjby" method="POST" class="feedback-form">
                     <input type="text" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني أو اسمك (اختياري)...[span_0](start_span)[span_0](end_span)">
-                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required></textarea>
+                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا..." required></textarea>
                     <button type="submit" class="download-action-btn" style="cursor: pointer; border: none;">إرسال الاقتراح</button>
                 </form>
             </div>
         </div>
 
-        <!-- ================= صفحة أول ثانوي ================= -->
+        <!-- ================= أول ثانوي (التنبيهات والدروس) ================= -->
         <div id="page-grade1" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الأول الثانوي (قوائم الشروحات والدروس)</h2>
+                <h2>إشعارات وتنبيهات الصف الأول الثانوي</h2>
                 <div class="announcements-box" style="margin-bottom: 20px;">
-                    <h3>تنبيهات وإشعارات أول ثانوي</h3>
-                    <div id="grade1Announcements">
-                        <div class="announcement-item">📌 تم تحديث قائمة شروحات مواد الفصل الأول والثاني.</div>
-                    </div>
+                    <h3>تنبيهات أول ثانوي الحصرية</h3>
+                    <div class="announcement-item">📌 تم تحديث روابط شروحات مواد الأول الثانوي للفصل الدراسي الحالي.</div>
                 </div>
-                
                 <div class="subject-links-grid">
                     <div class="subject-card">
                         <h4>ريض 151</h4>
@@ -941,11 +906,11 @@
             </div>
         </div>
 
-        <!-- ================= صفحة ثاني ثانوي (اختر تخصصك) ================= -->
+        <!-- ================= ثاني ثانوي (التنبيهات مع اختيار التخصص) ================= -->
         <div id="page-grade2" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الثاني الثانوي (اختر التخصص المطلوب)</h2>
-                <p>اختر التخصص أدناه لعرض الشروحات والتنبيهات الخاصة بمسارك:</p>
+                <h2>إشعارات وتنبيهات الصف الثاني الثانوي</h2>
+                <p>اختر التخصص أدناه لعرض التنبيهات والمقررات الخاصة بمسارك:</p>
                 
                 <div class="track-tabs-row">
                     <button class="track-tab-btn active-track" onclick="switchTrack('g2', 'commercial')">تجاري</button>
@@ -953,26 +918,19 @@
                     <button class="track-tab-btn" onclick="switchTrack('g2', 'physMath')">فيز ريض</button>
                 </div>
 
-                <!-- تخصص تجاري -->
+                <!-- تجاري -->
                 <div id="g2-commercial" class="track-content-panel active-track-panel">
                     <div class="announcements-box">
-                        <h3>إشعارات تخصص تجاري - ثاني ثانوي</h3>
-                        <div class="announcement-item">📌 لا توجد إشعارات جديدة حالياً لتخصص التجاري.</div>
-                    </div>
-                    <div class="subject-links-grid">
-                        <div class="subject-card">
-                            <h4>مقررات التجاري (ثاني ثانوي)</h4>
-                            <p style="font-size:12px;">قوائم ومراجعات المسار التجاري</p>
-                            <a href="https://www.youtube.com/channel/UCoeTHTgTMKJRYpH8-w2xPsw" target="_blank">عرض المواد</a>
-                        </div>
+                        <h3>إشعارات تخصص تجاري (ثاني ثانوي)</h3>
+                        <div class="announcement-item">📌 تنبيهات ومراجعات مسار التجاري متوفرة هنا.</div>
                     </div>
                 </div>
 
-                <!-- تخصص كيم حيا -->
+                <!-- كيم حيا -->
                 <div id="g2-chemBio" class="track-content-panel">
                     <div class="announcements-box">
-                        <h3>إشعارات تخصص كيم حيا - ثاني ثانوي</h3>
-                        <div class="announcement-item">📌 تابعوا شروحات الكيمياء والرياضيات المتقدمة للفصل الحالي.</div>
+                        <h3>إشعارات تخصص كيم حيا (ثاني ثانوي)</h3>
+                        <div class="announcement-item">📌 تابعوا شروحات الكيمياء والرياضيات للفصل الحالي.</div>
                     </div>
                     <div class="subject-links-grid">
                         <div class="subject-card">
@@ -986,11 +944,11 @@
                     </div>
                 </div>
 
-                <!-- تخصص فيز ريض -->
+                <!-- فيز ريض -->
                 <div id="g2-physMath" class="track-content-panel">
                     <div class="announcements-box">
-                        <h3>إشعارات تخصص فيز ريض - ثاني ثانوي</h3>
-                        <div class="announcement-item">📌 تم إضافة روابط حصص الفيزياء والرياضيات للمسار الهندسي.</div>
+                        <h3>إشعارات تخصص فيز ريض (ثاني ثانوي)</h3>
+                        <div class="announcement-item">📌 أحدث تنبيهات ومقررات الفيزياء والرياضيات المتقدمة.</div>
                     </div>
                     <div class="subject-links-grid">
                         <div class="subject-card">
@@ -1002,11 +960,11 @@
             </div>
         </div>
 
-        <!-- ================= صفحة ثالث ثانوي (اختر تخصصك) ================= -->
+        <!-- ================= ثالث ثانوي (التنبيهات مع اختيار التخصص) ================= -->
         <div id="page-grade3" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الثالث الثانوي - التوجيهي (اختر التخصص المطلوب)</h2>
-                <p>اختر التخصص أدناه لعرض الشروحات والتنبيهات الخاصة بمرحلة التوجيهي:</p>
+                <h2>إشعارات وتنبيهات الصف الثالث الثانوي (التوجيهي)</h2>
+                <p>اختر التخصص أدناه لعرض التنبيهات والمقررات الخاصة بمرحلة التوجيهي:</p>
                 
                 <div class="track-tabs-row">
                     <button class="track-tab-btn active-track" onclick="switchTrack('g3', 'commercial')">تجاري</button>
@@ -1014,25 +972,19 @@
                     <button class="track-tab-btn" onclick="switchTrack('g3', 'physMath')">فيز ريض</button>
                 </div>
 
-                <!-- تخصص تجاري -->
+                <!-- تجاري -->
                 <div id="g3-commercial" class="track-content-panel active-track-panel">
                     <div class="announcements-box">
                         <h3>إشعارات التوجيهي - مسار تجاري</h3>
                         <div class="announcement-item">📌 إرشادات اختبارات التوجيهي للمسار التجاري قريباً.</div>
                     </div>
-                    <div class="subject-links-grid">
-                        <div class="subject-card">
-                            <h4>مقررات التجاري (توجيهي)</h4>
-                            <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة</a>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- تخصص كيم حيا -->
+                <!-- كيم حيا -->
                 <div id="g3-chemBio" class="track-content-panel">
                     <div class="announcements-box">
                         <h3>إشعارات التوجيهي - مسار كيم حيا</h3>
-                        <div class="announcement-item">📌 تابعوا شروحات الكيمياء المتقدمة (كيم 315 - 317).</div>
+                        <div class="announcement-item">📌 تنبيهات ومراجعات الكيمياء المتقدمة (كيم 315 - 317).</div>
                     </div>
                     <div class="subject-links-grid">
                         <div class="subject-card">
@@ -1042,11 +994,11 @@
                     </div>
                 </div>
 
-                <!-- تخصص فيز ريض -->
+                <!-- فيز ريض -->
                 <div id="g3-physMath" class="track-content-panel">
                     <div class="announcements-box">
                         <h3>إشعارات التوجيهي - مسار فيز ريض</h3>
-                        <div class="announcement-item">📌 مراجعات الفيزياء المتقدمة متوفرة الآن في القائمة.</div>
+                        <div class="announcement-item">📌 تنبيهات وحصص الفيزياء المتقدمة متوفرة الآن.</div>
                     </div>
                     <div class="subject-links-grid">
                         <div class="subject-card">
@@ -1058,22 +1010,22 @@
             </div>
         </div>
 
-        <!-- ================= قسم الامتحانات الوزارية ================= -->
+        <!-- ================= الامتحانات الوزارية ================= -->
         <div id="page-exams" class="page-view">
             <div class="card-box">
-                <h2>قسم الامتحانات الوزارية النهائية (منصة الوزارة الرسمية)</h2>
+                <h2>قسم الامتحانات الوزارية النهائية</h2>
                 <div class="exams-layout">
                     <div class="exam-item-card">
-                        <h4>امتحانات الأول الثانوي</h4>
-                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للأول الثانوي</a>
+                        <h4>الأول الثانوي</h4>
+                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">منصة الوزارة</a>
                     </div>
                     <div class="exam-item-card">
-                        <h4>امتحانات الثاني الثانوي</h4>
-                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للثاني الثانوي</a>
+                        <h4>الثاني الثانوي</h4>
+                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">منصة الوزارة</a>
                     </div>
                     <div class="exam-item-card">
-                        <h4>امتحانات التوجيهي (الثالث الثانوي)</h4>
-                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للتوجيهي</a>
+                        <h4>التوجيهي</h4>
+                        <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">منصة الوزارة</a>
                     </div>
                 </div>
             </div>
@@ -1123,7 +1075,6 @@
             }
         }
 
-        // دالة التنقل بين التخصصات (تجاري / كيم حيا / فيز ريض) للثاني والثالث الثانوي
         function switchTrack(gradePrefix, trackName) {
             const parentGrade = gradePrefix === 'g2' ? document.getElementById('page-grade2') : document.getElementById('page-grade3');
             parentGrade.querySelectorAll('.track-tab-btn').forEach(btn => btn.classList.remove('active-track'));
@@ -1221,7 +1172,7 @@
         function deleteTask(index) {
             let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
             tasks.splice(index, 1);
-            localStorage.setItem('completedTasks', JSON.stringify(tasks));
+            localStorage.setItem('completed`tasks', JSON.stringify(tasks));
             loadCompletedTasks();
         }
     </script>
