@@ -511,13 +511,40 @@
             margin-bottom: 10px;
         }
 
-        .announcement-item {
+        /* كرت الإعلان العصري الجديد */
+        .modern-notice-card {
             background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
             border-right: 4px solid var(--accent-primary);
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            text-align: right;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .modern-notice-card h4 {
+            color: var(--accent-primary);
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .modern-notice-card p {
+            color: var(--text-color);
             font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .notice-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
         }
 
         .pomodoro-box {
@@ -866,17 +893,23 @@
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات المدرسة العامة (تم دمج الجدول الحي هنا) ================= -->
+        <!-- ================= صفحة تنبيهات المدرسة العامة (شكل كرتات عصري نظيف) ================= -->
         <div id="page-all-school-notices" class="page-view">
             <div class="card-box">
                 <h2>تنبيهات وإشعارات المدرسة العامة</h2>
-                <p>هذه الخانة مخصصة لكافة الإعلانات والتنبيهات العامة المحدثة تلقائياً من نظام المدرسة:</p>
+                <p>تابع أحدث التنبيهات والإعلانات الصادرة من الإدارة بشكل عصري ومنسق:</p>
                 
-                <div style="width: 100%; overflow-x: auto; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 20px;">
-                    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQE2qzXeDuqDymSe0_VQFALNRGMx-zMfJ5pYR51KYML5LeV0eIvsSkZWSfhWynAqAR_cPmtE4p8Gejv/pubhtml?gid=355268307&amp;single=true&amp;widget=true&amp;headers=false" 
-                            style="width: 100%; height: 500px; border: none; background: transparent;" 
-                            title="لوحة إعلانات مدرسة الهداية الخليفية">
-                    </iframe>
+                <!-- حاوية ستعرض فيها الإعلانات كبطاقات -->
+                <div id="dynamicNoticesContainer" style="margin-top: 20px;">
+                    <div class="modern-notice-card">
+                        <h4>جاري تحميل الإعلانات...</h4>
+                        <p>يرجى الانتظار قليلاً لجلب البيانات وتحديث اللوحة.</p>
+                    </div>
+                </div>
+
+                <!-- زر لتحديث البيانات يدوياً إذا رغب الطالب -->
+                <div style="text-align: center; margin-top: 20px;">
+                    <button onclick="loadGoogleSheetNotices()" class="download-action-btn" style="cursor: pointer; border: none;">تحديث الإعلانات الآن</button>
                 </div>
             </div>
         </div>
@@ -892,7 +925,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات ثاني ثانوي (مع التخصصات والأدبي) ================= -->
+        <!-- ================= صفحة تنبيهات ثاني ثانوي ================= -->
         <div id="page-grade2-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات وتنبيهات الصف الثاني الثانوي</h2>
@@ -935,7 +968,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحة تنبيهات ثالث ثانوي (مع التخصصات والأدبي) ================= -->
+        <!-- ================= صفحة تنبيهات ثالث ثانوي ================= -->
         <div id="page-grade3-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات وتنبيهات الصف الثالث الثانوي (التوجيهي)</h2>
@@ -1173,7 +1206,59 @@
             updateLiveClockAndTimers();
             setInterval(updateLiveClockAndTimers, 1000);
             loadCompletedTasks();
+            loadGoogleSheetNotices(); // جلب الإعلانات تلقائياً عند فتح الموقع
         });
+
+        // دالة سحب بيانات الجدول وعرضها في كرتات منسقة
+        async function loadGoogleSheetNotices() {
+            const container = document.getElementById('dynamicNoticesContainer');
+            // استخدام رابط الـ iframe لتوليد رابط الـ CSV المباشر لجوجل شيت (التبويب الفرعي gid=355268307)
+            const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE2qzXeDuqDymSe0_VQFALNRGMx-zMfJ5pYR51KYML5LeV0eIvsSkZWSfhWynAqAR_cPmtE4p8Gejv/pub?gid=355268307&single=true&output=csv";
+            
+            try {
+                const response = await fetch(csvUrl);
+                const data = await response.text();
+                const rows = data.split('\n').map(row => row.split(','));
+                
+                container.innerHTML = ''; // تفريغ الحاوية
+                
+                if (rows.length <= 1) {
+                    container.innerHTML = '<div class="modern-notice-card"><h4>لا توجد تنبيهات حالياً</h4><p>سيتم نشر الإعلانات الجديدة هنا فور توفرها.</p></div>';
+                    return;
+                }
+
+                // تخطي صف العنوان (i = 1) وعرض أحدث التنبيهات
+                for (let i = 1; i < rows.length; i++) {
+                    const cols = rows[i];
+                    if (cols.length >= 4 && cols[3]) { // التأكد من وجود نص الإعلان
+                        const timeVal = cols[0] ? cols[0].replace(/"/g, '') : '';
+                        const dateVal = cols[1] ? cols[1].replace(/"/g, '') : '';
+                        const teacherVal = cols[2] ? cols[2].replace(/"/g, '') : 'الإدارة المدرسية';
+                        const textVal = cols[3] ? cols[3].replace(/"/g, '') : '';
+
+                        const card = document.createElement('div');
+                        card.className = 'modern-notice-card';
+                        card.innerHTML = `
+                            <h4>تنبيه رسمي جديد</h4>
+                            <p>${textVal}</p>
+                            <div class="notice-meta">
+                                <span>المسؤول: ${teacherVal}</span>
+                                <span>التاريخ: ${dateVal} - ${timeVal}</span>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    }
+                }
+
+                if (container.children.length === 0) {
+                    container.innerHTML = '<div class="modern-notice-card"><h4>لا توجد تنبيهات مطابقة</h4><p>الجدول فارغ أو قيد التحديث.</p></div>';
+                }
+
+            } catch (error) {
+                console.error("خطأ في جلب البيانات:", error);
+                container.innerHTML = '<div class="modern-notice-card"><h4>تنبيه</h4><p>تعذر جلب الإعلانات مباشرة، تأكد من نشر جدول جوجل شيت على الويب بصيغة CSV.</p></div>';
+            }
+        }
 
         function updateLiveClockAndTimers() {
             const now = new Date();
