@@ -150,6 +150,15 @@
             color: var(--accent-primary);
         }
 
+        .menu-category-title {
+            font-size: 11px;
+            color: var(--accent-primary);
+            font-weight: 800;
+            padding: 8px 12px 4px 12px;
+            margin-top: 5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
         .main-wrapper {
             max-width: 1100px;
             width: 100%;
@@ -208,6 +217,47 @@
             border: none;
         }
 
+        .subject-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .subject-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .subject-card h4 {
+            font-size: 17px;
+            color: var(--accent-primary);
+            font-weight: 800;
+        }
+
+        .subject-card a {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+        }
+
+        .subject-card a:hover {
+            background: var(--accent-primary);
+            color: #020617;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -231,7 +281,7 @@
             </button>
             <div class="logo-title">
                 <h1>مدرسة الهداية الخليفية</h1>
-                <span>بوابة الإشعارات والجدداول</span>
+                <span>بوابة الإشعارات والدروس والشروحات</span>
             </div>
         </div>
         <button class="theme-btn" onclick="toggleAppTheme()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border-color); color:var(--text-color); padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:700;">تغيير المظهر</button>
@@ -239,10 +289,21 @@
 
     <div id="navMenu" class="nav-dropdown-menu">
         <button onclick="switchPage('page-home'); toggleMenu();">الصفحة الرئيسية</button>
+        
+        <div class="menu-category-title">التنبيهات المباشرة</div>
         <button onclick="switchPage('page-all-notices'); toggleMenu();">تنبيهات المدرسة العامة</button>
-        <button onclick="switchPage('page-grade1'); toggleMenu();">الصف الأول الثانوي</button>
-        <button onclick="switchPage('page-grade2'); toggleMenu();">الصف الثاني الثانوي</button>
-        <button onclick="switchPage('page-grade3'); toggleMenu();">الصف الثالث الثانوي (التوجيهي)</button>
+
+        <div class="menu-category-title">الصف الأول الثانوي</div>
+        <button onclick="switchPage('page-grade1-notices'); toggleMenu();">إشعارات الأول الثانوي</button>
+        <button onclick="switchPage('page-grade1-lessons'); toggleMenu();">قوائم شروحات ودروس الأول الثانوي</button>
+
+        <div class="menu-category-title">الصف الثاني الثانوي</div>
+        <button onclick="switchPage('page-grade2-notices'); toggleMenu();">إشعارات الثاني الثانوي</button>
+        <button onclick="switchPage('page-grade2-lessons'); toggleMenu();">قوائم شروحات ودروس الثاني الثانوي</button>
+
+        <div class="menu-category-title">الصف الثالث الثانوي (التوجيهي)</div>
+        <button onclick="switchPage('page-grade3-notices'); toggleMenu();">إشعارات الثالث الثانوي</button>
+        <button onclick="switchPage('page-grade3-lessons'); toggleMenu();">قوائم شروحات ودروس الثالث الثانوي</button>
     </div>
 
     <div class="main-wrapper">
@@ -251,7 +312,7 @@
         <div id="page-home" class="page-view active-page">
             <div class="card-box">
                 <h2>مرحباً بك في بوابة الهداية الخليفية</h2>
-                <p>اختر من القائمة الجانبية أعلى الصفحة القسم أو الفصل الذي تود الاطلاع على إشعاراته وجداوله المباشرة بكل سهولة.</p>
+                <p>اختر من القائمة الجانبية أعلى الصفحة القسم، الإشعارات، أو قوائم شروحات اليوتيوب التي تود الاطلاع عليها بكل سهولة.</p>
             </div>
         </div>
 
@@ -266,38 +327,112 @@
             </div>
         </div>
 
-        <!-- الأول الثانوي -->
-        <div id="page-grade1" class="page-view">
+        <!-- إشعارات الأول الثانوي -->
+        <div id="page-grade1-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات الصف الأول الثانوي</h2>
-                <p>جداول وإشعارات طلاب الصف الأول الثانوي:</p>
                 <div class="sheet-iframe-container">
-                    <!-- استبدل الرقم برقم gid الخاص بتبويب أول ثانوي -->
                     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQE2qzXeDuqDymSe0_VQFALNRGMx-zMfJ5pYR51KYML5LeV0eIvsSkZWSfhWynAqAR_cPmtE4p8Gejv/pubhtml?gid=0&single=true&widget=true&headers=false"></iframe>
                 </div>
             </div>
         </div>
 
-        <!-- الثاني الثانوي -->
-        <div id="page-grade2" class="page-view">
+        <!-- شروحات الأول الثانوي -->
+        <div id="page-grade1-lessons" class="page-view">
+            <div class="card-box">
+                <h2>قوائم شروحات ودروس الصف الأول الثانوي</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر القائمة على القناة لتجد باقي الدروس ودروس الفصل الثاني</p>
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>ريض 151</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUusdHWXO6coD4zwDbwE6T0&si=wlaNnI2hnDQqmSzq" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>كيم 102</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdVLjh707l8IO5-k3__g0C9l&si=iO5MY1JA6on09_km" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>فيز 102</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الفيزياء</p>
+                        <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUpczXUrezK2PqwesxnIxhM&si=jo5kXZRSNVYZO40Z" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UCoeTHTgTMKJRYpH8-w2xPsw" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- إشعارات الثاني الثانوي -->
+        <div id="page-grade2-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات الصف الثاني الثانوي</h2>
-                <p>جداول وإشعارات طلاب الصف الثاني الثانوي:</p>
                 <div class="sheet-iframe-container">
-                    <!-- استبدل الرقم برقم gid الخاص بتبويب ثاني ثانوي -->
                     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQE2qzXeDuqDymSe0_VQFALNRGMx-zMfJ5pYR51KYML5LeV0eIvsSkZWSfhWynAqAR_cPmtE4p8Gejv/pubhtml?gid=0&single=true&widget=true&headers=false"></iframe>
                 </div>
             </div>
         </div>
 
-        <!-- الثالث الثانوي -->
-        <div id="page-grade3" class="page-view">
+        <!-- شروحات الثاني الثانوي -->
+        <div id="page-grade2-lessons" class="page-view">
+            <div class="card-box">
+                <h2>قوائم شروحات ودروس الصف الثاني الثانوي</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر القائمة على القناة لتجد باقي الدروس ودروس الفصل الثاني</p>
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>كيم 211</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVsLkZ1sqv4-hoURGBeKBu-&si=bg9_kKCXND9vK9Ft" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>ريض 253</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
+                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UC3Uq-DT2YyJGxSpgySOKp3g" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- إشعارات الثالث الثانوي -->
+        <div id="page-grade3-notices" class="page-view">
             <div class="card-box">
                 <h2>إشعارات الصف الثالث الثانوي (التوجيهي)</h2>
-                <p>جداول وإشعارات طلاب الصف الثالث الثانوي:</p>
                 <div class="sheet-iframe-container">
-                    <!-- استبدل الرقم برقم gid الخاص بتبويب ثالث ثانوي -->
                     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQE2qzXeDuqDymSe0_VQFALNRGMx-zMfJ5pYR51KYML5LeV0eIvsSkZWSfhWynAqAR_cPmtE4p8Gejv/pubhtml?gid=0&single=true&widget=true&headers=false"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- شروحات الثالث الثانوي -->
+        <div id="page-grade3-lessons" class="page-view">
+            <div class="card-box">
+                <h2>قوائم شروحات ودروس الصف الثالث الثانوي (التوجيهي)</h2>
+                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر القائمة على القناة لتجد باقي الدروس ودروس الفصل الثاني</p>
+                <div class="subject-links-grid">
+                    <div class="subject-card">
+                        <h4>كيم 315 - كيم 317</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس الكيمياء المتقدمة</p>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-owQCxxawUGh0kGXSJap-l9L&si=1ufBJQe83JwGXfNZ" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card">
+                        <h4>فيز 311 - فيز 312</h4>
+                        <p style="font-size:12px;">قائمة تشغيل دروس الفيزياء المتقدمة</p>
+                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-ozNlh9EKzocFfBTClDdvXMb&si=P6Dknfrf_6GfDbY8" target="_blank">مشاهدة الدروس</a>
+                    </div>
+                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
+                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
+                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
+                        <a href="https://www.youtube.com/channel/UCM_B8MPfINsblnpbm21Zk_w" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                    </div>
                 </div>
             </div>
         </div>
