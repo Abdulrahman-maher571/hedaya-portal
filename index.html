@@ -463,6 +463,65 @@
             color: #020617;
         }
 
+        /* تنسيق أزرار اختيار المسارات والتبويبات الفرعية */
+        .track-tabs-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .track-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .track-tab-btn.active-track, .track-tab-btn:hover {
+            background: var(--accent-primary);
+            color: #020617;
+            border-color: var(--accent-primary);
+        }
+
+        .track-content-panel {
+            display: none;
+        }
+
+        .track-content-panel.active-track-panel {
+            display: block;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        /* لوحة التنبيهات الديناميكية */
+        .announcements-box {
+            background: rgba(56, 189, 248, 0.03);
+            border: 1px dashed var(--accent-primary);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .announcements-box h3 {
+            font-size: 16px;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .announcement-item {
+            background: rgba(255, 255, 255, 0.04);
+            border-right: 4px solid var(--accent-primary);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
         .pomodoro-box {
             text-align: center;
             background: rgba(255, 255, 255, 0.02);
@@ -691,16 +750,17 @@
 
         <div id="navMenu" class="nav-dropdown-menu">
             <button onclick="switchPage('page-home'); toggleMenu();">الصفحة الرئيسية</button>
+            <button onclick="switchPage('page-all-school'); toggleMenu();">📢 إشعارات وتنبيهات المدرسة العامة</button>
             <button onclick="switchPage('page-about'); toggleMenu();">عن مدرسة الهداية الخليفية</button>
             
             <div class="menu-category-title">الصف الأول الثانوي</div>
             <button onclick="switchPage('page-grade1'); toggleMenu();">قوائم الشروحات والدروس</button>
 
             <div class="menu-category-title">الصف الثاني الثانوي</div>
-            <button onclick="switchPage('page-grade2'); toggleMenu();">قسم ثاني ثانوي عام</button>
+            <button onclick="switchPage('page-grade2'); toggleMenu();">قسم ثاني ثانوي (اختر تخصصك)</button>
 
             <div class="menu-category-title">الصف الثالث الثانوي</div>
-            <button onclick="switchPage('page-grade3'); toggleMenu();">قسم التوجيهي (ثالث ثانوي)</button>
+            <button onclick="switchPage('page-grade3'); toggleMenu();">قسم التوجيهي (اختر تخصصك)</button>
 
             <div class="menu-category-title">الخدمات السريعة</div>
             <button onclick="switchPage('page-curricula'); toggleMenu();">مناهج البحرين</button>
@@ -742,13 +802,12 @@
 
             <div class="card-box">
                 <h2>مرحباً بك في الهداية الخليفية - صرح التميز والإبداع</h2>
-                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين. نحن نؤمن تماماً بأن التكنولوجيا والبرمجة قادرتان على إحداث ثورة حقيقية في طريقة تلقي المعلومة وتنظيم أوقات الدراسة، ولهذا قمنا بتطوير هذه الواجهة السلسة التي تتيح لكل طالب الوصول السريع إلى أحدث الشروحات المرئية، والملخصات الوزارية بضغطة زر واحدة ودون أي عناء.</p>
-                <p>إن تصفحك لهذا الموقع لا يقتصر فقط على الحصول على الروابط، بل هو انخراط في بيئة رقمية متكاملة تهدف إلى رفع كفاءتك التحصيلية، وتوفير وقتك الثمين، ومساعدتك في تنظيم يومك الدراسي بكل احترافية ومرونة لتكون دائماً في قمة الهرم الدراسي.</p>
+                <p>تُعد هذه المنصة الرقمية الشاملة ثمرة تفكير تقني عميق، صُممت بعناية فائقة لتكون المرجع الأول والأساسي لطلاب مدرسة الهداية الخليفية العريقة في مملكة البحرين. نحن نؤمن تماماً بأن التكنولوجيا والبرمجة قادرتان على إحداث ثورة حقيقية في طريقة تلقي المعلومة وتنظيم أوقات الدراسة.</p>
                 
                 <div class="navigation-grid">
-                    <div class="nav-link-card" onclick="switchPage('page-about')">
-                        <span>تاريخ الهداية الخليفية</span>
-                        <span>اكتشف الإرث العريق للمدرسة</span>
+                    <div class="nav-link-card" onclick="switchPage('page-all-school')">
+                        <span>إشعارات المدرسة العامة</span>
+                        <span>آخر التنبيهات لجميع طلاب المدرسة</span>
                     </div>
                     <div class="nav-link-card" onclick="switchPage('page-curricula')">
                         <span>مناهج البحرين</span>
@@ -763,19 +822,11 @@
 
             <div class="colored-box-2" style="border-right: 5px solid var(--accent-gold);">
                 <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">رسالة موجهة إلى إدارة المدرسة والهيئة التعليمية</h3>
-                <p style="color: inherit; margin-bottom: 10px;">حضرة مدير مدرسة الهداية الخليفية المحترم، وأفاضل المعلمين والأعزاء الأجلاء،</p>
-                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، والذي تجسد في بناء هذه البوابة الإلكترونية الشاملة لتكون أداة مساعدة فعالة لزملائنا الطلاب في تنظيم أوقاتهم، ومراجعة دروسهم، وسهل وصولهم لفيديوهات الشرح والأرشيف الوزاري بكل يسر وسهولة، مؤكدين حرصنا الدائم على رفع اسم المدرسة عالياً في كافة المحافل.</p>
+                <p style="color: inherit; margin: 0;">نضع بين أيديكم الكريمة هذا الإنجاز البرمجي والتقني المتواضع، لتكون هذه البوابة الإلكترونية أداة مساعدة فعالة لزملائنا الطلاب في تنظيم أوقاتهم، ومراجعة دروسهم، وتسهيل وصولهم لفيديوهات الشرح بكل يسر وسهولة.</p>
             </div>
 
             <div class="card-box">
                 <h2>مؤقت التركيز الدراسي (بومودورو) وتتبع المهام</h2>
-                <p>اخترنا لك تقنية **البومودورو (Pomodoro Technique)** العالمية لكونها واحدة من أقوى وأنجح الوسائل العلمية المثبتة لزيادة التركيز ومحاربة التسويف والمماطلة أثناء المذاكرة الطويلة.</p>
-                
-                <div class="colored-box-3" style="margin-top: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">ما هي فوائد استخدام مؤقت البومودورو في دراستك؟</h3>
-                    <p style="color: inherit; margin: 0; font-size: 14px;">عندما تقسم وقتك إلى جلسات عمل مركزة مدتها 25 دقيقة يعقبها استراحة قصيرة، فإنك تحمي عقلك من التشتت والإرهاق الذهني المزمن. هذا النظام يخدع مخك ليكون في أقصى درجات الإنتاجية لأنه يعلم أن هناك وقتاً محدداً للاستراحة قريباً، مما يرفع قدرتك على استيعاب المعلومات المعقدة وتثبيتها في الذاكرة طويلة المدى بكفاءة منقطعة النظير.</p>
-                </div>
-
                 <div class="pomodoro-box">
                     <div id="timerStatusBadge" class="timer-status-badge">وضع التركيز (جلسة عمل)</div>
                     <input type="text" id="pomodoroTaskInput" class="pomodoro-task-input" placeholder="اكتب المهمة الحالية (مثال: حل واجب الرياضيات)...">
@@ -795,9 +846,21 @@
 
                     <div class="completed-tasks-container">
                         <h3>سجل المهام المنجزة المحفوظة</h3>
-                        <ul id="completedTasksList" class="tasks-list">
-                            <!-- يتم تعبئتها ديناميكياً -->
-                        </ul>
+                        <ul id="completedTasksList" class="tasks-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= قسم إشعارات المدرسة العامة لجميع الطلاب ================= -->
+        <div id="page-all-school" class="page-view">
+            <div class="card-box">
+                <h2>📢 إشعارات وتنبيهات لجميع طلاب المدرسة</h2>
+                <p>هذه الخانة مخصصة لكافة الإعلانات والتنبيهات العامة التي تخص جميع طلاب مدرسة الهداية الخليفية.</p>
+                <div class="announcements-box">
+                    <h3>لوحة الإعلانات العامة</h3>
+                    <div id="generalAnnouncementsList">
+                        <div class="announcement-item">📌 تم إطلاق المنصة الرقمية الرسمية لمدرسة الهداية الخليفية بنجاح! تابعوا الأقسام للحصول على الشروحات.</div>
                     </div>
                 </div>
             </div>
@@ -807,29 +870,20 @@
         <div id="page-about" class="page-view">
             <div class="card-box">
                 <h2>عن مدرسة الهداية الخليفية التاريخية</h2>
-                <p>تعتبر مدرسة الهداية الخليفية الثانوية للبنين بمنطقة المحرق في مملكة البحرين، منارة العلم الأولى وأول صرح للتعليم النظامي الحكومي في تاريخ البحرين ومنطقة الخليج العربي بأسرها. تأسست المدرسة رسمياً في عام 1919م بفضل الجهود الوطنية المخلصة والتفاف أبناء المجتمع البحريني الأوفياء حول رؤية تعليمية رائدة تهدف إلى نشر المعرفة والعلوم الحديثة لبناء أجيال قادرة على النهوض بالوطن.</p>
-                <p>منذ تأسيسها، مثلت المدرسة حاضنة رئيسية للفكر والثقافة والرياضة، حيث تخرجت من قاعاتها التاريخية أجيال متعاقبة من رجالات الدولة والعلماء والأدباء والقادة الرياضيين والرواد في شتى المجالات والقطاعات. وقد حافظت الهداية الخليفية على مكانتها الرفيعة كرمز وطني يجمع بين أصالة الماضي وعراقة التقاليد التربوية، وبين مواكبة أحدث التطورات التكنولوجية والأكاديمية المعاصرة.</p>
-                
+                <p>تعتبر مدرسة الهداية الخليفية الثانوية للبنين بمنطقة المحرق في مملكة البحرين، منارة العلم الأولى وأول صرح للتعليم النظامي الحكومي في تاريخ البحرين ومنطقة الخليج العربي بأسرها. تأسست رسمياً في عام 1919م.</p>
                 <div class="school-contact-card">
                     <h4>بيانات الاتصال والبريد الإلكتروني الرسمي للمدرسة</h4>
                     <p><strong>البريد الإلكتروني الرسمي:</strong> hedayahseb@moe.gov.bh</p>
                     <p><strong>رقم الهاتف المعتمد:</strong> 17322336</p>
-                    <p><strong>العنوان الجغرافي:</strong> مملكة البحرين - المحرق (مبنى: 221، مجمع: 222)</p>
                 </div>
             </div>
         </div>
 
-        <!-- ================= صفحة مناهج البحرين (المحدثة بالرابط المطلوب) ================= -->
+        <!-- ================= صفحة مناهج البحرين ================= -->
         <div id="page-curricula" class="page-view">
             <div class="card-box">
                 <h2>مناهج البحرين والكتب الدراسية</h2>
-                <p>يُعتبر موقع المناهج البحرينية المرجع الشامل والأبرز للحصول على الكتب المدرسية، أوراق العمل، والملخصات لجميع المراحل الدراسية في مملكة البحرين.</p>
-                
-                <div class="colored-box-1" style="margin-top: 20px; margin-bottom: 20px;">
-                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 8px;">الوصول المباشر للملفات والكتب:</h3>
-                    <p style="color: inherit; margin: 0; font-size: 14px; text-align: right;">اضغط على الزر أدناه للانتقال الفوري إلى موقع المناهج البحرينية وتحميل كافة المواد الدراسية بكل سهولة.</p>
-                </div>
-
+                <p>يُعتبر موقع المناهج البحرينية المرجع الشامل والأبرز للحصول على الكتب المدرسية، أوراق العمل، والملخصات.</p>
                 <div style="text-align: center; margin-top: 20px;">
                     <a href="https://almanahj.com/bh/#google_vignette" target="_blank" class="download-action-btn" style="padding: 12px 24px; font-size: 15px;">الانتقال إلى موقع المناهج البحرينية</a>
                 </div>
@@ -840,29 +894,20 @@
         <div id="page-tips" class="page-view">
             <div class="card-box">
                 <h2>قسم النصائح الذكية للتفوق الدراسي</h2>
-                <p>إرشادات علمية وتقنيات مجربة لتحسين الكفاءة الذهنية وزيادة الإنتاجية أثناء المذاكرة:</p>
-                
                 <div class="colored-box-3">
                     <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">1. تقنية الاستدعاء النشط (Active Recall)</h3>
-                    <p style="color: inherit; margin: 0;">لا تقرأ الكتاب مراراً وتكراراً؛ بل أغلقه واكتب ملخصاً لما فهمته بأسلوبك الخاص. هذه الطريقة تُجبر الدماغ على بناء روابط عصبية أقوى وتثبيت المعلومات على المدى الطويل.</p>
-                </div>
-
-                <div class="colored-box-4">
-                    <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">2. التكرار المتباعد (Spaced Repetition)</h3>
-                    <p style="color: inherit; margin: 0;">راجع المعلومات على فترات زمنية متقطعة (اليوم، بعد 3 أيام، بعد أسبوع). هذا يمنع منحنى النسيان الطبيعي ويضمن بقاء المعلومات جاهزة في ذاكرتك دائماً.</p>
+                    <p style="color: inherit; margin: 0;">لا تقرأ الكتاب مراراً وتكراراً؛ بل أغلقه واكتب ملخصاً لما فهمته بأسلوبك الخاص.</p>
                 </div>
             </div>
         </div>
 
-        <!-- ================= صندوق الاقتراحات والآراء (بدون إجبار على إدخال إيميل) ================= -->
+        <!-- ================= صندوق الاقتراحات والآراء ================= -->
         <div id="page-feedback" class="page-view">
             <div class="card-box">
                 <h2>صندوق الاقتراحات والآراء لتطوير المنصة</h2>
-                <p>رأيك يهمنا جداً! هل لديك فكرة جديدة، مادة تود إضافتها، أو ملاحظة لتحسين أداء هذا الموقع؟ اكتبها لنا وسنأخذها بعين الاعتبار لتطوير المنصة وجعلها أفضل دائماً لخدمة زملائك الطلاب.</p>
-                
                 <form action="https://formspree.io/f/mjykzjby" method="POST" class="feedback-form">
-                    <input type="text" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني أو اسمك (اختياري)...[span_1](start_span)"[span_1](end_span)>
-                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required[span_2](start_span)[span_2](end_span)></textarea>
+                    <input type="text" name="email" class="feedback-input" placeholder="اكتب بريدك الإلكتروني أو اسمك (اختياري)...[span_0](start_span)[span_0](end_span)">
+                    <textarea name="message" class="feedback-textarea" placeholder="اكتب اقتراحك أو ملاحظتك هنا بكل تفصيل..." required></textarea>
                     <button type="submit" class="download-action-btn" style="cursor: pointer; border: none;">إرسال الاقتراح</button>
                 </form>
             </div>
@@ -872,80 +917,142 @@
         <div id="page-grade1" class="page-view">
             <div class="card-box">
                 <h2>قسم الصف الأول الثانوي (قوائم الشروحات والدروس)</h2>
-                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
+                <div class="announcements-box" style="margin-bottom: 20px;">
+                    <h3>تنبيهات وإشعارات أول ثانوي</h3>
+                    <div id="grade1Announcements">
+                        <div class="announcement-item">📌 تم تحديث قائمة شروحات مواد الفصل الأول والثاني.</div>
+                    </div>
+                </div>
                 
                 <div class="subject-links-grid">
                     <div class="subject-card">
                         <h4>ريض 151</h4>
-                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
                         <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUusdHWXO6coD4zwDbwE6T0&si=wlaNnI2hnDQqmSzq" target="_blank">مشاهدة الدروس</a>
                     </div>
                     <div class="subject-card">
                         <h4>كيم 102</h4>
-                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
                         <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdVLjh707l8IO5-k3__g0C9l&si=iO5MY1JA6on09_km" target="_blank">مشاهدة الدروس</a>
                     </div>
                     <div class="subject-card">
                         <h4>فيز 102</h4>
-                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الفيزياء</p>
                         <a href="https://youtube.com/playlist?list=PLlG_YNvzmOdUpczXUrezK2PqwesxnIxhM&si=jo5kXZRSNVYZO40Z" target="_blank">مشاهدة الدروس</a>
                     </div>
-                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
-                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
-                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
-                        <a href="https://www.youtube.com/channel/UCoeTHTgTMKJRYpH8-w2xPsw" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= صفحة ثاني ثانوي ================= -->
+        <!-- ================= صفحة ثاني ثانوي (اختر تخصصك) ================= -->
         <div id="page-grade2" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الثاني الثانوي (قوائم الشروحات والدروس)</h2>
-                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
+                <h2>قسم الصف الثاني الثانوي (اختر التخصص المطلوب)</h2>
+                <p>اختر التخصص أدناه لعرض الشروحات والتنبيهات الخاصة بمسارك:</p>
                 
-                <div class="subject-links-grid">
-                    <div class="subject-card">
-                        <h4>كيم 211</h4>
-                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الكيمياء</p>
-                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVsLkZ1sqv4-hoURGBeKBu-&si=bg9_kKCXND9vK9Ft" target="_blank">مشاهدة الدروس</a>
+                <div class="track-tabs-row">
+                    <button class="track-tab-btn active-track" onclick="switchTrack('g2', 'commercial')">تجاري</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g2', 'chemBio')">كيم حيا</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g2', 'physMath')">فيز ريض</button>
+                </div>
+
+                <!-- تخصص تجاري -->
+                <div id="g2-commercial" class="track-content-panel active-track-panel">
+                    <div class="announcements-box">
+                        <h3>إشعارات تخصص تجاري - ثاني ثانوي</h3>
+                        <div class="announcement-item">📌 لا توجد إشعارات جديدة حالياً لتخصص التجاري.</div>
                     </div>
-                    <div class="subject-card">
-                        <h4>ريض 253</h4>
-                        <p style="font-size:12px;">قائمة تشغيل دروس مادة الرياضيات</p>
-                        <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
+                    <div class="subject-links-grid">
+                        <div class="subject-card">
+                            <h4>مقررات التجاري (ثاني ثانوي)</h4>
+                            <p style="font-size:12px;">قوائم ومراجعات المسار التجاري</p>
+                            <a href="https://www.youtube.com/channel/UCoeTHTgTMKJRYpH8-w2xPsw" target="_blank">عرض المواد</a>
+                        </div>
                     </div>
-                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
-                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
-                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
-                        <a href="https://www.youtube.com/channel/UC3Uq-DT2YyJGxSpgySOKp3g" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                </div>
+
+                <!-- تخصص كيم حيا -->
+                <div id="g2-chemBio" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>إشعارات تخصص كيم حيا - ثاني ثانوي</h3>
+                        <div class="announcement-item">📌 تابعوا شروحات الكيمياء والرياضيات المتقدمة للفصل الحالي.</div>
+                    </div>
+                    <div class="subject-links-grid">
+                        <div class="subject-card">
+                            <h4>كيم 211</h4>
+                            <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVsLkZ1sqv4-hoURGBeKBu-&si=bg9_kKCXND9vK9Ft" target="_blank">مشاهدة الدروس</a>
+                        </div>
+                        <div class="subject-card">
+                            <h4>ريض 253</h4>
+                            <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تخصص فيز ريض -->
+                <div id="g2-physMath" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>إشعارات تخصص فيز ريض - ثاني ثانوي</h3>
+                        <div class="announcement-item">📌 تم إضافة روابط حصص الفيزياء والرياضيات للمسار الهندسي.</div>
+                    </div>
+                    <div class="subject-links-grid">
+                        <div class="subject-card">
+                            <h4>ريض 253</h4>
+                            <a href="https://youtube.com/playlist?list=PLX8PAyx4tghVoKlXDwCOOc2Fs_nIQsCyD&si=idqg9KgOGfc0yp2-" target="_blank">مشاهدة الدروس</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= صفحة ثالث ثانوي ================= -->
+        <!-- ================= صفحة ثالث ثانوي (اختر تخصصك) ================= -->
         <div id="page-grade3" class="page-view">
             <div class="card-box">
-                <h2>قسم الصف الثالث الثانوي - التوجيهي (قوائم الشروحات والدروس)</h2>
-                <p style="color: var(--accent-primary); font-weight: bold; margin-bottom: 15px;">هذه دروس الفصل الأول.. انقر في آخر الصفحة على القناه لتجد بقيه الدروس ودروس الفصل الثاني</p>
+                <h2>قسم الصف الثالث الثانوي - التوجيهي (اختر التخصص المطلوب)</h2>
+                <p>اختر التخصص أدناه لعرض الشروحات والتنبيهات الخاصة بمرحلة التوجيهي:</p>
                 
-                <div class="subject-links-grid">
-                    <div class="subject-card">
-                        <h4>كيم 315 - كيم 317</h4>
-                        <p style="font-size:12px;">قائمة تشغيل دروس الكيمياء المتقدمة</p>
-                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-owQCxxawUGh0kGXSJap-l9L&si=1ufBJQe83JwGXfNZ" target="_blank">مشاهدة الدروس</a>
+                <div class="track-tabs-row">
+                    <button class="track-tab-btn active-track" onclick="switchTrack('g3', 'commercial')">تجاري</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g3', 'chemBio')">كيم حيا</button>
+                    <button class="track-tab-btn" onclick="switchTrack('g3', 'physMath')">فيز ريض</button>
+                </div>
+
+                <!-- تخصص تجاري -->
+                <div id="g3-commercial" class="track-content-panel active-track-panel">
+                    <div class="announcements-box">
+                        <h3>إشعارات التوجيهي - مسار تجاري</h3>
+                        <div class="announcement-item">📌 إرشادات اختبارات التوجيهي للمسار التجاري قريباً.</div>
                     </div>
-                    <div class="subject-card">
-                        <h4>فيز 311 - فيز 312</h4>
-                        <p style="font-size:12px;">قائمة تشغيل دروس الفيزياء المتقدمة</p>
-                        <a href="https://youtube.com/playlist?list=PLWSSI0qJb-ozNlh9EKzocFfBTClDdvXMb&si=P6Dknfrf_6GfDbY8" target="_blank">مشاهدة الدروس</a>
+                    <div class="subject-links-grid">
+                        <div class="subject-card">
+                            <h4>مقررات التجاري (توجيهي)</h4>
+                            <a href="https://www.moe.gov.bh" target="_blank">منصة الوزارة</a>
+                        </div>
                     </div>
-                    <div class="subject-card" style="grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08); border-color: var(--accent-primary);">
-                        <h4>قناة اليوتيوب التعليمية الرسمية</h4>
-                        <p style="font-size:13px;">يرجى الذهاب للقناة لمشاهدة باقي المواد ودروس الفصل الثاني</p>
-                        <a href="https://www.youtube.com/channel/UCM_B8MPfINsblnpbm21Zk_w" target="_blank" style="background: var(--accent-primary); color: #020617;">الانتقال إلى القناة الرسمية</a>
+                </div>
+
+                <!-- تخصص كيم حيا -->
+                <div id="g3-chemBio" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>إشعارات التوجيهي - مسار كيم حيا</h3>
+                        <div class="announcement-item">📌 تابعوا شروحات الكيمياء المتقدمة (كيم 315 - 317).</div>
+                    </div>
+                    <div class="subject-links-grid">
+                        <div class="subject-card">
+                            <h4>كيم 315 - كيم 317</h4>
+                            <a href="https://youtube.com/playlist?list=PLWSSI0qJb-owQCxxawUGh0kGXSJap-l9L&si=1ufBJQe83JwGXfNZ" target="_blank">مشاهدة الدروس</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تخصص فيز ريض -->
+                <div id="g3-physMath" class="track-content-panel">
+                    <div class="announcements-box">
+                        <h3>إشعارات التوجيهي - مسار فيز ريض</h3>
+                        <div class="announcement-item">📌 مراجعات الفيزياء المتقدمة متوفرة الآن في القائمة.</div>
+                    </div>
+                    <div class="subject-links-grid">
+                        <div class="subject-card">
+                            <h4>فيز 311 - فيز 312</h4>
+                            <a href="https://youtube.com/playlist?list=PLWSSI0qJb-ozNlh9EKzocFfBTClDdvXMb&si=P6Dknfrf_6GfDbY8" target="_blank">مشاهدة الدروس</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -955,22 +1062,17 @@
         <div id="page-exams" class="page-view">
             <div class="card-box">
                 <h2>قسم الامتحانات الوزارية النهائية (منصة الوزارة الرسمية)</h2>
-                <p>اختر المرحلة الدراسية للانتقال الفوري إلى منصة وزارة التربية والتعليم (الأرشيف الوزاري ونماذج الامتحانات النهائية الرسمية).</p>
-                
                 <div class="exams-layout">
                     <div class="exam-item-card">
                         <h4>امتحانات الأول الثانوي</h4>
-                        <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">الفصل الأول والفصل الثاني</p>
                         <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للأول الثانوي</a>
                     </div>
                     <div class="exam-item-card">
                         <h4>امتحانات الثاني الثانوي</h4>
-                        <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">كافة المسارات الأكاديمية</p>
                         <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للثاني الثانوي</a>
                     </div>
                     <div class="exam-item-card">
                         <h4>امتحانات التوجيهي (الثالث الثانوي)</h4>
-                        <p style="font-size:12px; color:var(--text-secondary); margin-top:8px;">الامتحانات النهائية والوزارية الرسمية</p>
                         <a href="https://www.moe.gov.bh" target="_blank" class="download-action-btn">دخول منصة الوزارة للتوجيهي</a>
                     </div>
                 </div>
@@ -987,9 +1089,7 @@
         const motivationalQuotes = [
             "النجاح ليس صدفة، بل هو ثمرة الاجتهاد والعمل الجاد اليومي.",
             "العلم كنز والالتزام مفتاحه؛ استمر في السعي نحو القمة.",
-            "كل ساعة تقضيها في المذاكرة تقربك خطوة نحو تحقيق أهدافك المستقبلية.",
-            "اصنع لنفسك مجداً يستحق أن يُروى، فالصبر والاجتهاد يصنعان المعجزات.",
-            "التميز والتركيز المستمر هما أساس التفوق الدراسي."
+            "كل ساعة تقضيها في المذاكرة تقربك خطوة نحو تحقيق أهدافك المستقبلية."
         ];
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -1002,16 +1102,12 @@
 
         function updateLiveClockAndTimers() {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('ar-BH');
-            const dateString = now.toLocaleDateString('ar-BH', { year: 'numeric', month: 'long', day: 'numeric' });
-            document.getElementById('liveClockWidget').innerText = timeString;
-            document.getElementById('liveDateWidget').innerText = dateString;
+            document.getElementById('liveClockWidget').innerText = now.toLocaleTimeString('ar-BH');
+            document.getElementById('liveDateWidget').innerText = now.toLocaleDateString('ar-BH', { year: 'numeric', month: 'long', day: 'numeric' });
 
             const schoolTime = new Date();
             schoolTime.setHours(7, 5, 0, 0);
-            if (now > schoolTime) {
-                schoolTime.setDate(schoolTime.getDate() + 1);
-            }
+            if (now > schoolTime) schoolTime.setDate(schoolTime.getDate() + 1);
             const diffSchool = schoolTime - now;
             const hoursLeft = Math.floor((diffSchool % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minsLeft = Math.floor((diffSchool % (1000 * 60 * 60)) / (1000 * 60));
@@ -1019,8 +1115,7 @@
         }
 
         function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(p => p.classList.remove('active-page'));
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
             const targetPage = document.getElementById(pageId);
             if(targetPage) {
                 targetPage.classList.add('active-page');
@@ -1028,9 +1123,18 @@
             }
         }
 
+        // دالة التنقل بين التخصصات (تجاري / كيم حيا / فيز ريض) للثاني والثالث الثانوي
+        function switchTrack(gradePrefix, trackName) {
+            const parentGrade = gradePrefix === 'g2' ? document.getElementById('page-grade2') : document.getElementById('page-grade3');
+            parentGrade.querySelectorAll('.track-tab-btn').forEach(btn => btn.classList.remove('active-track'));
+            parentGrade.querySelectorAll('.track-content-panel').forEach(panel => panel.classList.remove('active-track-panel'));
+
+            event.currentTarget.classList.add('active-track');
+            document.getElementById(`${gradePrefix}-${trackName}`).classList.add('active-track-panel');
+        }
+
         function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('show');
+            document.getElementById('navMenu').classList.toggle('show');
         }
 
         function toggleAppTheme() {
@@ -1038,22 +1142,17 @@
             body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
         }
 
-        let timerInterval;
-        let timeLeft = 25 * 60;
-        let isWorkSession = true;
-        const display = document.getElementById('timerDisplay');
-        const statusBadge = document.getElementById('timerStatusBadge');
+        let timerInterval, timeLeft = 25 * 60, isWorkSession = true;
+        const display = document.getElementById('timerDisplay'), statusBadge = document.getElementById('timerStatusBadge');
 
         function updateTimerDisplay() {
-            const m = Math.floor(timeLeft / 60);
-            const s = timeLeft % 60;
+            const m = Math.floor(timeLeft / 60), s = timeLeft % 60;
             display.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
         }
 
         function adjustTime(mins) {
-            let newTime = timeLeft + (mins * 60);
-            if (newTime > 0) {
-                timeLeft = newTime;
+            if (timeLeft + (mins * 60) > 0) {
+                timeLeft += mins * 60;
                 updateTimerDisplay();
             }
         }
@@ -1072,50 +1171,37 @@
                 } else {
                     clearInterval(timerInterval);
                     if (isWorkSession) {
-                        const taskName = taskInput.value.trim();
-                        saveCompletedTask(taskName);
+                        saveCompletedTask(taskInput.value.trim());
                         taskInput.value = "";
-                        
-                        alert(`أحسنت يا بطل! أنهيت جلسة التركيز لمهمة: "${taskName}". ستبدأ الآن استراحة تلقائية لمدة 10 دقائق.`);
-                        
+                        alert(`أحسنت يا بطل! أنهيت جلسة التركيز. تبدأ الآن استراحة 10 دقائق.`);
                         isWorkSession = false;
                         timeLeft = 10 * 60;
                         statusBadge.innerText = "وقت الاستراحة (10 دقائق)";
-                        statusBadge.style.color = "var(--accent-gold)";
                         updateTimerDisplay();
                         startTimer();
                     } else {
                         alert("انتهت الاستراحة! حان الوقت للعودة لجلسة تركيز جديدة.");
-                        isWorkSession, isWorkSession = true, true;
+                        isWorkSession = true;
                         timeLeft = 25 * 60;
                         statusBadge.innerText = "وضع التركيز (جلسة عمل)";
-                        statusBadge.style.color = "var(--accent-primary)";
                         updateTimerDisplay();
                     }
                 }
             }, 1000);
         }
 
-        function pauseTimer() { 
-            clearInterval(timerInterval); 
-        }
-
+        function pauseTimer() { clearInterval(timerInterval); }
         function resetTimer() { 
             clearInterval(timerInterval); 
             isWorkSession = true;
             timeLeft = 25 * 60; 
             statusBadge.innerText = "وضع التركيز (جلسة عمل)";
-            statusBadge.style.color = "var(--accent-primary)";
             updateTimerDisplay(); 
         }
 
         function saveCompletedTask(taskName) {
             let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
-            const taskObj = {
-                name: taskName,
-                date: new Date().toLocaleDateString('ar-BH', { hour: '2-digit', minute: '2-digit' })
-            };
-            tasks.unshift(taskObj);
+            tasks.unshift({ name: taskName, date: new Date().toLocaleDateString('ar-BH', { hour: '2-digit', minute: '2-digit' }) });
             localStorage.setItem('completedTasks', JSON.stringify(tasks));
             loadCompletedTasks();
         }
@@ -1123,20 +1209,11 @@
         function loadCompletedTasks() {
             let tasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
             const listContainer = document.getElementById('completedTasksList');
-            listContainer.innerHTML = '';
-            
-            if (tasks.length === 0) {
-                listContainer.innerHTML = '<li style="text-align:center; color:var(--text-secondary); font-size:12px; padding:10px;">لا توجد مهام منجزة محفوظة حتى الآن.</li>';
-                return;
-            }
-
+            listContainer.innerHTML = tasks.length === 0 ? '<li style="text-align:center; color:var(--text-secondary); font-size:12px; padding:10px;">لا توجد مهام منجزة محفوظة حتى الآن.</li>' : '';
             tasks.forEach((task, index) => {
                 const li = document.createElement('li');
                 li.className = 'task-list-item';
-                li.innerHTML = `
-                    <span><strong>${task.name}</strong> <span style="font-size:10px; color:var(--text-secondary);">(${task.date})</span></span>
-                    <button class="delete-task-btn" onclick="deleteTask(${index})">حذف</button>
-                `;
+                li.innerHTML = `<span><strong>${task.name}</strong> <span style="font-size:10px; color:var(--text-secondary);">(${task.date})</span></span> <button class="delete-task-btn" onclick="deleteTask(${index})">حذف</button>`;
                 listContainer.appendChild(li);
             });
         }
